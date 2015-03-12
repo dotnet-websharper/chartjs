@@ -56,7 +56,6 @@
   <ItemGroup>
     <Compile Include="Main.fs" />
     <None Include="packages.config" />
-    <None Include="app.config" />
     <EmbeddedResource Include="Chart.min.js" />
   </ItemGroup>
   <ItemGroup>
