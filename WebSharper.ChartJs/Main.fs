@@ -151,6 +151,10 @@ module Definition =
     let RadarChartDataset =
         Class "RadarChartDataset"
         |=> Inherits LineChartDataset
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{}"
+        ]
 
     let RadarChartData =
         Pattern.Config "RadarChartData" {
@@ -225,6 +229,11 @@ module Definition =
     let PieChartDataset =
         Class "PieChartDataset"
         |=> Inherits PolarAreaChartDataset
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{}"
+        ]
+
 
     let PieChartConfiguration =
         Pattern.Config "PieChartConfiguration" {
@@ -246,10 +255,18 @@ module Definition =
     let DoughnutChartDataset =
         Class "DoughnutChartDataset"
         |=> Inherits PieChartDataset
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{}"
+        ]
 
     let DoughnutChartConfiguration =
         Class "DoughnutChartConfiguration"
         |=> Inherits PieChartConfiguration
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{}"
+        ]
 
     let Chart =
         
