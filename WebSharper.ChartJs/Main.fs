@@ -319,12 +319,12 @@ module Definition =
             "defaults" =? GlobalChartConfiguration
         ]
         |+> Instance [
-            "Line"      => LineChartData?data * LineChartConfiguration?options ^-> LineChart
-            "Bar"       => BarChartData?data * BarChartConfiguration?options ^-> BarChart
-            "Radar"     => RadarChartData?data * RadarChartConfiguration?options ^-> RadarChart
-            "PolarArea" => (Type.ArrayOf PolarAreaChartDataset)?data * PolarAreaChartConfiguration?options ^-> PolarAreaChart
-            "Pie"       => (Type.ArrayOf PieChartDataset)?data * PieChartConfiguration?options ^-> PieChart
-            "Doughnut"  => (Type.ArrayOf DoughnutChartDataset)?data * DoughnutChartConfiguration?options ^-> DoughnutChart
+            "Line"      => LineChartData?data * !? LineChartConfiguration?options ^-> LineChart
+            "Bar"       => BarChartData?data * !? BarChartConfiguration?options ^-> BarChart
+            "Radar"     => RadarChartData?data * !? RadarChartConfiguration?options ^-> RadarChart
+            "PolarArea" => (Type.ArrayOf PolarAreaChartDataset)?data * !? PolarAreaChartConfiguration?options ^-> PolarAreaChart
+            "Pie"       => (Type.ArrayOf PieChartDataset)?data * !? PieChartConfiguration?options ^-> PieChart
+            "Doughnut"  => (Type.ArrayOf DoughnutChartDataset)?data * !? DoughnutChartConfiguration?options ^-> DoughnutChart
         ]
         |=> Nested [
             LineChart
