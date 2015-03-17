@@ -270,15 +270,12 @@ module Definition =
 
     let Chart =
         
-        let Chart =
-            let Chart = Type.New ()
-            
-            Interface "Chart"
-            |=> Chart
+        let BaseChart =
+            Interface "BaseChart"
             |+> [
-                "clear"          => T<unit> ^-> Chart
-                "stop"           => T<unit> ^-> Chart
-                "resize"         => T<unit> ^-> Chart
+                "clear"          => T<unit> ^-> TSelf
+                "stop"           => T<unit> ^-> TSelf
+                "resize"         => T<unit> ^-> TSelf
                 "destroy"        => T<unit -> unit>
                 "toBase64Image"  => T<unit -> string>
                 "generateLegend" => T<unit -> string>
@@ -286,7 +283,7 @@ module Definition =
         
         let LineChart =
             Class "LineChart"
-            |=> Implements [ Chart ]
+            |=> Implements [ BaseChart ]
             |+> Instance [
                 "getPointsAtEvent" => (T<JavaScript.Dom.Event> + T<JQuery.Event>)?event ^-> T<obj []> // !!!
                 "update"           => T<unit -> unit>
@@ -296,7 +293,7 @@ module Definition =
         
         let BarChart =
             Class "BarChart"
-            |=> Implements [ Chart ]
+            |=> Implements [ BaseChart ]
             |+> Instance [
                 "getBarsAtEvent" => (T<JavaScript.Dom.Event> + T<JQuery.Event>)?event ^-> T<obj []> // !!!
                 "update"         => T<unit -> unit>
@@ -306,12 +303,12 @@ module Definition =
 
         let RadarChart =
             Class "RadarChart"
-            |=> Implements [ Chart ]
+            |=> Implements [ BaseChart ]
             |=> Inherits LineChart
 
         let PolarAreaChart =
             Class "PolarAreaChart"
-            |=> Implements [ Chart ]
+            |=> Implements [ BaseChart ]
             |+> Instance [
                 "getSegmentsAtEvent" => (T<JavaScript.Dom.Event> + T<JQuery.Event>)?event ^-> T<obj []> // !!!
                 "update"             => T<unit -> unit>
@@ -321,12 +318,12 @@ module Definition =
 
         let PieChart =
             Class "PieChart"
-            |=> Implements [ Chart ]
+            |=> Implements [ BaseChart ]
             |=> Inherits PolarAreaChart
 
         let DoughnutChart =
             Class "DoughnutChart"
-            |=> Implements [ Chart ]
+            |=> Implements [ BaseChart ]
             |=> Inherits PieChart
 
         Class "Chart"
@@ -344,6 +341,7 @@ module Definition =
             "Doughnut"  => (Type.ArrayOf DoughnutChartDataset)?data * !? DoughnutChartConfiguration?options ^-> DoughnutChart
         ]
         |=> Nested [
+            BaseChart
             LineChart
             BarChart
             RadarChart
