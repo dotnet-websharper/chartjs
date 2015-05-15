@@ -2,7 +2,8 @@
 open IntelliFactory.Build
 
 let buildTool =
-    BuildTool().PackageId("WebSharper.ChartJs", "3.0")
+    BuildTool().PackageId("WebSharper.ChartJs")
+        .VersionFrom("WebSharper")
         .WithFramework(fun f -> f.Net40)
 
 let main =
