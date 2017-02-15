@@ -514,7 +514,7 @@ module Definition =
             Optional = []
         }
 
-    let LineChartDataset =
+    let LineChartDataSet =
         Pattern.Config "LineChartDataSet" {
             Required = []
             Optional =
@@ -546,6 +546,7 @@ module Definition =
                     "data", T<obj>
                 ]
         }
+        |=> Inherits ADataSet
 
     let BarChartXAxes =
         Pattern.Config "BarChartXAxes" {
@@ -571,7 +572,7 @@ module Definition =
         }
         |=> Inherits Scale
 
-    let BarChartDataset =
+    let BarChartDataSet =
         Pattern.Config "BarChartDataSet" {
             Required = []
             Optional =
@@ -590,8 +591,9 @@ module Definition =
                     "data", T<float []>
                 ]
         }
+        |=> Inherits ADataSet
 
-    let RadarChartDataset =
+    let RadarChartDataSet =
         Pattern.Config "RadarChartDataSet" {
             Required = []
             Optional =
@@ -615,9 +617,10 @@ module Definition =
                     "pointHoverBorderColor", T<string> + T<string []>
                     "pointHoverBorderWidth", T<int> + T<int []>
                     "pointStyle", T<string> + T<string []> // + Image + Image []
-                    "data", T<float>
+                    "data", T<float []>
                 ]
         }
+        |=> Inherits ADataSet
 
     let RadarChartOptions =
         Pattern.Config "RadarChartOptions" {
@@ -629,21 +632,22 @@ module Definition =
         }
         |=> Inherits CommonChartConfig
 
-    let PolarChartDataset =
+    let PolarChartDataSet =
         Pattern.Config "PolarChartDataSet" {
             Required = []
             Optional =
                 [
                     "label", T<string>
-                    "backgroundColor", T<string>
-                    "borderWidth", T<int>
-                    "borderColor", T<string>
-                    "hoverBackgroundColor", T<string>
-                    "hoverBorderWidth", T<int>
-                    "hoverBorderColor", T<string>
+                    "backgroundColor", T<string []>
+                    "borderWidth", T<int []>
+                    "borderColor", T<string []>
+                    "hoverBackgroundColor", T<string []>
+                    "hoverBorderWidth", T<int []>
+                    "hoverBorderColor", T<string []>
                     "data", T<float []>
                 ]
         }
+        |=> Inherits ADataSet
 
     let EnhancedAnimation =
         Pattern.Config "EnhancedAnimation" {
@@ -667,37 +671,39 @@ module Definition =
         }
         |=> Inherits CommonChartConfig
 
-    let PieChartDataset =
+    let PieChartDataSet =
         Pattern.Config "PieChartDataSet" {
             Required = []
             Optional =
                 [
                     "label", T<string>
-                    "backgroundColor", T<string>
-                    "borderWidth", T<int>
-                    "borderColor", T<string>
-                    "hoverBackgroundColor", T<string>
-                    "hoverBorderWidth", T<int>
-                    "hoverBorderColor", T<string>
+                    "backgroundColor", T<string []>
+                    "borderWidth", T<int []>
+                    "borderColor", T<string []>
+                    "hoverBackgroundColor", T<string []>
+                    "hoverBorderWidth", T<int []>
+                    "hoverBorderColor", T<string []>
                     "data", T<float []>
                 ]
         }
+        |=> Inherits ADataSet
 
-    let DoughnutChartDataset =
+    let DoughnutChartDataSet =
         Pattern.Config "DoughnutChartDataSet" {
             Required = []
             Optional =
                 [
                     "label", T<string>
-                    "backgroundColor", T<string>
-                    "borderWidth", T<int>
-                    "borderColor", T<string>
-                    "hoverBackgroundColor", T<string>
-                    "hoverBorderWidth", T<int>
-                    "hoverBorderColor", T<string>
+                    "backgroundColor", T<string []>
+                    "borderWidth", T<int []>
+                    "borderColor", T<string []>
+                    "hoverBackgroundColor", T<string []>
+                    "hoverBorderWidth", T<int []>
+                    "hoverBorderColor", T<string []>
                     "data", T<float []>
                 ]
         }
+        |=> Inherits ADataSet
 
     let PieDoughnutChartOptions =
         Pattern.Config "PieDoughnutChartOptions" {
@@ -722,7 +728,7 @@ module Definition =
             Optional = []
         }
 
-    let BubbleChartDataset =
+    let BubbleChartDataSet =
         Pattern.Config "BubbleChartDataSet" {
             Required = []
             Optional =
@@ -738,6 +744,16 @@ module Definition =
                     "data", Type.ArrayOf BubbleDataObject
                 ]
         }
+        |=> Inherits ADataSet
+
+    let Global =
+        Pattern.Config "Global" {
+            Required =
+                [
+                    "global", CommonChartConfig.Type
+                ]
+            Optional = []
+        }
 
     let Chart =
         let Context = (T<Dom.Element> + T<JQuery.JQuery> + T<string>)?elementId // + T<JavaScript.CanvasElement>
@@ -745,6 +761,7 @@ module Definition =
         |+> Static [
             Constructor (Context * ChartCreate)
             "Line" => Context * ChartCreate ^-> TSelf
+            "default" =? CommonChartConfig
         ]
         |+> Instance [
             "destroy" => T<unit> ^-> T<unit>
@@ -793,8 +810,14 @@ module Definition =
                 LineConfig
                 ElementConfig
                 CommonChartConfig
-                LineChartDataset
-                BarChartDataset
+                LineChartDataSet
+                BarChartDataSet
+                PieChartDataSet
+                DoughnutChartDataSet
+                RadarChartDataSet
+                PolarChartDataSet
+                BubbleDataObject
+                BubbleChartDataSet
                 ChartCreate
                 Chart
                 BarChartXAxes
