@@ -498,7 +498,7 @@ module Definition =
                     "tooltip", TooltipConfig.Type
                     "hover", HoverConfig.Type
                     "animation", AnimationConfig.Type
-                    "element", ElementConfig.Type
+                    "elements", ElementConfig.Type
                     "scale", Scales.Type
                 ]
         }
