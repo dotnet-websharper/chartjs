@@ -3,12 +3,12 @@ open IntelliFactory.Build
 
 let buildTool =
     BuildTool().PackageId("WebSharper.ChartJs")
-        .VersionFrom("WebSharper", versionSpec = "(,4.0)")
+        .VersionFrom("WebSharper")
         .WithFSharpVersion(FSharpVersion.FSharp30)
         .WithFramework(fun f -> f.Net40)
 
 let main =
-    buildTool.WebSharper.Extension("WebSharper.ChartJs")
+    buildTool.WebSharper4.Extension("WebSharper.ChartJs")
         .SourcesFromProject()
         .Embed(["Chart.min.js"])
 
