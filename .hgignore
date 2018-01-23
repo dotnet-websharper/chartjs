@@ -8,3 +8,4 @@ build/*
 .fake/*
 paket-files/*
 .vscode/*
+nuget/*.paket.template
