@@ -1,0 +1,466 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "WebSharper/4.5.0.290": {
+        "type": "package",
+        "compile": {
+          "lib/net461/WebSharper.Collections.dll": {},
+          "lib/net461/WebSharper.Control.dll": {},
+          "lib/net461/WebSharper.Core.JavaScript.dll": {},
+          "lib/net461/WebSharper.Core.dll": {},
+          "lib/net461/WebSharper.InterfaceGenerator.dll": {},
+          "lib/net461/WebSharper.JQuery.dll": {},
+          "lib/net461/WebSharper.JavaScript.dll": {},
+          "lib/net461/WebSharper.Main.dll": {},
+          "lib/net461/WebSharper.Sitelets.dll": {},
+          "lib/net461/WebSharper.Web.dll": {}
+        },
+        "runtime": {
+          "lib/net461/WebSharper.Collections.dll": {},
+          "lib/net461/WebSharper.Control.dll": {},
+          "lib/net461/WebSharper.Core.JavaScript.dll": {},
+          "lib/net461/WebSharper.Core.dll": {},
+          "lib/net461/WebSharper.InterfaceGenerator.dll": {},
+          "lib/net461/WebSharper.JQuery.dll": {},
+          "lib/net461/WebSharper.JavaScript.dll": {},
+          "lib/net461/WebSharper.Main.dll": {},
+          "lib/net461/WebSharper.Sitelets.dll": {},
+          "lib/net461/WebSharper.Web.dll": {}
+        }
+      },
+      "WebSharper.FSharp/4.5.0.290": {
+        "type": "package",
+        "dependencies": {
+          "WebSharper": "[4.5.0.290]"
+        },
+        "build": {
+          "build/WebSharper.FSharp.targets": {}
+        }
+      }
+    },
+    ".NETStandard,Version=v2.0": {
+      "Microsoft.NETCore.Platforms/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "NETStandard.Library/2.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "build": {
+          "build/netstandard2.0/NETStandard.Library.targets": {}
+        }
+      },
+      "WebSharper/4.5.0.290": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/WebSharper.Collections.dll": {},
+          "lib/netstandard2.0/WebSharper.Control.dll": {},
+          "lib/netstandard2.0/WebSharper.Core.JavaScript.dll": {},
+          "lib/netstandard2.0/WebSharper.Core.dll": {},
+          "lib/netstandard2.0/WebSharper.InterfaceGenerator.dll": {},
+          "lib/netstandard2.0/WebSharper.JQuery.dll": {},
+          "lib/netstandard2.0/WebSharper.JavaScript.dll": {},
+          "lib/netstandard2.0/WebSharper.Main.dll": {},
+          "lib/netstandard2.0/WebSharper.Sitelets.dll": {},
+          "lib/netstandard2.0/WebSharper.Web.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebSharper.Collections.dll": {},
+          "lib/netstandard2.0/WebSharper.Control.dll": {},
+          "lib/netstandard2.0/WebSharper.Core.JavaScript.dll": {},
+          "lib/netstandard2.0/WebSharper.Core.dll": {},
+          "lib/netstandard2.0/WebSharper.InterfaceGenerator.dll": {},
+          "lib/netstandard2.0/WebSharper.JQuery.dll": {},
+          "lib/netstandard2.0/WebSharper.JavaScript.dll": {},
+          "lib/netstandard2.0/WebSharper.Main.dll": {},
+          "lib/netstandard2.0/WebSharper.Sitelets.dll": {},
+          "lib/netstandard2.0/WebSharper.Web.dll": {}
+        }
+      },
+      "WebSharper.FSharp/4.5.0.290": {
+        "type": "package",
+        "dependencies": {
+          "WebSharper": "[4.5.0.290]"
+        },
+        "build": {
+          "build/WebSharper.FSharp.targets": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json"
+      ]
+    },
+    "NETStandard.Library/2.0.1": {
+      "sha512": "oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
+      "type": "package",
+      "path": "netstandard.library/2.0.1",
+      "files": [
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/NETStandard.Library.targets",
+        "build/netstandard2.0/NETStandard.Library.targets",
+        "build/netstandard2.0/ref/Microsoft.Win32.Primitives.dll",
+        "build/netstandard2.0/ref/System.AppContext.dll",
+        "build/netstandard2.0/ref/System.Collections.Concurrent.dll",
+        "build/netstandard2.0/ref/System.Collections.NonGeneric.dll",
+        "build/netstandard2.0/ref/System.Collections.Specialized.dll",
+        "build/netstandard2.0/ref/System.Collections.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.Composition.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.EventBasedAsync.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.Primitives.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.TypeConverter.dll",
+        "build/netstandard2.0/ref/System.ComponentModel.dll",
+        "build/netstandard2.0/ref/System.Console.dll",
+        "build/netstandard2.0/ref/System.Core.dll",
+        "build/netstandard2.0/ref/System.Data.Common.dll",
+        "build/netstandard2.0/ref/System.Data.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Contracts.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Debug.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.FileVersionInfo.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Process.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.StackTrace.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.TextWriterTraceListener.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Tools.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.TraceSource.dll",
+        "build/netstandard2.0/ref/System.Diagnostics.Tracing.dll",
+        "build/netstandard2.0/ref/System.Drawing.Primitives.dll",
+        "build/netstandard2.0/ref/System.Drawing.dll",
+        "build/netstandard2.0/ref/System.Dynamic.Runtime.dll",
+        "build/netstandard2.0/ref/System.Globalization.Calendars.dll",
+        "build/netstandard2.0/ref/System.Globalization.Extensions.dll",
+        "build/netstandard2.0/ref/System.Globalization.dll",
+        "build/netstandard2.0/ref/System.IO.Compression.FileSystem.dll",
+        "build/netstandard2.0/ref/System.IO.Compression.ZipFile.dll",
+        "build/netstandard2.0/ref/System.IO.Compression.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.DriveInfo.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.Primitives.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.Watcher.dll",
+        "build/netstandard2.0/ref/System.IO.FileSystem.dll",
+        "build/netstandard2.0/ref/System.IO.IsolatedStorage.dll",
+        "build/netstandard2.0/ref/System.IO.MemoryMappedFiles.dll",
+        "build/netstandard2.0/ref/System.IO.Pipes.dll",
+        "build/netstandard2.0/ref/System.IO.UnmanagedMemoryStream.dll",
+        "build/netstandard2.0/ref/System.IO.dll",
+        "build/netstandard2.0/ref/System.Linq.Expressions.dll",
+        "build/netstandard2.0/ref/System.Linq.Parallel.dll",
+        "build/netstandard2.0/ref/System.Linq.Queryable.dll",
+        "build/netstandard2.0/ref/System.Linq.dll",
+        "build/netstandard2.0/ref/System.Net.Http.dll",
+        "build/netstandard2.0/ref/System.Net.NameResolution.dll",
+        "build/netstandard2.0/ref/System.Net.NetworkInformation.dll",
+        "build/netstandard2.0/ref/System.Net.Ping.dll",
+        "build/netstandard2.0/ref/System.Net.Primitives.dll",
+        "build/netstandard2.0/ref/System.Net.Requests.dll",
+        "build/netstandard2.0/ref/System.Net.Security.dll",
+        "build/netstandard2.0/ref/System.Net.Sockets.dll",
+        "build/netstandard2.0/ref/System.Net.WebHeaderCollection.dll",
+        "build/netstandard2.0/ref/System.Net.WebSockets.Client.dll",
+        "build/netstandard2.0/ref/System.Net.WebSockets.dll",
+        "build/netstandard2.0/ref/System.Net.dll",
+        "build/netstandard2.0/ref/System.Numerics.dll",
+        "build/netstandard2.0/ref/System.ObjectModel.dll",
+        "build/netstandard2.0/ref/System.Reflection.Extensions.dll",
+        "build/netstandard2.0/ref/System.Reflection.Primitives.dll",
+        "build/netstandard2.0/ref/System.Reflection.dll",
+        "build/netstandard2.0/ref/System.Resources.Reader.dll",
+        "build/netstandard2.0/ref/System.Resources.ResourceManager.dll",
+        "build/netstandard2.0/ref/System.Resources.Writer.dll",
+        "build/netstandard2.0/ref/System.Runtime.CompilerServices.VisualC.dll",
+        "build/netstandard2.0/ref/System.Runtime.Extensions.dll",
+        "build/netstandard2.0/ref/System.Runtime.Handles.dll",
+        "build/netstandard2.0/ref/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "build/netstandard2.0/ref/System.Runtime.InteropServices.dll",
+        "build/netstandard2.0/ref/System.Runtime.Numerics.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Formatters.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Json.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Primitives.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.Xml.dll",
+        "build/netstandard2.0/ref/System.Runtime.Serialization.dll",
+        "build/netstandard2.0/ref/System.Runtime.dll",
+        "build/netstandard2.0/ref/System.Security.Claims.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Algorithms.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Csp.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Encoding.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.Primitives.dll",
+        "build/netstandard2.0/ref/System.Security.Cryptography.X509Certificates.dll",
+        "build/netstandard2.0/ref/System.Security.Principal.dll",
+        "build/netstandard2.0/ref/System.Security.SecureString.dll",
+        "build/netstandard2.0/ref/System.ServiceModel.Web.dll",
+        "build/netstandard2.0/ref/System.Text.Encoding.Extensions.dll",
+        "build/netstandard2.0/ref/System.Text.Encoding.dll",
+        "build/netstandard2.0/ref/System.Text.RegularExpressions.dll",
+        "build/netstandard2.0/ref/System.Threading.Overlapped.dll",
+        "build/netstandard2.0/ref/System.Threading.Tasks.Parallel.dll",
+        "build/netstandard2.0/ref/System.Threading.Tasks.dll",
+        "build/netstandard2.0/ref/System.Threading.Thread.dll",
+        "build/netstandard2.0/ref/System.Threading.ThreadPool.dll",
+        "build/netstandard2.0/ref/System.Threading.Timer.dll",
+        "build/netstandard2.0/ref/System.Threading.dll",
+        "build/netstandard2.0/ref/System.Transactions.dll",
+        "build/netstandard2.0/ref/System.ValueTuple.dll",
+        "build/netstandard2.0/ref/System.Web.dll",
+        "build/netstandard2.0/ref/System.Windows.dll",
+        "build/netstandard2.0/ref/System.Xml.Linq.dll",
+        "build/netstandard2.0/ref/System.Xml.ReaderWriter.dll",
+        "build/netstandard2.0/ref/System.Xml.Serialization.dll",
+        "build/netstandard2.0/ref/System.Xml.XDocument.dll",
+        "build/netstandard2.0/ref/System.Xml.XPath.XDocument.dll",
+        "build/netstandard2.0/ref/System.Xml.XPath.dll",
+        "build/netstandard2.0/ref/System.Xml.XmlDocument.dll",
+        "build/netstandard2.0/ref/System.Xml.XmlSerializer.dll",
+        "build/netstandard2.0/ref/System.Xml.dll",
+        "build/netstandard2.0/ref/System.dll",
+        "build/netstandard2.0/ref/mscorlib.dll",
+        "build/netstandard2.0/ref/netstandard.dll",
+        "build/netstandard2.0/ref/netstandard.xml",
+        "lib/netstandard1.0/_._",
+        "netstandard.library.2.0.1.nupkg.sha512",
+        "netstandard.library.nuspec"
+      ]
+    },
+    "WebSharper/4.5.0.290": {
+      "sha512": "YJQ6Z3xGcu4PmAFypkj8eXQYcjwDv8LnBMUtieAlmwEonYUD0jWAjCH4myOIgp4v7mR4yN+2QUWPUyxCAHH4gA==",
+      "type": "package",
+      "path": "websharper/4.5.0.290",
+      "files": [
+        "docs/CSharpIntro.md",
+        "docs/DOM.md",
+        "docs/ECMA-262.md",
+        "docs/IIS.md",
+        "docs/Libraries.md",
+        "docs/MSBuild.md",
+        "docs/Macros.md",
+        "docs/WebApi.md",
+        "docs/WebSharper.md",
+        "docs/WebSharper4Beta.md",
+        "docs/dep-form-ex.png",
+        "docs/dep-form.png",
+        "docs/doc.fsx",
+        "docs/enhance-form.png",
+        "docs/jQuery.md",
+        "docs/label-form.png",
+        "docs/person-form-ex.png",
+        "docs/qunit.png",
+        "docs/static-comp-form.png",
+        "docs/validation-form.png",
+        "lib/net461/WebSharper.Collections.dll",
+        "lib/net461/WebSharper.Collections.xml",
+        "lib/net461/WebSharper.Control.dll",
+        "lib/net461/WebSharper.Control.xml",
+        "lib/net461/WebSharper.Core.JavaScript.dll",
+        "lib/net461/WebSharper.Core.JavaScript.xml",
+        "lib/net461/WebSharper.Core.dll",
+        "lib/net461/WebSharper.Core.xml",
+        "lib/net461/WebSharper.InterfaceGenerator.dll",
+        "lib/net461/WebSharper.InterfaceGenerator.xml",
+        "lib/net461/WebSharper.JQuery.dll",
+        "lib/net461/WebSharper.JQuery.xml",
+        "lib/net461/WebSharper.JavaScript.dll",
+        "lib/net461/WebSharper.JavaScript.xml",
+        "lib/net461/WebSharper.Main.dll",
+        "lib/net461/WebSharper.Main.xml",
+        "lib/net461/WebSharper.Sitelets.dll",
+        "lib/net461/WebSharper.Sitelets.xml",
+        "lib/net461/WebSharper.Web.dll",
+        "lib/net461/WebSharper.Web.xml",
+        "lib/netstandard2.0/WebSharper.Collections.dll",
+        "lib/netstandard2.0/WebSharper.Collections.xml",
+        "lib/netstandard2.0/WebSharper.Control.dll",
+        "lib/netstandard2.0/WebSharper.Control.xml",
+        "lib/netstandard2.0/WebSharper.Core.JavaScript.dll",
+        "lib/netstandard2.0/WebSharper.Core.JavaScript.xml",
+        "lib/netstandard2.0/WebSharper.Core.dll",
+        "lib/netstandard2.0/WebSharper.Core.xml",
+        "lib/netstandard2.0/WebSharper.InterfaceGenerator.dll",
+        "lib/netstandard2.0/WebSharper.InterfaceGenerator.xml",
+        "lib/netstandard2.0/WebSharper.JQuery.dll",
+        "lib/netstandard2.0/WebSharper.JQuery.xml",
+        "lib/netstandard2.0/WebSharper.JavaScript.dll",
+        "lib/netstandard2.0/WebSharper.JavaScript.xml",
+        "lib/netstandard2.0/WebSharper.Main.dll",
+        "lib/netstandard2.0/WebSharper.Main.xml",
+        "lib/netstandard2.0/WebSharper.Sitelets.dll",
+        "lib/netstandard2.0/WebSharper.Sitelets.xml",
+        "lib/netstandard2.0/WebSharper.Web.dll",
+        "lib/netstandard2.0/WebSharper.Web.xml",
+        "tools/tags.csv",
+        "websharper.4.5.0.290.nupkg.sha512",
+        "websharper.nuspec"
+      ]
+    },
+    "WebSharper.FSharp/4.5.0.290": {
+      "sha512": "obGcKBQTTOMvNFM0Ih0cHyRaOcq00E2rW7Oxk8ZyZp+fxPVaraPWo5heF/dBdlPM6GdRrjilha+Qe9IjGJoSJA==",
+      "type": "package",
+      "path": "websharper.fsharp/4.5.0.290",
+      "files": [
+        "build/WebSharper.FSharp.targets",
+        "tools/net461/FSharp.Compiler.Service.dll",
+        "tools/net461/FSharp.Core.dll",
+        "tools/net461/Mono.Cecil.Mdb.dll",
+        "tools/net461/Mono.Cecil.Pdb.dll",
+        "tools/net461/Mono.Cecil.dll",
+        "tools/net461/System.Collections.Immutable.dll",
+        "tools/net461/System.IO.Compression.dll",
+        "tools/net461/System.Reflection.Metadata.dll",
+        "tools/net461/System.ValueTuple.dll",
+        "tools/net461/WebSharper.Compiler.FSharp.dll",
+        "tools/net461/WebSharper.Compiler.dll",
+        "tools/net461/WebSharper.Core.JavaScript.dll",
+        "tools/net461/WebSharper.Core.dll",
+        "tools/net461/WebSharper.InterfaceGenerator.dll",
+        "tools/net461/WebSharper.Sitelets.Offline.dll",
+        "tools/net461/netstandard.dll",
+        "tools/net461/wsfsc.exe",
+        "tools/net461/wsfsc.exe.config",
+        "tools/netstandard2.0/FSharp.Compiler.Service.dll",
+        "tools/netstandard2.0/FSharp.Core.dll",
+        "tools/netstandard2.0/Microsoft.DotNet.PlatformAbstractions.dll",
+        "tools/netstandard2.0/Microsoft.Extensions.DependencyModel.dll",
+        "tools/netstandard2.0/Mono.Cecil.Mdb.dll",
+        "tools/netstandard2.0/Mono.Cecil.Pdb.dll",
+        "tools/netstandard2.0/Mono.Cecil.Rocks.dll",
+        "tools/netstandard2.0/Mono.Cecil.dll",
+        "tools/netstandard2.0/Newtonsoft.Json.dll",
+        "tools/netstandard2.0/System.CodeDom.dll",
+        "tools/netstandard2.0/System.Configuration.ConfigurationManager.dll",
+        "tools/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
+        "tools/netstandard2.0/WebSharper.Compiler.FSharp.dll",
+        "tools/netstandard2.0/WebSharper.Compiler.dll",
+        "tools/netstandard2.0/WebSharper.Core.JavaScript.dll",
+        "tools/netstandard2.0/WebSharper.Core.dll",
+        "tools/netstandard2.0/WebSharper.InterfaceGenerator.dll",
+        "tools/netstandard2.0/WebSharper.Sitelets.Offline.dll",
+        "tools/netstandard2.0/default.win32manifest",
+        "tools/netstandard2.0/wsfsc.cmd",
+        "tools/netstandard2.0/wsfsc.dll",
+        "tools/netstandard2.0/wsfsc.dll.config",
+        "tools/netstandard2.0/wsfsc.runtimeconfig.json",
+        "tools/netstandard2.0/wsfsc.sh",
+        "tools/runngen.ps1",
+        "websharper.fsharp.4.5.0.290.nupkg.sha512",
+        "websharper.fsharp.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.6.1": [
+      "WebSharper >= 4.5.0.290",
+      "WebSharper.FSharp >= 4.5.0.290"
+    ],
+    ".NETStandard,Version=v2.0": [
+      "NETStandard.Library >= 2.0.1",
+      "WebSharper >= 4.5.0.290",
+      "WebSharper.FSharp >= 4.5.0.290"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\jenkins.WIN-DRS439ROKOT\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Jenkins\\workspace\\zafir.chartjs\\WebSharper.ChartJs\\WebSharper.ChartJs.fsproj",
+      "projectName": "WebSharper.ChartJs",
+      "projectPath": "C:\\Jenkins\\workspace\\zafir.chartjs\\WebSharper.ChartJs\\WebSharper.ChartJs.fsproj",
+      "packagesPath": "C:\\Users\\jenkins.WIN-DRS439ROKOT\\.nuget\\packages\\",
+      "outputPath": "C:\\Jenkins\\workspace\\zafir.chartjs\\WebSharper.ChartJs\\obj\\",
+      "projectStyle": "PackageReference",
+      "crossTargeting": true,
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\jenkins.WIN-DRS439ROKOT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net461",
+        "netstandard2.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://daily.websharper.com/nuget": {},
+        "https://nuget.intellifactory.com/nuget": {},
+        "https://nuget.org/api/v2/": {}
+      },
+      "frameworks": {
+        "net461": {
+          "projectReferences": {}
+        },
+        "netstandard2.0": {
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "noWarn": [
+          "NU1603"
+        ]
+      }
+    },
+    "frameworks": {
+      "net461": {
+        "dependencies": {
+          "WebSharper": {
+            "target": "Package",
+            "version": "[4.5.0.290, )"
+          },
+          "WebSharper.FSharp": {
+            "target": "Package",
+            "version": "[4.5.0.290, )"
+          }
+        }
+      },
+      "netstandard2.0": {
+        "dependencies": {
+          "NETStandard.Library": {
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.0.1, )",
+            "autoReferenced": true
+          },
+          "WebSharper": {
+            "target": "Package",
+            "version": "[4.5.0.290, )"
+          },
+          "WebSharper.FSharp": {
+            "target": "Package",
+            "version": "[4.5.0.290, )"
+          }
+        },
+        "imports": [
+          "net461"
+        ],
+        "assetTargetFallback": true,
+        "warn": true
+      }
+    }
+  }
+}
