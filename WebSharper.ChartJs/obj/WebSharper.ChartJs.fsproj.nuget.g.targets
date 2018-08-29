@@ -4,10 +4,10 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(TargetFramework)' == 'net461' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)websharper.fsharp\4.5.0.290\build\WebSharper.FSharp.targets" Condition="Exists('$(NuGetPackageRoot)websharper.fsharp\4.5.0.290\build\WebSharper.FSharp.targets')" />
+    <Import Project="$(NuGetPackageRoot)websharper.fsharp\4.5.1.304\build\WebSharper.FSharp.targets" Condition="Exists('$(NuGetPackageRoot)websharper.fsharp\4.5.1.304\build\WebSharper.FSharp.targets')" />
   </ImportGroup>
   <ImportGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)websharper.fsharp\4.5.0.290\build\WebSharper.FSharp.targets" Condition="Exists('$(NuGetPackageRoot)websharper.fsharp\4.5.0.290\build\WebSharper.FSharp.targets')" />
-    <Import Project="$(NuGetPackageRoot)netstandard.library\2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('$(NuGetPackageRoot)netstandard.library\2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
+    <Import Project="$(NuGetPackageRoot)websharper.fsharp\4.5.1.304\build\WebSharper.FSharp.targets" Condition="Exists('$(NuGetPackageRoot)websharper.fsharp\4.5.1.304\build\WebSharper.FSharp.targets')" />
+    <Import Project="$(NuGetPackageRoot)netstandard.library\2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('$(NuGetPackageRoot)netstandard.library\2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   </ImportGroup>
 </Project>

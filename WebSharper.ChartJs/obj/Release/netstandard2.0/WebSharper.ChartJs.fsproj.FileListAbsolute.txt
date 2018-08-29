@@ -2,7 +2,7 @@ C:\Jenkins\workspace\zafir.chartjs\WebSharper.ChartJs\bin\Release\netstandard2.0
 C:\Jenkins\workspace\zafir.chartjs\WebSharper.ChartJs\bin\Release\netstandard2.0\WebSharper.ChartJs.dll
 C:\Jenkins\workspace\zafir.chartjs\WebSharper.ChartJs\bin\Release\netstandard2.0\WebSharper.ChartJs.pdb
 C:\Jenkins\workspace\zafir.chartjs\WebSharper.ChartJs\bin\Release\netstandard2.0\WebSharper.ChartJs.xml
-C:\Jenkins\workspace\zafir.chartjs\WebSharper.ChartJs\obj\Release\netstandard2.0\WebSharper.ChartJs.fsprojResolveAssemblyReference.cache
+C:\Jenkins\workspace\zafir.chartjs\WebSharper.ChartJs\obj\Release\netstandard2.0\WebSharper.ChartJs.fsprojAssemblyReference.cache
 C:\Jenkins\workspace\zafir.chartjs\WebSharper.ChartJs\obj\Release\netstandard2.0\WebSharper.ChartJs.dll
 C:\Jenkins\workspace\zafir.chartjs\WebSharper.ChartJs\obj\Release\netstandard2.0\WebSharper.ChartJs.xml
 C:\Jenkins\workspace\zafir.chartjs\WebSharper.ChartJs\obj\Release\netstandard2.0\WebSharper.ChartJs.pdb

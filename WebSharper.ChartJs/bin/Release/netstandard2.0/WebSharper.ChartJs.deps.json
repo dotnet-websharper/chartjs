@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "bf587cdff5184c5e29a32e91bcde000311ab8c90"
+    "signature": "6706752b18367dd8cd007f4bd9d27427b08ab375"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,21 +9,21 @@
     ".NETStandard,Version=v2.0/": {
       "WebSharper.ChartJs/1.0.0": {
         "dependencies": {
-          "NETStandard.Library": "2.0.1",
-          "WebSharper": "4.5.0.290",
-          "WebSharper.FSharp": "4.5.0.290"
+          "NETStandard.Library": "2.0.3",
+          "WebSharper": "4.5.1.304",
+          "WebSharper.FSharp": "4.5.1.304"
         },
         "runtime": {
           "WebSharper.ChartJs.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
-      "NETStandard.Library/2.0.1": {
+      "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "WebSharper/4.5.0.290": {
+      "WebSharper/4.5.1.304": {
         "runtime": {
           "lib/netstandard2.0/WebSharper.Collections.dll": {},
           "lib/netstandard2.0/WebSharper.Control.dll": {},
@@ -37,9 +37,9 @@
           "lib/netstandard2.0/WebSharper.Web.dll": {}
         }
       },
-      "WebSharper.FSharp/4.5.0.290": {
+      "WebSharper.FSharp/4.5.1.304": {
         "dependencies": {
-          "WebSharper": "4.5.0.290"
+          "WebSharper": "4.5.1.304"
         }
       }
     }
@@ -57,26 +57,26 @@
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
-    "NETStandard.Library/2.0.1": {
+    "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
-      "path": "netstandard.library/2.0.1",
-      "hashPath": "netstandard.library.2.0.1.nupkg.sha512"
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "WebSharper/4.5.0.290": {
+    "WebSharper/4.5.1.304": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YJQ6Z3xGcu4PmAFypkj8eXQYcjwDv8LnBMUtieAlmwEonYUD0jWAjCH4myOIgp4v7mR4yN+2QUWPUyxCAHH4gA==",
-      "path": "websharper/4.5.0.290",
-      "hashPath": "websharper.4.5.0.290.nupkg.sha512"
+      "sha512": "sha512-R2oDNi9bO632Jlao0wa6XxZqQC1epJ9YXDzh9sXdHcP9Als9IEJG0XYC+S/YdPACz/2myxtgUAtUv51RIiVsYA==",
+      "path": "websharper/4.5.1.304",
+      "hashPath": "websharper.4.5.1.304.nupkg.sha512"
     },
-    "WebSharper.FSharp/4.5.0.290": {
+    "WebSharper.FSharp/4.5.1.304": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-obGcKBQTTOMvNFM0Ih0cHyRaOcq00E2rW7Oxk8ZyZp+fxPVaraPWo5heF/dBdlPM6GdRrjilha+Qe9IjGJoSJA==",
-      "path": "websharper.fsharp/4.5.0.290",
-      "hashPath": "websharper.fsharp.4.5.0.290.nupkg.sha512"
+      "sha512": "sha512-4Pli7FWRE7xvf6ojIiMJSJY9P4V5wQzEPbm+o7/j9UhXnsqS1cEv53bcbfCNIip7dlX7FnENvqzbiiFytK6iog==",
+      "path": "websharper.fsharp/4.5.1.304",
+      "hashPath": "websharper.fsharp.4.5.1.304.nupkg.sha512"
     }
   }
 }

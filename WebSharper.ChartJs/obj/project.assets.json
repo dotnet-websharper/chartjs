@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.6.1": {
-      "WebSharper/4.5.0.290": {
+      "WebSharper/4.5.1.304": {
         "type": "package",
         "compile": {
           "lib/net461/WebSharper.Collections.dll": {},
@@ -29,10 +29,10 @@
           "lib/net461/WebSharper.Web.dll": {}
         }
       },
-      "WebSharper.FSharp/4.5.0.290": {
+      "WebSharper.FSharp/4.5.1.304": {
         "type": "package",
         "dependencies": {
-          "WebSharper": "[4.5.0.290]"
+          "WebSharper": "[4.5.1.304]"
         },
         "build": {
           "build/WebSharper.FSharp.targets": {}
@@ -49,7 +49,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "NETStandard.Library/2.0.1": {
+      "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -64,7 +64,7 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "WebSharper/4.5.0.290": {
+      "WebSharper/4.5.1.304": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/WebSharper.Collections.dll": {},
@@ -91,10 +91,10 @@
           "lib/netstandard2.0/WebSharper.Web.dll": {}
         }
       },
-      "WebSharper.FSharp/4.5.0.290": {
+      "WebSharper.FSharp/4.5.1.304": {
         "type": "package",
         "dependencies": {
-          "WebSharper": "[4.5.0.290]"
+          "WebSharper": "[4.5.1.304]"
         },
         "build": {
           "build/WebSharper.FSharp.targets": {}
@@ -113,17 +113,17 @@
         "lib/netstandard1.0/_._",
         "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
+        "paket-installmodel.cache",
         "runtime.json"
       ]
     },
-    "NETStandard.Library/2.0.1": {
-      "sha512": "oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
+    "NETStandard.Library/2.0.3": {
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
-      "path": "netstandard.library/2.0.1",
+      "path": "netstandard.library/2.0.3",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "build/NETStandard.Library.targets",
         "build/netstandard2.0/NETStandard.Library.targets",
         "build/netstandard2.0/ref/Microsoft.Win32.Primitives.dll",
         "build/netstandard2.0/ref/System.AppContext.dll",
@@ -240,14 +240,15 @@
         "build/netstandard2.0/ref/netstandard.dll",
         "build/netstandard2.0/ref/netstandard.xml",
         "lib/netstandard1.0/_._",
-        "netstandard.library.2.0.1.nupkg.sha512",
-        "netstandard.library.nuspec"
+        "netstandard.library.2.0.3.nupkg.sha512",
+        "netstandard.library.nuspec",
+        "paket-installmodel.cache"
       ]
     },
-    "WebSharper/4.5.0.290": {
-      "sha512": "YJQ6Z3xGcu4PmAFypkj8eXQYcjwDv8LnBMUtieAlmwEonYUD0jWAjCH4myOIgp4v7mR4yN+2QUWPUyxCAHH4gA==",
+    "WebSharper/4.5.1.304": {
+      "sha512": "R2oDNi9bO632Jlao0wa6XxZqQC1epJ9YXDzh9sXdHcP9Als9IEJG0XYC+S/YdPACz/2myxtgUAtUv51RIiVsYA==",
       "type": "package",
-      "path": "websharper/4.5.0.290",
+      "path": "websharper/4.5.1.304",
       "files": [
         "docs/CSharpIntro.md",
         "docs/DOM.md",
@@ -309,17 +310,19 @@
         "lib/netstandard2.0/WebSharper.Sitelets.xml",
         "lib/netstandard2.0/WebSharper.Web.dll",
         "lib/netstandard2.0/WebSharper.Web.xml",
+        "paket-installmodel.cache",
         "tools/tags.csv",
-        "websharper.4.5.0.290.nupkg.sha512",
+        "websharper.4.5.1.304.nupkg.sha512",
         "websharper.nuspec"
       ]
     },
-    "WebSharper.FSharp/4.5.0.290": {
-      "sha512": "obGcKBQTTOMvNFM0Ih0cHyRaOcq00E2rW7Oxk8ZyZp+fxPVaraPWo5heF/dBdlPM6GdRrjilha+Qe9IjGJoSJA==",
+    "WebSharper.FSharp/4.5.1.304": {
+      "sha512": "4Pli7FWRE7xvf6ojIiMJSJY9P4V5wQzEPbm+o7/j9UhXnsqS1cEv53bcbfCNIip7dlX7FnENvqzbiiFytK6iog==",
       "type": "package",
-      "path": "websharper.fsharp/4.5.0.290",
+      "path": "websharper.fsharp/4.5.1.304",
       "files": [
         "build/WebSharper.FSharp.targets",
+        "paket-installmodel.cache",
         "tools/net461/FSharp.Compiler.Service.dll",
         "tools/net461/FSharp.Core.dll",
         "tools/net461/Mono.Cecil.Mdb.dll",
@@ -363,20 +366,20 @@
         "tools/netstandard2.0/wsfsc.runtimeconfig.json",
         "tools/netstandard2.0/wsfsc.sh",
         "tools/runngen.ps1",
-        "websharper.fsharp.4.5.0.290.nupkg.sha512",
+        "websharper.fsharp.4.5.1.304.nupkg.sha512",
         "websharper.fsharp.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.6.1": [
-      "WebSharper >= 4.5.0.290",
-      "WebSharper.FSharp >= 4.5.0.290"
+      "WebSharper >= 4.5.1.304",
+      "WebSharper.FSharp >= 4.5.1.304"
     ],
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.1",
-      "WebSharper >= 4.5.0.290",
-      "WebSharper.FSharp >= 4.5.0.290"
+      "NETStandard.Library >= 2.0.3",
+      "WebSharper >= 4.5.1.304",
+      "WebSharper.FSharp >= 4.5.1.304"
     ]
   },
   "packageFolders": {
@@ -430,11 +433,11 @@
         "dependencies": {
           "WebSharper": {
             "target": "Package",
-            "version": "[4.5.0.290, )"
+            "version": "[4.5.1.304, )"
           },
           "WebSharper.FSharp": {
             "target": "Package",
-            "version": "[4.5.0.290, )"
+            "version": "[4.5.1.304, )"
           }
         }
       },
@@ -443,16 +446,16 @@
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.1, )",
+            "version": "[2.0.3, )",
             "autoReferenced": true
           },
           "WebSharper": {
             "target": "Package",
-            "version": "[4.5.0.290, )"
+            "version": "[4.5.1.304, )"
           },
           "WebSharper.FSharp": {
             "target": "Package",
-            "version": "[4.5.0.290, )"
+            "version": "[4.5.1.304, )"
           }
         },
         "imports": [
