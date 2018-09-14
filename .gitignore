@@ -1,0 +1,9 @@
+*.suo
+bin/
+obj/
+build/
+packages/
+.fake/
+paket-files/
+.vscode/
+nuget/*.paket.template
