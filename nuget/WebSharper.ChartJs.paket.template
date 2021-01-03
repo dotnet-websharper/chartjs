@@ -16,4 +16,4 @@ files
     ../WebSharper.ChartJs/bin/Release/netstandard2.0/WebSharper.ChartJs.dll ==> lib/netstandard2.0
     ../WebSharper.ChartJs/bin/Release/netstandard2.0/WebSharper.ChartJs.xml ==> lib/netstandard2.0
 dependencies
-        WebSharper ~> LOCKEDVERSION/3
+        WebSharper ~> LOCKEDVERSION:[3]
