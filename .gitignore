@@ -6,3 +6,4 @@ packages/
 .fake/
 paket-files/
 .vscode/
+/done.txt
