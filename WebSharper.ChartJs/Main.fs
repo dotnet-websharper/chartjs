@@ -377,7 +377,7 @@ module Definition =
                     "stacked", T<bool> + T<string>
                     "suggestedMax", T<int>
                     "suggestedMin", T<int>
-                    "ticks", TickConfig.Type //TODO
+                    "ticks", TickConfig.Type
                     "weight", T<int>
 
                     "beforeUpdate", TSelf ^-> T<unit>
@@ -523,7 +523,7 @@ module Definition =
                 "title", ScaleTitle.Type
             ]
         }
-        |=> Inherits Scale //TODO
+        |=> Inherits Scale
 
     let CategoryAxis =
         Pattern.Config "CategoryAxis" {
@@ -907,7 +907,10 @@ module Definition =
                     "type", T<string>
                     "from", T<int> + T<string> + T<bool>
                     "to", T<int> + T<string> + T<bool>
-                    "fn", T<int> + T<string> + T<bool> //TODO
+                    "fn", 
+                        T<float> ^-> T<float> ^-> T<float> +
+                        T<string> ^-> T<string> ^-> T<float> +
+                        T<bool> ^-> T<bool> ^-> T<float>
                     "onProgress", AnimationCallbackObj ^-> T<unit>
                     "onComplete", AnimationCallbackObj ^-> T<unit>
                 ]
@@ -1383,15 +1386,6 @@ module Definition =
         }
         |=> Inherits ADataSet
 
-    (*let Global =
-        Pattern.Config "Global" {
-            Required =
-                [
-                    "global", Options.Type
-                ]
-            Optional = []
-        }*)
-
     let Chart =
         let Context = (T<Dom.Element> + T<JQuery.JQuery> + T<string>)?elementId // + T<JavaScript.CanvasElement>
         ChartClass
@@ -1418,7 +1412,6 @@ module Definition =
             "getsElementAtEvent" => T<Dom.Event> + T<JQuery.Event> ^-> T<Dom.Element []>
             "getDatasetAtEvent" => T<Dom.Event> + T<JQuery.Event> ^-> T<Dom.Element>
             "getDatasetMeta" => T<int> ^-> ADataSet
-
         ]
 
     let Assembly =
