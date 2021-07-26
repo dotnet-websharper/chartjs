@@ -95,6 +95,16 @@ module Definition =
 
     let Padding = T<int> + PaddingDirections.Type + PaddingXY.Type
 
+    let Fill =
+        Pattern.Config "Fill" {
+            Required = []
+            Optional = [
+                "target", T<int> + T<float> + T<string> + T<bool> + T<obj>
+                "above", T<string>
+                "below", T<string>
+            ]
+        }
+
     let ChartData =
         Pattern.Config "ChartData" {
             Required = 
@@ -104,31 +114,26 @@ module Definition =
             Optional =
                 [
                     "labels", T<string []>
-                    "xLabels", T<string []>
-                    "yLabels", T<string []>
                 ]
-        }
-
-    
-    let DataObject =
-        Pattern.Config "DataObject" {
-            Required =
-                [
-                    "x", T<float>
-                    "y", T<float>
-                ]
-            Optional = []
         }
 
     let ScaleType =
         Pattern.EnumStrings "ScaleType" [
+            "cartesian"
             "category"
             "linear"
             "logarithmic"
             "time"
-            "radialLinear"
+            "timeseries"
         ]
-        
+              
+    let JoinStyle =
+        Pattern.EnumStrings "JoinStyle" [
+            "bevel"
+            "round"
+            "miter"
+        ]
+
     let ArcConfig =
         Pattern.Config "ArcConfig" {
             Required = []
@@ -167,10 +172,10 @@ module Definition =
                     "borderCapStyle", T<string>
                     "borderDash", T<float []>
                     "borderDashOffset", T<float>
-                    "borderJoinStyle", T<string>
+                    "borderJoinStyle", JoinStyle.Type
                     "capBezierPoints", T<bool>
                     "cubicInterpolationMode", T<string>
-                    "fill", T<bool> + T<string>
+                    "fill", T<bool> + T<string> + Fill.Type
                     "stepped", T<bool>
                 ]
         }
@@ -216,7 +221,7 @@ module Definition =
                 ]
         }
 
-    let GridLineConfig =
+    (*let GridLineConfig =
         Pattern.Config "GridLineConfig" {
             Required = []
             Optional =
@@ -234,21 +239,7 @@ module Definition =
                     "zeroLineColor", T<string>
                     "offsetGridLines", T<bool>
                 ]
-        }
-
-    let ScaleTitleConfig =
-        Pattern.Config "ScaleTitleConfig" {
-            Required = []
-            Optional =
-                [
-                    "display", T<bool>
-                    "labelString", T<string>
-                    "fontColor", T<string>
-                    "fontFamily", T<string>
-                    "fontSize", T<int>
-                    "fontStyle", T<string>
-                ]
-        }
+        }*)
 
     let CrossAlign =
         Pattern.EnumStrings "CrossAlign" [
@@ -277,16 +268,6 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "align", AlignString.Type
-                    "crossAlign", CrossAlign.Type
-                    "sampleSize", T<int>
-                    "autoSkip", T<bool>
-                    "autoSkipPadding", T<int>
-                    "inclueBounds", T<bool>
-                    "labelOffset", T<int>
-                    "maxRotation", T<int>
-                    "minRotation", T<int>
-                    "mirror", T<bool>                    
                     "backdropColor", T<string>
                     "backdropPadding", Padding
                     "callback", T<float> * T<float> * T<float []> ^-> T<obj>
@@ -299,13 +280,85 @@ module Definition =
                     "textStrokeColor", T<string>
                     "textStrokeWidth", T<int>
                     "z", T<int>
-                    "source", TickSource.Type
-                    "count", T<int>
-                    "format", T<obj>
-                    "maxTickLimit", T<int>
-                    "precision", T<int>
-                    "stepSize", T<int>
                 ]
+        }
+
+    let CartesianTick =
+        Pattern.Config "CartesianTick" {
+            Required = []
+            Optional = [
+                "align", AlignString.Type
+                "crossAlign", CrossAlign.Type
+                "sampleSize", T<int>
+                "autoSkip", T<bool>
+                "autoSkipPadding", T<int>
+                "inclueBounds", T<bool>
+                "labelOffset", T<int>
+                "maxRotation", T<int>
+                "minRotation", T<int>
+                "mirror", T<bool>
+            ]
+        }
+        |=> Inherits TickConfig
+    
+    let LinearTick =
+        Pattern.Config "LinearTick" {
+            Required = []
+            Optional = [
+                "count", T<int>
+                "format", T<obj>
+                "maxTickLimit", T<int>
+                "precision", T<int>
+                "stepSize", T<int>
+            ]
+        }
+        |=> Inherits CartesianTick
+
+    let TimeTick =
+        Pattern.Config "TimeTick" {
+            Required = []
+            Optional = [
+                "source", TickSource.Type
+            ]
+        }
+        |=> Inherits CartesianTick
+
+    let LinearRadialTick =
+        Pattern.Config "LinearRadialTick"  {
+            Required = []
+            Optional = [
+                "count", T<int>
+                "format", T<obj>
+                "maxTickLimit", T<int>
+                "precision", T<int> + T<float>
+                "stepSize", T<int>
+            ]
+        }
+        |=> Inherits TickConfig
+
+    let ScaleGrid =
+        Pattern.Config "ScaleGrid" {
+            Required = []
+            Optional = [
+                "borderColor", T<string>
+                "borderWidth", T<int>
+                "borderDash", T<int []> + T<float []>
+                "borderDashOffset", T<float>
+                "circular", T<bool>
+                "color", T<string>
+                "display", T<bool>
+                "drawBorder", T<bool>
+                "drawOnChartArea", T<bool>
+                "drawTicks", T<bool>
+                "lineWidth", T<int>
+                "offset", T<bool>
+                "tickBorderDash", T<int []> + T<float []>
+                "tickBorderDashOffset", T<int> + T<float>
+                "tickcolor", T<string>
+                "tickLength", T<int>
+                "tickWidth", T<int>
+                "z", T<int>
+            ]
         }
 
     let Scale =
@@ -317,15 +370,16 @@ module Definition =
                     "alignToPixels", T<bool>
                     "backgroundColor", T<string>
                     "display", T<bool>
-                    "grid", T<obj>
+                    "grid", ScaleGrid.Type
                     "min", T<int> + T<string>
                     "max", T<int> + T<string>
                     "reverse", T<bool>
                     "stacked", T<bool> + T<string>
                     "suggestedMax", T<int>
                     "suggestedMin", T<int>
-                    "ticks", TickConfig.Type
+                    "ticks", TickConfig.Type //TODO
                     "weight", T<int>
+
                     "beforeUpdate", TSelf ^-> T<unit>
                     "beforeSetDimensions", TSelf ^-> T<unit>
                     "afterSetDimensions", TSelf ^-> T<unit>
@@ -406,7 +460,7 @@ module Definition =
             Optional = [
                 "displayFormats", T<obj>
                 "isoWeekday", T<bool> + T<int>
-                "parser", T<string>
+                "parser", T<string> // + func
                 "round", T<string>
                 "tooltipFormat", T<string>
                 "unit", TimeUnit.Type
@@ -415,17 +469,12 @@ module Definition =
             ]
         }
 
-    let AngleLine =
-        Pattern.Config "AngleLine" {
-            Required = []
-            Optional = [
-                "display", T<bool>
-                "color", T<string>
-                "lineWidth", T<int>
-                "borderDash", T<int []> + T<float []>
-                "borderDashOffset", T<int> + T<float>
-            ]
-        }
+    let Axis =
+        Pattern.EnumStrings "Axis" [
+            "x"
+            "y"
+            "xy"
+        ]
 
     let PointLabel =
         Pattern.Config "PointLabel" {
@@ -446,7 +495,7 @@ module Definition =
             Required = []
             Optional = [
                 "display", T<bool>
-                "align", T<string>
+                "align", AlignString.Type
                 "text", T<string> + T<string []>
                 "color", T<string>
                 "font", Font.Type
@@ -454,66 +503,93 @@ module Definition =
             ]
         }
 
-    let ScaleGrid =
-        Pattern.Config "ScaleGrid" {
+    let AxisPosition =
+        Pattern.EnumStrings "AxisPosition" [
+            "top"
+            "left"
+            "bottom"
+            "right"
+            "center"
+        ]
+
+    let CartesianAxis =
+        Pattern.Config "CartesianAxis" {
             Required = []
             Optional = [
-                "borderColor", T<string>
-                "borderWidth", T<int>
-                "borderDash", T<int []> + T<float []>
-                "borderDashOffset", T<float>
-                "circular", T<bool>
-                "color", T<string>
-                "display", T<bool>
-                "drawBorder", T<bool>
-                "drawOnChartArea", T<bool>
-                "drawTicks", T<bool>
-                "lineWidth", T<int>
+                "bounds", ScaleBound.Type
+                "position", AxisPosition.Type
+                "axis", ScaleAxis.Type
                 "offset", T<bool>
-                "tickBorderDash", T<int []> + T<float []>
-                "tickBorderDashOffset", T<int> + T<float>
-                "tickcolor", T<string>
-                "tickLength", T<int>
-                "tickWidth", T<int>
-                "z", T<int>
+                "title", ScaleTitle.Type
+            ]
+        }
+        |=> Inherits Scale //TODO
+
+    let CategoryAxis =
+        Pattern.Config "CategoryAxis" {
+            Required = []
+            Optional = [
+                "min", T<string> + T<int>
+                "max", T<string> + T<int>
+                "labels", T<string []> + T<string [][]>
+            ]
+        }
+        |=> Inherits CartesianAxis
+
+    let LinearAxis =
+        Pattern.Config "LinearAxis" {
+            Required = []
+            Optional = [
+                "beginAtZero", T<bool>
+                "grace", T<int> + T<float> + T<string>
+            ]
+        }
+        |=> Inherits CartesianAxis
+
+    let LogarithmicAxis =
+        Pattern.Config "LogarithmicAxis" {
+            Required = []
+            Optional = [
+                "format", T<obj>
             ]
         }
 
-    let Scales =
-        Pattern.Config "Scales" {
+    let TimeAxis =
+        Pattern.Config "TimeAxis" {
             Required = []
-            Optional =
-                [
-                    "type", T<string>
-                    "alignToPixels", T<bool>
-                    "backgroundColor", T<string>
-                    "display", T<bool> + T<string>
-                    "grid", ScaleGrid.Type
-                    "min", T<int>
-                    "max", T<int>
-                    "reverse", T<bool>
-                    "stacked", T<bool> + T<string>
-                    "suggestedMax", T<int>
-                    "suggestedMin", T<int>
-                    "ticks", TickConfig.Type
-                    "weight", T<int>
-                    "bounds", ScaleBound.Type
-                    "position", ScalePosition.Type
-                    "axis", ScaleAxis.Type
-                    "offset", T<bool>
-                    "title", ScaleTitle.Type
-                    "labels", T<string []> + !| T<string []>
-                    "beginAtZero", T<bool>
-                    "grace", T<int> + T<float> + T<string>
-                    "format", T<obj>
-                    "adapters", ScaleAdapter.Type
-                    "time", ScaleTime.Type
-                    "animate", T<bool>
-                    "angleLines", AngleLine.Type
-                    "pointLabels", PointLabel.Type
-                    "startAngle", T<int>
-                ]
+            Optional = [
+                "adapters", ScaleAdapter.Type
+                "time", ScaleTime.Type
+            ]
         }
+    
+    let TimeSeriesAxis = Pattern.Config "TimeSeriesAxis" {Required = []; Optional = []} |=> Inherits TimeAxis
+
+    let AngleLine =
+        Pattern.Config "AngleLine" {
+            Required = []
+            Optional = [
+                "display", T<bool>
+                "color", T<string>
+                "lineWidth", T<int>
+                "borderDash", T<int []> + T<float []>
+                "borderDashOffset", T<int> + T<float>
+            ]
+        }
+
+
+    let LinearRadialAxis = 
+        Pattern.Config "LinearRadialAxis" {
+            Required = []
+            Optional = [
+                "animate", T<bool>
+                "angleLines", AngleLine.Type
+                "beginAtZero", T<bool>
+                "pointLabels", PointLabel.Type
+                "startAngle", T<int> + T<float>
+            ]
+        }
+        |=> Inherits CartesianAxis
 
     let LayoutConfig =
         Pattern.Config "LayoutConfig" {
@@ -625,10 +701,7 @@ module Definition =
         Pattern.EnumStrings "InteractionMode" [
             "point"
             "nearest"
-            "single"
-            "label"
             "index"
-            "x-axis"
             "dataset"
             "x"
             "y"
@@ -767,19 +840,6 @@ module Definition =
                 ]
         }
 
-    let HoverConfig =
-        Pattern.Config "HoverConfig" {
-            Required = []
-            Optional =
-                [
-                    "mode", InteractionMode.Type
-                    "intersect", T<bool>
-                    "axis", T<string>
-                    "animationDuration", T<int>
-                    "onHover", T<Dom.Event> * T<obj []> ^-> T<unit>
-                ]
-        }
-
     let Easing =
         Pattern.EnumStrings "Easing" [
             "linear"
@@ -814,7 +874,7 @@ module Definition =
             "easeOutBounce"
             "easeInOutBounce"
         ]
-
+(*
     let AnimationObject =
         Class "Chart.Animation"
         |+> Instance [
@@ -825,7 +885,7 @@ module Definition =
             "onAnimationProgress" =? T<obj>
             "onAnimationCallback" =? T<obj>
         ]
-
+*)
     let AnimationCallbackObj =
         Class "AnimationCallbackObj"
         |+> Instance [
@@ -833,25 +893,21 @@ module Definition =
             "animationObject" =? T<obj>
         ]
 
-    let AnimationConfig =
-        Pattern.Config "AnimationConfig" {
+    let Animation =
+        Pattern.Config "Animation" {
             Required = []
             Optional =
                 [
-                    "animation", T<obj>
-                    "animations", T<obj>
-                    "transitions", T<obj>
                     "duration", T<int>
                     "easing", Easing.Type
                     "delay", T<int>
                     "loop", T<bool>
+
                     "properties", T<string []>
                     "type", T<string>
                     "from", T<int> + T<string> + T<bool>
                     "to", T<int> + T<string> + T<bool>
-                    "fn", T<int> + T<string> + T<bool>
-                    "numbers", T<string> + T<string []>
-                    "colors", T<string> + T<string []>
+                    "fn", T<int> + T<string> + T<bool> //TODO
                     "onProgress", AnimationCallbackObj ^-> T<unit>
                     "onComplete", AnimationCallbackObj ^-> T<unit>
                 ]
@@ -882,45 +938,85 @@ module Definition =
             ]
         }
 
-    let CommonChartConfig =
-        Pattern.Config "CommonChartConfig" {
+
+
+    let Interaction =
+        Pattern.Config "Interaction" {
+            Required = []
+            Optional = [
+                "mode", InteractionMode.Type
+                "intersect", T<bool>
+                "axis", Axis.Type
+            ]
+        }
+
+    let Transition = //TODO
+        Pattern.Config "Transition" {
+            Required = []
+            Optional = [
+                //"active", 
+                //"resize",
+                //"show",
+                //"hide"
+            ]
+        }
+
+    let Plugin =
+        Pattern.Config "Plugin" {
+            Required = []
+            Optional = [
+                "legend", LegendConfig.Type
+                "title", TitleConfig.Type
+                "subtitle", TitleConfig.Type
+                "tooltip", TooltipConfig.Type
+                "decimation", Decimation.Type
+            ]
+        }
+
+    let Options =
+        Pattern.Config "Options" {
             Required = []
             Optional =
                 [
                     "responsive", T<bool>
-                    "responsiveAnimationDuration", T<int>
-                    "aspectRatio", T<int>
                     "maintainAspectRatio", T<bool>
+                    "aspectRatio", T<int>
+                    "onResize", (ChartClass * T<int> ^-> T<unit>)
+                    "resizeDelay", T<int>
+                    "devicePixelRatio", T<int>
+                    "locale", T<string>
+                    "interaction", Interaction.Type
                     "events", Event.Type
                     "onHover", (T<Dom.Event> * T<Dom.Element []> ^-> T<unit>)
                     "onClick", (T<Dom.Event> * T<Dom.Element []> ^-> T<unit>)
-                    "legendCallback", (ChartClass ^-> T<string>)
-                    "onResize", (ChartClass * T<int> ^-> T<unit>)
-                    "resizeDelay", T<int>
+                    "animation", Animation.Type
+                    "transitions", Transition.Type //TODO
                     "layout", LayoutConfig.Type
-                    "padding", Padding
-                    "title", TitleConfig.Type
-                    "subtitle", TitleConfig.Type
-                    "legend", LegendConfig.Type
-                    "tooltip", TooltipConfig.Type
-                    "hover", HoverConfig.Type
-                    "animation", AnimationConfig.Type
+                    "plugins", Plugin.Type
                     "elements", !| ElementConfig.Type
-                    "scales", Scales.Type //TODO
-                    "devicePixelRatio", T<int>
-                    "locale", T<string>
-                    "interaction", HoverConfig.Type
-                    "decimation", Decimation.Type
+                    "scales", Scale.Type
                 ]
         }
+
+    let ChartType =
+        Pattern.EnumStrings "ChartType" [
+            "line"
+            "bar"
+            "radar"
+            "doughnut"
+            "pie"
+            "polararea"
+            "bubble"
+            "scatter"
+        ]
 
     let ChartCreate =
         Pattern.Config "ChartCreate" {
             Required =
                 [
-                    "type", T<string>
+                    "type", ChartType.Type
                     "data", ChartData.Type
-                    "options", CommonChartConfig.Type
+                    "options", Options.Type
                 ]
             Optional = []
         }
@@ -940,7 +1036,7 @@ module Definition =
                     "clip", T<int> + T<obj>
                     "cubicInterpolationMode", T<string>
                     "data", T<obj>
-                    "fill", T<bool>
+                    "fill", T<bool> + Fill.Type
                     "hoverBackgroundColor", T<string> + T<string []>
                     "hoverBorderCapStyle", T<string>
                     "hoverBorderColor", T<string> + T<string []>
@@ -1054,7 +1150,7 @@ module Definition =
                     "hoverBorderWidth", T<int>
                     "clip", T<int> + T<obj>
                     "data", T<float []>
-                    "fill", T<bool>
+                    "fill", T<bool> + Fill.Type
                     "label", T<string>
                     "order", T<int>
                     "tension", T<int>
@@ -1082,7 +1178,7 @@ module Definition =
                     "startAngle", T<int>
                 ]
         }
-        |=> Inherits CommonChartConfig
+        |=> Inherits Options
 
     let PolarAreaChartDataSet =
         Pattern.Config "PolarAreaChartDataSet" {
@@ -1111,7 +1207,7 @@ module Definition =
                     "animateScale", T<bool>
                 ]
         }
-        |=> Inherits AnimationConfig
+        |=> Inherits Animation
 
     let PolarAreaChartOptions =
         Pattern.Config "PolarAreaChartOptions" {
@@ -1122,9 +1218,9 @@ module Definition =
                     
                 ]
         }
-        |=> Inherits CommonChartConfig
+        |=> Inherits Options
 
-    let PieDoughnutDataset =
+    (*let PieDoughnutDataset =
         Pattern.Config "PieDoughnutDataset" {
             Required = []
             Optional = [
@@ -1139,7 +1235,7 @@ module Definition =
                 "datasets", PieDoughnutDataset.Type
                 "labels", T<string>
             ]
-        }
+        }*)
 
     let PieChartDataSet =
         Pattern.Config "PieChartDataSet" {
@@ -1201,7 +1297,7 @@ module Definition =
                     "circumference", T<float>
                 ]
         }
-        |=> Inherits CommonChartConfig
+        |=> Inherits Options
 
     let BubbleDataObject =
         Pattern.Config "BubbleDataObject" {
@@ -1253,7 +1349,7 @@ module Definition =
                     "clip", T<int> + T<obj>
                     "cubicInterpolationMode", T<string>
                     "data", T<obj>
-                    "fill", T<bool>
+                    "fill", T<bool> + Fill.Type
                     "hoverBackgroundColor", T<string>
                     "hoverBorderCapStyle", T<string>
                     "hoverBorderColor", T<string>
@@ -1287,24 +1383,14 @@ module Definition =
         }
         |=> Inherits ADataSet
 
-    let Fill =
-        Pattern.Config "Fill" {
-            Required = []
-            Optional = [
-                "target", T<int> + T<float> + T<string> + T<bool> + T<obj>
-                "above", T<string>
-                "below", T<string>
-            ]
-        }
-
-    let Global =
+    (*let Global =
         Pattern.Config "Global" {
             Required =
                 [
-                    "global", CommonChartConfig.Type
+                    "global", Options.Type
                 ]
             Optional = []
-        }
+        }*)
 
     let Chart =
         let Context = (T<Dom.Element> + T<JQuery.JQuery> + T<string>)?elementId // + T<JavaScript.CanvasElement>
@@ -1312,7 +1398,7 @@ module Definition =
         |+> Static [
             Constructor (Context * ChartCreate)
             "Line" => Context * ChartCreate ^-> TSelf
-            "default" =? CommonChartConfig
+            "default" =? Options
         ]
         |+> Instance [
             "destroy" => T<unit> ^-> T<unit>
@@ -1353,16 +1439,16 @@ module Definition =
                 TooltipItem
                 TooltipCallbacks
                 TooltipConfig
-                HoverConfig
-                AnimationObject
+                //HoverConfig
+                //AnimationObject
                 AnimationCallbackObj
-                AnimationConfig
+                Animation
                 ArcConfig
                 RectangleConfig
                 PointConfig
                 LineConfig
                 ElementConfig
-                CommonChartConfig
+                Options
                 LineChartDataSet
                 BarChartDataSet
                 PieChartDataSet
@@ -1380,10 +1466,9 @@ module Definition =
                 PieDoughnutChartOptions
                 EnhancedAnimation
                 Scale
-                Scales
                 TickConfig
-                ScaleTitleConfig
-                GridLineConfig
+                //ScaleTitleConfig
+                //GridLineConfig
                 ScaleType
                 ADataSet
                 LabelColor
@@ -1415,6 +1500,12 @@ module Definition =
                 Decimation
                 DecimationAlgorithm
                 TickMajor
+                ChartType
+                Plugin
+                Transition
+                Interaction
+                Axis
+                JoinStyle
             ]
             Namespace "WebSharper.ChartJs.Resources" [
                 Resource "Chart.js" "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"
