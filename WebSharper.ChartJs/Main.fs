@@ -108,11 +108,10 @@ module Definition =
     let ChartData =
         Pattern.Config "ChartData" {
             Required = 
-                [
-                    "datasets", !| ADataSet.Type
-                ]
+                []
             Optional =
                 [
+                    "datasets", !| ADataSet.Type
                     "labels", T<string []>
                 ]
         }
@@ -140,9 +139,9 @@ module Definition =
             Optional =
                 [
                     "angle", T<int> + T<float>
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderAlign", AlignString.Type
-                    "borderColor", T<string>
+                    "borderColor",  T<string> + !| T<string>
                     "borderWidth", T<float> 
                 ]
         }
@@ -151,9 +150,9 @@ module Definition =
         Pattern.Config "BarConfig" {
             Required = []
             Optional = [
-                "backgroundColor", T<string>
+                "backgroundColor", T<string> + !| T<string>
                 "borderWidth", T<int>
-                "borderColor", T<string>
+                "borderColor", T<string> + !| T<string>
                 "borderSkipped", T<string>
                 "borderRadius", T<int> + T<obj>
                 "pointStyle", PointStyle.Type // + Image
@@ -166,9 +165,9 @@ module Definition =
             Optional =
                 [
                     "tension", T<float>
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderWidth", T<int>
-                    "borderColor", T<string>
+                    "borderColor", T<string> + !| T<string>
                     "borderCapStyle", T<string>
                     "borderDash", T<float []>
                     "borderDashOffset", T<float>
@@ -187,9 +186,9 @@ module Definition =
                     "radius", T<float>
                     "pointStyle", PointStyle.Type // + Image
                     "rotation", T<int>
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderWidth", T<int>
-                    "borderColor", T<string>
+                    "borderColor", T<string> + !| T<string>
                     "hitRadius", T<int>
                     "hoverRadius", T<int>
                     "hoverBorderWidth", T<int>
@@ -201,9 +200,9 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderWidth", T<int>
-                    "borderColor", T<string>
+                    "borderColor", T<string> + !| T<string>
                     "borderSkipped", T<string>
                 ]
         }
@@ -268,16 +267,16 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backdropColor", T<string>
+                    "backdropColor", T<string> + !| T<string>
                     "backdropPadding", Padding
                     "callback", T<float> * T<float> * T<float []> ^-> T<obj>
                     "display", T<bool>
-                    "color", T<string>
+                    "color", T<string> + !| T<string>
                     "font", Font.Type
                     "major", TickMajor.Type
                     "padding", T<int>
                     "showLabelBackdrop", T<bool>
-                    "textStrokeColor", T<string>
+                    "textStrokeColor", T<string> + !| T<string>
                     "textStrokeWidth", T<int>
                     "z", T<int>
                 ]
@@ -340,12 +339,12 @@ module Definition =
         Pattern.Config "ScaleGrid" {
             Required = []
             Optional = [
-                "borderColor", T<string>
+                "borderColor", T<string> + !| T<string>
                 "borderWidth", T<int>
                 "borderDash", T<int []> + T<float []>
                 "borderDashOffset", T<float>
                 "circular", T<bool>
-                "color", T<string>
+                "color", T<string> + !| T<string>
                 "display", T<bool>
                 "drawBorder", T<bool>
                 "drawOnChartArea", T<bool>
@@ -354,7 +353,7 @@ module Definition =
                 "offset", T<bool>
                 "tickBorderDash", T<int []> + T<float []>
                 "tickBorderDashOffset", T<int> + T<float>
-                "tickcolor", T<string>
+                "tickcolor", T<string> + !| T<string>
                 "tickLength", T<int>
                 "tickWidth", T<int>
                 "z", T<int>
@@ -368,7 +367,7 @@ module Definition =
                 [
                     "type", ScaleType.Type
                     "alignToPixels", T<bool>
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "display", T<bool>
                     "grid", ScaleGrid.Type
                     "min", T<int> + T<string>
@@ -480,11 +479,11 @@ module Definition =
         Pattern.Config "PointLabel" {
             Required = []
             Optional = [
-                "backdropColor", T<string>
+                "backdropColor", T<string> + !| T<string>
                 "backdropPadding", Padding
                 "display", T<bool>
                 //"callback", LabelConfig.Type ^-> PointLabel.Type
-                "color", T<string>
+                "color", T<string> + !| T<string>
                 "font", Font.Type
                 "padding", T<int>
             ]
@@ -497,7 +496,7 @@ module Definition =
                 "display", T<bool>
                 "align", AlignString.Type
                 "text", T<string> + T<string []>
-                "color", T<string>
+                "color", T<string> + !| T<string>
                 "font", Font.Type
                 "padding", Padding
             ]
@@ -570,7 +569,7 @@ module Definition =
             Required = []
             Optional = [
                 "display", T<bool>
-                "color", T<string>
+                "color", T<string> + !| T<string>
                 "lineWidth", T<int>
                 "borderDash", T<int []> + T<float []>
                 "borderDashOffset", T<int> + T<float>
@@ -614,7 +613,7 @@ module Definition =
             Optional =
                 [
                     "align", AlignString.Type
-                    "color", T<string>
+                    "color", T<string> + !| T<string>
                     "display", T<bool>
                     "fullSize", T<bool>
                     "position", TitlePosition.Type
@@ -629,7 +628,7 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "color", T<string>
+                    "color", T<string> + !| T<string>
                     "display", T<bool>
                     "font", Font.Type
                     "padding", Padding
@@ -644,7 +643,7 @@ module Definition =
             "borderRadius" =@ T<int> // + BorderRadius.Type
             "dataSetIndex" =@ T<int>
             "fillStyle" =@ T<string>
-            "fontColor" =@ T<string>
+            "fontColor" =@ T<string> + !| T<string>
             "hidden" =@ T<bool>
             "lineCap" =@ T<string>
             "lineDash" =@ T<float []>
@@ -663,7 +662,7 @@ module Definition =
                 [
                     "boxWidth", T<int>
                     "boxHeight", T<int>
-                    "color", T<int>
+                    "color", T<int> + !| T<string>
                     "font", Font.Type
                     "padding", Padding
                     "generateLabels", ChartClass ^-> Type.ArrayOf LegendItem
@@ -727,8 +726,8 @@ module Definition =
         Pattern.Config "LabelColor" {
             Required =
                 [
-                    "borderColor", T<string>
-                    "backgroundColor", T<string>
+                    "borderColor", T<string> + !| T<string>
+                    "backgroundColor", T<string> + !| T<string>
                 ]
             Optional = []
         }
@@ -807,17 +806,17 @@ module Definition =
                     "callbacks", TooltipCallbacks.Type
                     "itemSort", T<obj> * T<obj> * !?T<obj> ^-> T<int>
                     "filter", T<obj> * !?T<obj> ^-> T<bool>
-                    "backgroundColor", T<string>
-                    "titleColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
+                    "titleColor", T<string> + !| T<string>
                     "titleFont", Font.Type
                     "titleAlign", TooltipTextAlign.Type
                     "titleSpacing", T<float> + T<int>
                     "titleMarginBottom", T<float> + T<int>
-                    "bodyColor", T<string>
+                    "bodyColor", T<string> + !| T<string>
                     "bodyFont", Font.Type
                     "bodyAlign", TooltipTextAlign.Type
                     "bodySpacing", T<float> + T<int>
-                    "footerColor", T<string>
+                    "footerColor", T<string> + !| T<string>
                     "footerFont", Font.Type
                     "footerAlign", TooltipTextAlign.Type
                     "footerSpacing", T<float> + T<int>
@@ -827,11 +826,11 @@ module Definition =
                     "caretSize", T<int>
                     "cornerRadius", T<float>
                     "multiKeyBackground", T<string>
-                    "displayColors", T<bool>
+                    "displayColors", T<bool> + !| T<string>
                     "boxWidth", T<int>
                     "boxHeight", T<int>
                     "usePointStyle", T<bool>
-                    "borderColor", T<string>
+                    "borderColor", T<string> + !| T<string>
                     "borderWidth", T<int>
                     "rtl", T<bool>
                     "textDirection", T<string>
@@ -874,8 +873,8 @@ module Definition =
             "easeOutBounce"
             "easeInOutBounce"
         ]
-(*
-    let AnimationObject =
+
+    (*let AnimationObject =
         Class "Chart.Animation"
         |+> Instance [
             "currentStep" =? T<int>
@@ -884,8 +883,8 @@ module Definition =
             "render" =? T<obj>
             "onAnimationProgress" =? T<obj>
             "onAnimationCallback" =? T<obj>
-        ]
-*)
+        ]*)
+
     let AnimationCallbackObj =
         Class "AnimationCallbackObj"
         |+> Instance [
@@ -903,17 +902,24 @@ module Definition =
                     "delay", T<int>
                     "loop", T<bool>
 
-                    "properties", T<string []>
-                    "type", T<string>
-                    "from", T<int> + T<string> + T<bool>
-                    "to", T<int> + T<string> + T<bool>
-                    "fn", 
-                        T<float> ^-> T<float> ^-> T<float> +
-                        T<string> ^-> T<string> ^-> T<float> +
-                        T<bool> ^-> T<bool> ^-> T<float>
                     "onProgress", AnimationCallbackObj ^-> T<unit>
                     "onComplete", AnimationCallbackObj ^-> T<unit>
                 ]
+        }
+
+    let Animations =
+        Pattern.Config "Animations" {
+            Required = []
+            Optional = [
+                "properties", T<string []>
+                "type", T<string>
+                "from", T<int> + T<string> + T<bool>
+                "to", T<int> + T<string> + T<bool>
+                "fn", 
+                    T<float> ^-> T<float> ^-> T<float> +
+                    T<string> ^-> T<string> ^-> T<float> +
+                    T<bool> ^-> T<bool> ^-> T<float>
+            ]
         }
 
     let Event = 
@@ -953,14 +959,24 @@ module Definition =
             ]
         }
 
-    let Transition = //TODO
+    let Anim =
+        Pattern.Config "Anim" {
+            Required = []
+            Optional = [
+                "animation", Animation.Type
+                "animations", Animations.Type
+            ]
+        }
+
+    let Transition =
         Pattern.Config "Transition" {
             Required = []
             Optional = [
-                //"active", 
-                //"resize",
-                //"show",
-                //"hide"
+                "active", Anim.Type
+                "hide", Anim.Type
+                "reset", Anim.Type
+                "resize", Anim.Type
+                "show", Anim.Type
             ]
         }
 
@@ -1029,9 +1045,9 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderCapStyle", T<string>
-                    "borderColor", T<string>
+                    "borderColor", T<string> + !| T<string>
                     "borderDash", T<float []>
                     "borderDashOffset", T<float>
                     "borderJoinStyle", T<string>
@@ -1040,9 +1056,9 @@ module Definition =
                     "cubicInterpolationMode", T<string>
                     "data", T<obj>
                     "fill", T<bool> + Fill.Type
-                    "hoverBackgroundColor", T<string> + T<string []>
+                    "hoverBackgroundColor", T<string> + !| T<string>
                     "hoverBorderCapStyle", T<string>
-                    "hoverBorderColor", T<string> + T<string []>
+                    "hoverBorderColor", T<string> + !| T<string>
                     "hoverBorderDash", T<int []>
                     "hoverBorderDashOffset", T<int>
                     "hoverBorderJoinStyle", T<string>
@@ -1050,12 +1066,12 @@ module Definition =
                     "indexAxis", T<string>
                     "label", T<string>
                     "order", T<int>
-                    "pointBackgroundColor", T<string> + T<string []>
-                    "pointBorderColor", T<string> + T<string []>
+                    "pointBackgroundColor", T<string> + !| T<string>
+                    "pointBorderColor", T<string> + !| T<string>
                     "pointBorderWidth", T<int>
                     "pointHitRadius", T<int>
-                    "pointHoverBackgroundColor", T<string> + T<string []>
-                    "pointHoverBorderColor", T<string> + T<string []>
+                    "pointHoverBackgroundColor", T<string> + !| T<string>
+                    "pointHoverBorderColor", T<string> + !| T<string>
                     "pointHoverBorderWidth", T<int>
                     "pointHoverRadius", T<int>
                     "pointRadius", T<int>
@@ -1069,6 +1085,7 @@ module Definition =
                     "tension", T<int>
                     "xAxisID", T<string>
                     "yAxisID", T<string>
+                    "radius", T<int>
                 ]
         }
         |=> Inherits ADataSet
@@ -1102,11 +1119,11 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "base", T<int>
                     "barPercentage", T<int>
                     "barThickness", T<int> + T<string>
-                    "borderColor", T<string>
+                    "borderColor", T<string> + !| T<string>
                     "borderSkipped", T<string>
                     "borderWidth", T<int> + T<obj>
                     "borderRadius", T<int> + T<obj>
@@ -1114,8 +1131,8 @@ module Definition =
                     "clip", T<int> + T<obj>
                     "data", T<obj> + T<obj []> + T<int []> + T<float []> + T<string []>
                     "grouped", T<bool>
-                    "hoverBackgroundColor", T<string>
-                    "hoverBorderColor", T<string>
+                    "hoverBackgroundColor", T<string> + !| T<string>
+                    "hoverBorderColor", T<string> + !| T<string>
                     "hoverBorderWidth", T<int>
                     "hoverBorderRadius", T<int>
                     "indexAxis", T<string>
@@ -1137,16 +1154,16 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderCapStyle", T<string>
-                    "borderColor", T<string>
+                    "borderColor", T<string> + !| T<string>
                     "borderDash", T<float []>
                     "borderDashOffset", T<float>
                     "borderJoinStyle", T<string>
                     "borderWidth", T<int>
-                    "hoverBackgroundColor", T<string>
+                    "hoverBackgroundColor", T<string> + !| T<string>
                     "hoverBorderCapStyle", T<string>
-                    "hoverBorderColor", T<string>
+                    "hoverBorderColor", T<string> + !| T<string>
                     "hoverBorderDash", T<int []>
                     "hoverBorderDashOffset", T<int>
                     "hoverBorderJoinStyle", T<string>
@@ -1157,12 +1174,12 @@ module Definition =
                     "label", T<string>
                     "order", T<int>
                     "tension", T<int>
-                    "pointBackgroundColor", T<string> + T<string []>
-                    "pointBorderColor", T<string> + T<string []>
+                    "pointBackgroundColor", T<string> + !| T<string>
+                    "pointBorderColor", T<string> + !| T<string>
                     "pointBorderWidth", T<int> + T<int []>
                     "pointHitRadius", T<int> + T<int []>
-                    "pointHoverBackgroundColor", T<string> + T<string []>
-                    "pointHoverBorderColor", T<string> + T<string []>
+                    "pointHoverBackgroundColor", T<string> + !| T<string>
+                    "pointHoverBorderColor", T<string> + !| T<string>
                     "pointHoverBorderWidth", T<int> + T<int []>
                     "pointHoverRadius", T<int>
                     "pointRadius", T<int> + T<int []>
@@ -1188,14 +1205,14 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderAlign", T<string>
-                    "borderColor", T<string>
+                    "borderColor", T<string> + !| T<string>
                     "borderWidth", T<int []>
                     "clip", T<int> + T<obj>
                     "data", T<float []>
-                    "hoverBackgroundColor", T<string>
-                    "hoverBorderColor", T<string>
+                    "hoverBackgroundColor", T<string> + !| T<string>
+                    "hoverBorderColor", T<string> + !| T<string>
                     "hoverBorderWidth", T<int>
                 ]
         }
@@ -1245,7 +1262,7 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backgroundColor", T<string []>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderAlign", T<string>
                     "borderColor", T<string []>
                     "borderRadius", T<int> + T<obj>
@@ -1253,8 +1270,8 @@ module Definition =
                     "circumference", T<int>
                     "clip", T<int> + T<obj>
                     "data", T<float []>
-                    "hoverBackgroundColor", T<string []>
-                    "hoverBorderColor", T<string []>
+                    "hoverBackgroundColor", T<string> + !| T<string>
+                    "hoverBorderColor", T<string> + !| T<string>
                     "hoverBorderWidth", T<int []>
                     "hoverOffset", T<int>
                     "offset", T<int>
@@ -1270,16 +1287,16 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backgroundColor", T<string []>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderAlign", T<string>
-                    "borderColor", T<string []>
+                    "borderColor", T<string> + !| T<string>
                     "borderRadius", T<int> + T<obj>
                     "borderWidth", T<int []>
                     "circumference", T<int>
                     "clip", T<int> + T<obj>
                     "data", T<float []>
-                    "hoverBackgroundColor", T<string []>
-                    "hoverBorderColor", T<string []>
+                    "hoverBackgroundColor", T<string> + !| T<string>
+                    "hoverBorderColor", T<string> + !| T<string>
                     "hoverBorderWidth", T<int []>
                     "hoverOffset", T<int>
                     "offset", T<int>
@@ -1318,13 +1335,13 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backgroundColor", T<string>
-                    "borderColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
+                    "borderColor", T<string> + !| T<string>
                     "borderWidth", T<int> + T<int []>
                     "clip", T<int> + T<obj>
                     "data", !| BubbleDataObject.Type
-                    "hoverBackgroundColor", T<string>
-                    "hoverBorderColor", T<string>
+                    "hoverBackgroundColor", T<string> + !| T<string>
+                    "hoverBorderColor", T<string> + !| T<string>
                     "hoverBorderWidth", T<int> + T<int []>
                     "hoverRadius", T<int>
                     "hitRadius",T<int>
@@ -1342,9 +1359,9 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "backgroundColor", T<string>
+                    "backgroundColor", T<string> + !| T<string>
                     "borderCapStyle", T<string>
-                    "borderColor", T<string>
+                    "borderColor", T<string> + !| T<string>
                     "borderDash", T<float []>
                     "borderDashOffset", T<float>
                     "borderJoinStyle", T<string>
@@ -1353,9 +1370,9 @@ module Definition =
                     "cubicInterpolationMode", T<string>
                     "data", T<obj>
                     "fill", T<bool> + Fill.Type
-                    "hoverBackgroundColor", T<string>
+                    "hoverBackgroundColor", T<string> + !| T<string>
                     "hoverBorderCapStyle", T<string>
-                    "hoverBorderColor", T<string>
+                    "hoverBorderColor", T<string> + !| T<string>
                     "hoverBorderDash", T<int []>
                     "hoverBorderDashOffset", T<int>
                     "hoverBorderJoinStyle", T<string>
@@ -1363,12 +1380,12 @@ module Definition =
                     "indexAxis", T<string>
                     "label", T<string>
                     "order", T<int>
-                    "pointBackgroundColor", T<string>
-                    "pointBorderColor", T<string>
+                    "pointBackgroundColor", T<string> + !| T<string>
+                    "pointBorderColor", T<string> + !| T<string>
                     "pointBorderWidth", T<int>
                     "pointHitRadius", T<int>
-                    "pointHoverBackgroundColor", T<string>
-                    "pointHoverBorderColor", T<string>
+                    "pointHoverBackgroundColor", T<string> + !| T<string>
+                    "pointHoverBorderColor", T<string> + !| T<string>
                     "pointHoverBorderWidth", T<int>
                     "pointHoverRadius", T<int>
                     "pointRadius", T<int>
@@ -1499,6 +1516,8 @@ module Definition =
                 Interaction
                 Axis
                 JoinStyle
+                Anim
+                Animations
             ]
             Namespace "WebSharper.ChartJs.Resources" [
                 Resource "Chart.js" "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"
