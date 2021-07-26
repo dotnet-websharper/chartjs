@@ -1368,6 +1368,15 @@ module Definition =
         }
         |=> Inherits ADataSet
 
+    let ScatterDataObject =
+        Pattern.Config "ScatterDataObject" {
+            Required = [
+                "x", T<int> + T<float>
+                "y", T<int> + T<float>
+            ]
+            Optional = []
+        }
+
     let ScatterChartDataSet =
         Pattern.Config "ScatterChartDataSet" {
             Required = []
@@ -1382,7 +1391,7 @@ module Definition =
                     "borderWidth", T<int>
                     "clip", T<int> + T<obj>
                     "cubicInterpolationMode", T<string>
-                    "data", T<obj>
+                    "data", !| ScatterDataObject.Type
                     "fill", T<bool> + Fill.Type
                     "hoverBackgroundColor", T<string> + !| T<string>
                     "hoverBorderCapStyle", T<string>
@@ -1533,6 +1542,7 @@ module Definition =
                 Anim
                 Animations
                 FontStyle
+                ScatterDataObject
             ]
             Namespace "WebSharper.ChartJs.Resources" [
                 Resource "Chart.js" "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"

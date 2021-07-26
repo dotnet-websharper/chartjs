@@ -446,28 +446,28 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Client.Main=function()
  {
   var a;
-  a=Doc.Concat([Doc.Element("h1",[],[Doc.TextNode("ChartJs sample site")]),Doc.Element("h2",[],[Doc.TextNode("Linear chart")]),Doc.Element("canvas",[AttrProxy.Create("id","linear"),AttrModule.OnAfterRender(function()
+  a=Doc.Concat([Doc.Element("h1",[],[Doc.TextNode("ChartJs sample site")]),Doc.Element("canvas",[AttrProxy.Create("id","linear"),AttrModule.OnAfterRender(function()
   {
    Client.linear();
-  })],[]),Doc.Element("h2",[],[Doc.TextNode("Bar chart")]),Doc.Element("canvas",[AttrProxy.Create("id","bar"),AttrModule.OnAfterRender(function()
+  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","bar"),AttrModule.OnAfterRender(function()
   {
    Client.bar();
-  })],[]),Doc.Element("h2",[],[Doc.TextNode("Pie chart")]),Doc.Element("canvas",[AttrProxy.Create("id","pie"),AttrModule.OnAfterRender(function()
+  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","pie"),AttrModule.OnAfterRender(function()
   {
    Client.pie();
-  })],[]),Doc.Element("h2",[],[Doc.TextNode("Doughnut chart")]),Doc.Element("canvas",[AttrProxy.Create("id","doughnut"),AttrModule.OnAfterRender(function()
+  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","doughnut"),AttrModule.OnAfterRender(function()
   {
    Client.doughnut();
-  })],[]),Doc.Element("h2",[],[Doc.TextNode("Bubble chart")]),Doc.Element("canvas",[AttrProxy.Create("id","bubble"),AttrModule.OnAfterRender(function()
+  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","bubble"),AttrModule.OnAfterRender(function()
   {
    Client.bubble();
-  })],[]),Doc.Element("h2",[],[Doc.TextNode("Scatter chart")]),Doc.Element("canvas",[AttrProxy.Create("id","scatter"),AttrModule.OnAfterRender(function()
+  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","scatter"),AttrModule.OnAfterRender(function()
   {
    Client.scatter();
-  })],[]),Doc.Element("h2",[],[Doc.TextNode("Radar chart")]),Doc.Element("canvas",[AttrProxy.Create("id","radar"),AttrModule.OnAfterRender(function()
+  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","radar"),AttrModule.OnAfterRender(function()
   {
    Client.radar();
-  })],[]),Doc.Element("h2",[],[Doc.TextNode("Mixed chart")]),Doc.Element("canvas",[AttrProxy.Create("id","mixed"),AttrModule.OnAfterRender(function()
+  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","mixed"),AttrModule.OnAfterRender(function()
   {
    Client.mixed();
   })],[])]);
@@ -560,6 +560,61 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  {
   SC$1.$cctor();
   return SC$1.linearOptions;
+ };
+ Client.barOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.barOptions;
+ };
+ Client.pieOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.pieOptions;
+ };
+ Client.doughnutOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.doughnutOptions;
+ };
+ Client.bubbleOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.bubbleOptions;
+ };
+ Client.scatterOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.scatterOptions;
+ };
+ Client.radarOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.radarOptions;
+ };
+ Client.mixedOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.mixedOptions;
+ };
+ Client.bubbleDataSet=function()
+ {
+  SC$1.$cctor();
+  return SC$1.bubbleDataSet;
+ };
+ Client.bubbleData=function()
+ {
+  SC$1.$cctor();
+  return SC$1.bubbleData;
+ };
+ Client.scatterDataSet=function()
+ {
+  SC$1.$cctor();
+  return SC$1.scatterDataSet;
+ };
+ Client.scatterData=function()
+ {
+  SC$1.$cctor();
+  return SC$1.scatterData;
  };
  Client.ds1=function()
  {
@@ -1738,7 +1793,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  };
  SC$1.$cctor=function()
  {
-  var r,r$1,r$2,r$3,r$4,r$5,r$6,r$7;
+  var r,r$1,r$2,r$3,r$4,r$5,r$6,r$7,r$8,r$9,r$10,r$11,r$12,r$13,r$14,r$15,r$16,r$17,r$18,r$19,r$20,r$21,r$22,r$23,r$24,r$25,r$26,r$27,r$28,r$29,r$30,r$31,r$32,r$33,r$34,r$35,r$36,r$37,r$38,r$39,r$40,r$41,r$42,r$43,r$44,r$45,r$46,r$47,r$48,r$49,r$50,r$51,r$52,r$53,r$54,r$55,r$56,r$57,r$58,r$59,r$60,r$61,r$62,r$63;
   SC$1.$cctor=Global.ignore;
   SC$1.linearDataSet={};
   Client.linearDataSet().label="# of Votes";
@@ -1751,18 +1806,74 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   Client.linearData().labels=["red","blue","yellow","green","purple","orange"];
   SC$1.linearOptions={};
   Client.linearOptions().transitions=(r={},r.active=(r$1={},r$1.animation=(r$2={},r$2.duration=0,r$2),r$1),r);
-  Client.linearOptions().plugins=(r$3={},r$3.title=(r$4={},r$4.display=true,r$4.text="Custom Title",r$4.font=(r$5={},r$5.size=30,r$5.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$5.style="italic",r$5),r$4),r$3.subtitle=(r$6={},r$6.display=true,r$6.text="Custom chart subtitle",r$6.font=(r$7={},r$7.size=18,r$7.family="'Lucida Console', 'Courier New', 'monospace'",r$7),r$6),r$3);
+  Client.linearOptions().plugins=(r$3={},r$3.title=(r$4={},r$4.display=true,r$4.text="Linear Chart",r$4.font=(r$5={},r$5.size=30,r$5.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$5.style="italic",r$5),r$4),r$3.subtitle=(r$6={},r$6.display=true,r$6.text="subtitle for line chart",r$6.font=(r$7={},r$7.size=18,r$7.family="'Lucida Console', 'Courier New', 'monospace'",r$7),r$6),r$3);
+  SC$1.barOptions={};
+  Client.barOptions().transitions=(r$8={},r$8.active=(r$9={},r$9.animation=(r$10={},r$10.duration=0,r$10),r$9),r$8);
+  Client.barOptions().plugins=(r$11={},r$11.title=(r$12={},r$12.display=true,r$12.text="Bar Chart",r$12.font=(r$13={},r$13.size=30,r$13.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$13.style="italic",r$13),r$12),r$11.subtitle=(r$14={},r$14.display=true,r$14.text="subtitle for bar chart",r$14.font=(r$15={},r$15.size=18,r$15.family="'Lucida Console', 'Courier New', 'monospace'",r$15),r$14),r$11);
+  SC$1.pieOptions={};
+  Client.pieOptions().transitions=(r$16={},r$16.active=(r$17={},r$17.animation=(r$18={},r$18.duration=0,r$18),r$17),r$16);
+  Client.pieOptions().plugins=(r$19={},r$19.title=(r$20={},r$20.display=true,r$20.text="Pie Chart",r$20.font=(r$21={},r$21.size=30,r$21.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$21.style="italic",r$21),r$20),r$19.subtitle=(r$22={},r$22.display=true,r$22.text="subtitle for pie chart",r$22.font=(r$23={},r$23.size=18,r$23.family="'Lucida Console', 'Courier New', 'monospace'",r$23),r$22),r$19);
+  SC$1.doughnutOptions={};
+  Client.doughnutOptions().transitions=(r$24={},r$24.active=(r$25={},r$25.animation=(r$26={},r$26.duration=0,r$26),r$25),r$24);
+  Client.doughnutOptions().plugins=(r$27={},r$27.title=(r$28={},r$28.display=true,r$28.text="Doughnut Chart",r$28.font=(r$29={},r$29.size=30,r$29.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$29.style="italic",r$29),r$28),r$27.subtitle=(r$30={},r$30.display=true,r$30.text="subtitle for doughnut chart",r$30.font=(r$31={},r$31.size=18,r$31.family="'Lucida Console', 'Courier New', 'monospace'",r$31),r$30),r$27);
+  SC$1.bubbleOptions={};
+  Client.bubbleOptions().transitions=(r$32={},r$32.active=(r$33={},r$33.animation=(r$34={},r$34.duration=0,r$34),r$33),r$32);
+  Client.bubbleOptions().plugins=(r$35={},r$35.title=(r$36={},r$36.display=true,r$36.text="Bubble Chart",r$36.font=(r$37={},r$37.size=30,r$37.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$37.style="italic",r$37),r$36),r$35.subtitle=(r$38={},r$38.display=true,r$38.text="subtitle for bubble chart",r$38.font=(r$39={},r$39.size=18,r$39.family="'Lucida Console', 'Courier New', 'monospace'",r$39),r$38),r$35);
+  SC$1.scatterOptions={};
+  Client.scatterOptions().transitions=(r$40={},r$40.active=(r$41={},r$41.animation=(r$42={},r$42.duration=0,r$42),r$41),r$40);
+  Client.scatterOptions().plugins=(r$43={},r$43.title=(r$44={},r$44.display=true,r$44.text="Scatter Chart",r$44.font=(r$45={},r$45.size=30,r$45.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$45.style="italic",r$45),r$44),r$43.subtitle=(r$46={},r$46.display=true,r$46.text="subtitle for scatter chart",r$46.font=(r$47={},r$47.size=18,r$47.family="'Lucida Console', 'Courier New', 'monospace'",r$47),r$46),r$43);
+  SC$1.radarOptions={};
+  Client.radarOptions().transitions=(r$48={},r$48.active=(r$49={},r$49.animation=(r$50={},r$50.duration=0,r$50),r$49),r$48);
+  Client.radarOptions().plugins=(r$51={},r$51.title=(r$52={},r$52.display=true,r$52.text="Radar Chart",r$52.font=(r$53={},r$53.size=30,r$53.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$53.style="italic",r$53),r$52),r$51.subtitle=(r$54={},r$54.display=true,r$54.text="subtitle for radar chart",r$54.font=(r$55={},r$55.size=18,r$55.family="'Lucida Console', 'Courier New', 'monospace'",r$55),r$54),r$51);
+  SC$1.mixedOptions={};
+  Client.mixedOptions().transitions=(r$56={},r$56.active=(r$57={},r$57.animation=(r$58={},r$58.duration=0,r$58),r$57),r$56);
+  Client.mixedOptions().plugins=(r$59={},r$59.title=(r$60={},r$60.display=true,r$60.text="Mixed Chart",r$60.font=(r$61={},r$61.size=30,r$61.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$61.style="italic",r$61),r$60),r$59.subtitle=(r$62={},r$62.display=true,r$62.text="subtitle for mixed chart",r$62.font=(r$63={},r$63.size=18,r$63.family="'Lucida Console', 'Courier New', 'monospace'",r$63),r$62),r$59);
+  SC$1.bubbleDataSet={};
+  Client.bubbleDataSet().label="First dataset";
+  Client.bubbleDataSet().data=[{
+   x:20,
+   y:30,
+   r:15
+  },{
+   x:40,
+   y:10,
+   r:10
+  }];
+  Client.bubbleDataSet().backgroundColor="rgb(255,99,132)";
+  SC$1.bubbleData={};
+  Client.bubbleData().datasets=[Client.bubbleDataSet()];
+  SC$1.scatterDataSet={};
+  Client.scatterDataSet().label="Scatter Dataset";
+  Client.scatterDataSet().data=[{
+   x:-10,
+   y:0
+  },{
+   x:0,
+   y:10
+  },{
+   x:10,
+   y:5
+  },{
+   x:0.5,
+   y:5.5
+  }];
+  Client.scatterDataSet().backgroundColor="rgb(127,99,127)";
+  SC$1.scatterData={};
+  Client.scatterData().datasets=[Client.scatterDataSet()];
   SC$1.ds1={};
   Client.ds1().type="line";
   Client.ds1().label="Line Dataset";
+  Client.ds1().data=[10,20,30,40];
   Client.ds1().backgroundColor=["rgba(255, 99, 132, 0.2)","rgba(54, 162, 235, 0.2)","rgba(255, 206, 86, 0.2)","rgba(75, 192, 192, 0.2)"];
   Client.ds1().borderColor=["rgba(255, 99, 132, 1)","rgba(54, 162, 235, 1)","rgba(255, 206, 86, 1)","rgba(75, 192, 192, 1)"];
   Client.ds1().borderWidth=3;
-  Client.ds1().data=[10,20,30,40];
   SC$1.ds2={};
-  Client.ds1().type="bar";
+  Client.ds2().type="bar";
   Client.ds2().label="Bar Dataset";
   Client.ds2().data=[40,30,20,10];
+  Client.ds2().backgroundColor=["rgba(255, 99, 132, 0.2)","rgba(54, 162, 235, 0.2)","rgba(255, 206, 86, 0.2)","rgba(75, 192, 192, 0.2)"];
+  Client.ds2().borderColor=["rgba(255, 99, 132, 1)","rgba(54, 162, 235, 1)","rgba(255, 206, 86, 1)","rgba(75, 192, 192, 1)"];
+  Client.ds2().borderWidth=3;
   SC$1.mixedData={};
   Client.mixedData().datasets=[Client.ds1(),Client.ds2()];
   Client.mixedData().labels=["January","February","March","April"];
@@ -1774,37 +1885,37 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.barChart={
    type:"bar",
    data:Client.linearData(),
-   options:Client.linearOptions()
+   options:Client.barOptions()
   };
   SC$1.pieChart={
    type:"pie",
    data:Client.linearData(),
-   options:Client.linearOptions()
+   options:Client.pieOptions()
   };
   SC$1.doughnutChart={
    type:"doughnut",
    data:Client.linearData(),
-   options:Client.linearOptions()
+   options:Client.doughnutOptions()
   };
   SC$1.bubbleChart={
    type:"bubble",
-   data:Client.linearData(),
-   options:Client.linearOptions()
+   data:Client.bubbleData(),
+   options:Client.bubbleOptions()
   };
   SC$1.scatterChart={
    type:"scatter",
-   data:Client.linearData(),
-   options:Client.linearOptions()
+   data:Client.scatterData(),
+   options:Client.scatterOptions()
   };
   SC$1.radarChart={
    type:"radar",
    data:Client.linearData(),
-   options:Client.linearOptions()
+   options:Client.radarOptions()
   };
   SC$1.mixedChart={
    type:"line",
    data:Client.mixedData(),
-   options:Client.linearOptions()
+   options:Client.mixedOptions()
   };
  };
  JS.GetFieldValues=function(o)
