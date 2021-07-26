@@ -45,7 +45,33 @@ module Definition =
             "end"
         ]
 
-    let ADataSet = Class "ADataSet"
+    let ChartType =
+        Pattern.EnumStrings "ChartType" [
+            "line"
+            "bar"
+            "radar"
+            "doughnut"
+            "pie"
+            "bubble"
+            "scatter"
+        ]
+
+    let ADataSet = 
+        Pattern.Config "ADataSet" {
+            Required = []
+            Optional = [
+                "type", ChartType.Type
+            ]
+        }
+
+    let FontStyle =
+        Pattern.EnumStrings "FontStyle" [
+            "normal"
+            "italic"
+            "obliquie"
+            "initial"
+            "inherit"
+        ]
 
     let Font =
         Pattern.Config "Font" {
@@ -53,7 +79,7 @@ module Definition =
             Optional = [
                 "family", T<string>
                 "size", T<int>
-                "style", T<string>
+                "style", FontStyle.Type
                 "weight", T<string>
                 "lineHeight", T<float> + T<string>
             ]
@@ -1017,18 +1043,6 @@ module Definition =
                 ]
         }
 
-    let ChartType =
-        Pattern.EnumStrings "ChartType" [
-            "line"
-            "bar"
-            "radar"
-            "doughnut"
-            "pie"
-            "polararea"
-            "bubble"
-            "scatter"
-        ]
-
     let ChartCreate =
         Pattern.Config "ChartCreate" {
             Required =
@@ -1200,7 +1214,7 @@ module Definition =
         }
         |=> Inherits Options
 
-    let PolarAreaChartDataSet =
+    (*let PolarAreaChartDataSet =
         Pattern.Config "PolarAreaChartDataSet" {
             Required = []
             Optional =
@@ -1216,7 +1230,7 @@ module Definition =
                     "hoverBorderWidth", T<int>
                 ]
         }
-        |=> Inherits ADataSet
+        |=> Inherits ADataSet*)
 
     let EnhancedAnimation =
         Pattern.Config "EnhancedAnimation" {
@@ -1464,7 +1478,7 @@ module Definition =
                 PieChartDataSet
                 DoughnutChartDataSet
                 RadarChartDataSet
-                PolarAreaChartDataSet
+                //PolarAreaChartDataSet
                 BubbleDataObject
                 BubbleChartDataSet
                 ChartCreate
@@ -1518,6 +1532,7 @@ module Definition =
                 JoinStyle
                 Anim
                 Animations
+                FontStyle
             ]
             Namespace "WebSharper.ChartJs.Resources" [
                 Resource "Chart.js" "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"

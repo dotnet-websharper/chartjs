@@ -458,6 +458,18 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   })],[]),Doc.Element("h2",[],[Doc.TextNode("Doughnut chart")]),Doc.Element("canvas",[AttrProxy.Create("id","doughnut"),AttrModule.OnAfterRender(function()
   {
    Client.doughnut();
+  })],[]),Doc.Element("h2",[],[Doc.TextNode("Bubble chart")]),Doc.Element("canvas",[AttrProxy.Create("id","bubble"),AttrModule.OnAfterRender(function()
+  {
+   Client.bubble();
+  })],[]),Doc.Element("h2",[],[Doc.TextNode("Scatter chart")]),Doc.Element("canvas",[AttrProxy.Create("id","scatter"),AttrModule.OnAfterRender(function()
+  {
+   Client.scatter();
+  })],[]),Doc.Element("h2",[],[Doc.TextNode("Radar chart")]),Doc.Element("canvas",[AttrProxy.Create("id","radar"),AttrModule.OnAfterRender(function()
+  {
+   Client.radar();
+  })],[]),Doc.Element("h2",[],[Doc.TextNode("Mixed chart")]),Doc.Element("canvas",[AttrProxy.Create("id","mixed"),AttrModule.OnAfterRender(function()
+  {
+   Client.mixed();
   })],[])]);
   Templates.LoadLocalTemplates("");
   Doc.RunById("main",a);
@@ -477,6 +489,22 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Client.doughnut=function()
  {
   return new Global.Chart("doughnut",Client.doughnutChart());
+ };
+ Client.bubble=function()
+ {
+  return new Global.Chart("bubble",Client.bubbleChart());
+ };
+ Client.scatter=function()
+ {
+  return new Global.Chart("scatter",Client.scatterChart());
+ };
+ Client.radar=function()
+ {
+  return new Global.Chart("radar",Client.radarChart());
+ };
+ Client.mixed=function()
+ {
+  return new Global.Chart("mixed",Client.mixedChart());
  };
  Client.linearChart=function()
  {
@@ -498,6 +526,26 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.$cctor();
   return SC$1.doughnutChart;
  };
+ Client.bubbleChart=function()
+ {
+  SC$1.$cctor();
+  return SC$1.bubbleChart;
+ };
+ Client.scatterChart=function()
+ {
+  SC$1.$cctor();
+  return SC$1.scatterChart;
+ };
+ Client.radarChart=function()
+ {
+  SC$1.$cctor();
+  return SC$1.radarChart;
+ };
+ Client.mixedChart=function()
+ {
+  SC$1.$cctor();
+  return SC$1.mixedChart;
+ };
  Client.linearDataSet=function()
  {
   SC$1.$cctor();
@@ -512,6 +560,21 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  {
   SC$1.$cctor();
   return SC$1.linearOptions;
+ };
+ Client.ds1=function()
+ {
+  SC$1.$cctor();
+  return SC$1.ds1;
+ };
+ Client.ds2=function()
+ {
+  SC$1.$cctor();
+  return SC$1.ds2;
+ };
+ Client.mixedData=function()
+ {
+  SC$1.$cctor();
+  return SC$1.mixedData;
  };
  Operators.FailWith=function(msg)
  {
@@ -1675,6 +1738,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  };
  SC$1.$cctor=function()
  {
+  var r,r$1,r$2,r$3,r$4,r$5,r$6,r$7;
   SC$1.$cctor=Global.ignore;
   SC$1.linearDataSet={};
   Client.linearDataSet().label="# of Votes";
@@ -1686,7 +1750,22 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   Client.linearData().datasets=[Client.linearDataSet()];
   Client.linearData().labels=["red","blue","yellow","green","purple","orange"];
   SC$1.linearOptions={};
-  Client.linearOptions().scales={};
+  Client.linearOptions().transitions=(r={},r.active=(r$1={},r$1.animation=(r$2={},r$2.duration=0,r$2),r$1),r);
+  Client.linearOptions().plugins=(r$3={},r$3.title=(r$4={},r$4.display=true,r$4.text="Custom Title",r$4.font=(r$5={},r$5.size=30,r$5.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$5.style="italic",r$5),r$4),r$3.subtitle=(r$6={},r$6.display=true,r$6.text="Custom chart subtitle",r$6.font=(r$7={},r$7.size=18,r$7.family="'Lucida Console', 'Courier New', 'monospace'",r$7),r$6),r$3);
+  SC$1.ds1={};
+  Client.ds1().type="line";
+  Client.ds1().label="Line Dataset";
+  Client.ds1().backgroundColor=["rgba(255, 99, 132, 0.2)","rgba(54, 162, 235, 0.2)","rgba(255, 206, 86, 0.2)","rgba(75, 192, 192, 0.2)"];
+  Client.ds1().borderColor=["rgba(255, 99, 132, 1)","rgba(54, 162, 235, 1)","rgba(255, 206, 86, 1)","rgba(75, 192, 192, 1)"];
+  Client.ds1().borderWidth=3;
+  Client.ds1().data=[10,20,30,40];
+  SC$1.ds2={};
+  Client.ds1().type="bar";
+  Client.ds2().label="Bar Dataset";
+  Client.ds2().data=[40,30,20,10];
+  SC$1.mixedData={};
+  Client.mixedData().datasets=[Client.ds1(),Client.ds2()];
+  Client.mixedData().labels=["January","February","March","April"];
   SC$1.linearChart={
    type:"line",
    data:Client.linearData(),
@@ -1705,6 +1784,26 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.doughnutChart={
    type:"doughnut",
    data:Client.linearData(),
+   options:Client.linearOptions()
+  };
+  SC$1.bubbleChart={
+   type:"bubble",
+   data:Client.linearData(),
+   options:Client.linearOptions()
+  };
+  SC$1.scatterChart={
+   type:"scatter",
+   data:Client.linearData(),
+   options:Client.linearOptions()
+  };
+  SC$1.radarChart={
+   type:"radar",
+   data:Client.linearData(),
+   options:Client.linearOptions()
+  };
+  SC$1.mixedChart={
+   type:"line",
+   data:Client.mixedData(),
    options:Client.linearOptions()
   };
  };

@@ -7,3 +7,4 @@ packages/
 paket-files/
 .vscode/
 /done.txt
+WebSharper.ChartJs.Testing/wwwroot/Content
