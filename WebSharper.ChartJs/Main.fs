@@ -52,6 +52,7 @@ module Definition =
             "radar"
             "doughnut"
             "pie"
+            "polarArea"
             "bubble"
             "scatter"
         ]
@@ -60,7 +61,8 @@ module Definition =
         Pattern.Config "ADataSet" {
             Required = []
             Optional = [
-                "type", ChartType.Type
+                "label", T<string>
+                "order", T<int>
             ]
         }
 
@@ -168,7 +170,7 @@ module Definition =
                     "backgroundColor", T<string> + !| T<string>
                     "borderAlign", AlignString.Type
                     "borderColor",  T<string> + !| T<string>
-                    "borderWidth", T<float> 
+                    "borderWidth", T<int>
                 ]
         }
 
@@ -245,26 +247,6 @@ module Definition =
                     "bar", BarConfig.Type
                 ]
         }
-
-    (*let GridLineConfig =
-        Pattern.Config "GridLineConfig" {
-            Required = []
-            Optional =
-                [
-                    "display", T<bool>
-                    "color", T<string> + T<string []>
-                    "borderDash", T<float []>
-                    "borderDashOffset", T<float>
-                    "lineWidth", T<float> + T<float []>
-                    "drawBorder", T<bool>
-                    "drawOnChartArea", T<bool>
-                    "drawTicks", T<bool>
-                    "tickMarkLength", T<int>
-                    "zeroLineWidth", T<int>
-                    "zeroLineColor", T<string>
-                    "offsetGridLines", T<bool>
-                ]
-        }*)
 
     let CrossAlign =
         Pattern.EnumStrings "CrossAlign" [
@@ -819,13 +801,28 @@ module Definition =
             "y"
         ]
 
+    let Context = //TODO
+        Pattern.Config "Context" {
+            Required = []
+            Optional = [
+                "chart", ChartClass.Type
+                "label", T<string>
+                "parsed", T<obj>
+                "raw", T<obj>
+                "formattedValue", T<string>
+                "dataset", T<obj>
+                "datasetIndex", T<int>
+                "element", ElementConfig.Type
+            ]
+        }
+
     let TooltipConfig =
         Pattern.Config "TooltipConfig" {
             Required = []
             Optional =
                 [
                     "enabled", T<bool>
-                    //"external", func
+                    "external", Context.Type ^-> T<unit>
                     "mode", TooltipModes.Type
                     "intersect", T<bool>
                     "position", TooltipPosition.Type
@@ -899,17 +896,6 @@ module Definition =
             "easeOutBounce"
             "easeInOutBounce"
         ]
-
-    (*let AnimationObject =
-        Class "Chart.Animation"
-        |+> Instance [
-            "currentStep" =? T<int>
-            "numSteps" =? T<int>
-            "easing" =? Easing.Type
-            "render" =? T<obj>
-            "onAnimationProgress" =? T<obj>
-            "onAnimationCallback" =? T<obj>
-        ]*)
 
     let AnimationCallbackObj =
         Class "AnimationCallbackObj"
@@ -1035,11 +1021,11 @@ module Definition =
                     "onHover", (T<Dom.Event> * T<Dom.Element []> ^-> T<unit>)
                     "onClick", (T<Dom.Event> * T<Dom.Element []> ^-> T<unit>)
                     "animation", Animation.Type
-                    "transitions", Transition.Type //TODO
+                    "transitions", Transition.Type
                     "layout", LayoutConfig.Type
                     "plugins", Plugin.Type
-                    "elements", !| ElementConfig.Type
-                    "scales", Scale.Type
+                    "elements", ElementConfig.Type + !| ElementConfig.Type
+                    "scales", T<obj>
                 ]
         }
 
@@ -1047,7 +1033,6 @@ module Definition =
         Pattern.Config "ChartCreate" {
             Required =
                 [
-                    "type", ChartType.Type
                     "data", ChartData.Type
                     "options", Options.Type
                 ]
@@ -1055,54 +1040,55 @@ module Definition =
         }
 
     let LineChartDataSet =
-        Pattern.Config "LineChartDataSet" {
-            Required = []
-            Optional =
-                [
-                    "backgroundColor", T<string> + !| T<string>
-                    "borderCapStyle", T<string>
-                    "borderColor", T<string> + !| T<string>
-                    "borderDash", T<float []>
-                    "borderDashOffset", T<float>
-                    "borderJoinStyle", T<string>
-                    "borderWidth", T<int>
-                    "clip", T<int> + T<obj>
-                    "cubicInterpolationMode", T<string>
-                    "data", T<obj>
-                    "fill", T<bool> + Fill.Type
-                    "hoverBackgroundColor", T<string> + !| T<string>
-                    "hoverBorderCapStyle", T<string>
-                    "hoverBorderColor", T<string> + !| T<string>
-                    "hoverBorderDash", T<int []>
-                    "hoverBorderDashOffset", T<int>
-                    "hoverBorderJoinStyle", T<string>
-                    "hoverBorderWidth", T<int>
-                    "indexAxis", T<string>
-                    "label", T<string>
-                    "order", T<int>
-                    "pointBackgroundColor", T<string> + !| T<string>
-                    "pointBorderColor", T<string> + !| T<string>
-                    "pointBorderWidth", T<int>
-                    "pointHitRadius", T<int>
-                    "pointHoverBackgroundColor", T<string> + !| T<string>
-                    "pointHoverBorderColor", T<string> + !| T<string>
-                    "pointHoverBorderWidth", T<int>
-                    "pointHoverRadius", T<int>
-                    "pointRadius", T<int>
-                    "pointRotation", T<int>
-                    "pointStyle", PointStyle.Type // + Image
-                    "segment", T<obj>
-                    "showLine", T<bool>
-                    "spanGaps", T<bool>
-                    "stack", T<string>
-                    "stepped", T<bool> + T<string>
-                    "tension", T<int>
-                    "xAxisID", T<string>
-                    "yAxisID", T<string>
-                    "radius", T<int>
-                ]
-        }
+        Class "LineChartDataSet"
         |=> Inherits ADataSet
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{type:'line'}"
+        ]
+        |+> Pattern.OptionalFields [
+            "backgroundColor", T<string> + !| T<string>
+            "borderCapStyle", T<string>
+            "borderColor", T<string> + !| T<string>
+            "borderDash", T<float []>
+            "borderDashOffset", T<float>
+            "borderJoinStyle", T<string>
+            "borderWidth", T<int>
+            "clip", T<int> + T<obj>
+            "cubicInterpolationMode", T<string>
+            "data", T<int []> + T<float []>
+            "fill", T<bool> + Fill.Type
+            "hoverBackgroundColor", T<string> + !| T<string>
+            "hoverBorderCapStyle", T<string>
+            "hoverBorderColor", T<string> + !| T<string>
+            "hoverBorderDash", T<int []>
+            "hoverBorderDashOffset", T<int>
+            "hoverBorderJoinStyle", T<string>
+            "hoverBorderWidth", T<int>
+            "indexAxis", T<string>
+            "label", T<string>
+            "order", T<int>
+            "pointBackgroundColor", T<string> + !| T<string>
+            "pointBorderColor", T<string> + !| T<string>
+            "pointBorderWidth", T<int>
+            "pointHitRadius", T<int>
+            "pointHoverBackgroundColor", T<string> + !| T<string>
+            "pointHoverBorderColor", T<string> + !| T<string>
+            "pointHoverBorderWidth", T<int>
+            "pointHoverRadius", T<int>
+            "pointRadius", T<int>
+            "pointRotation", T<int>
+            "pointStyle", PointStyle.Type // + Image
+            "segment", T<obj>
+            "showLine", T<bool>
+            "spanGaps", T<bool>
+            "stack", T<string>
+            "stepped", T<bool> + T<string>
+            "tension", T<int>
+            "xAxisID", T<string>
+            "yAxisID", T<string>
+            "radius", T<int>
+        ]
 
     let BarChartXAxes =
         Pattern.Config "BarChartXAxes" {
@@ -1129,80 +1115,82 @@ module Definition =
         |=> Inherits Scale
 
     let BarChartDataSet =
-        Pattern.Config "BarChartDataSet" {
-            Required = []
-            Optional =
-                [
-                    "backgroundColor", T<string> + !| T<string>
-                    "base", T<int>
-                    "barPercentage", T<int>
-                    "barThickness", T<int> + T<string>
-                    "borderColor", T<string> + !| T<string>
-                    "borderSkipped", T<string>
-                    "borderWidth", T<int> + T<obj>
-                    "borderRadius", T<int> + T<obj>
-                    "categoryPercentage", T<int>
-                    "clip", T<int> + T<obj>
-                    "data", T<obj> + T<obj []> + T<int []> + T<float []> + T<string []>
-                    "grouped", T<bool>
-                    "hoverBackgroundColor", T<string> + !| T<string>
-                    "hoverBorderColor", T<string> + !| T<string>
-                    "hoverBorderWidth", T<int>
-                    "hoverBorderRadius", T<int>
-                    "indexAxis", T<string>
-                    "maxBarThickness", T<int>
-                    "minBarLength", T<int>
-                    "label", T<string>
-                    "order", T<int>
-                    "pointStyle", PointStyle.Type // + Image
-                    "skippNull", T<bool>
-                    "stack", T<string>
-                    "XAxisID", T<string>
-                    "YAxisID", T<string>
-                ]
-        }
+        Class "BarChartDataSet"
         |=> Inherits ADataSet
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{type:'bar'}"
+        ]
+        |+> Pattern.OptionalFields [
+            "backgroundColor", T<string> + !| T<string>
+            "base", T<int>
+            "barPercentage", T<int>
+            "barThickness", T<int> + T<string>
+            "borderColor", T<string> + !| T<string>
+            "borderSkipped", T<string>
+            "borderWidth", T<int>
+            "borderRadius", T<int>
+            "categoryPercentage", T<int>
+            "clip", T<int> + T<obj>
+            "data", T<int []> + T<float []>
+            "grouped", T<bool>
+            "hoverBackgroundColor", T<string> + !| T<string>
+            "hoverBorderColor", T<string> + !| T<string>
+            "hoverBorderWidth", T<int>
+            "hoverBorderRadius", T<int>
+            "indexAxis", T<string>
+            "maxBarThickness", T<int>
+            "minBarLength", T<int>
+            "label", T<string>
+            "order", T<int>
+            "pointStyle", PointStyle.Type // + Image
+            "skippNull", T<bool>
+            "stack", T<string>
+            "XAxisID", T<string>
+            "YAxisID", T<string>
+        ]
 
     let RadarChartDataSet =
-        Pattern.Config "RadarChartDataSet" {
-            Required = []
-            Optional =
-                [
-                    "backgroundColor", T<string> + !| T<string>
-                    "borderCapStyle", T<string>
-                    "borderColor", T<string> + !| T<string>
-                    "borderDash", T<float []>
-                    "borderDashOffset", T<float>
-                    "borderJoinStyle", T<string>
-                    "borderWidth", T<int>
-                    "hoverBackgroundColor", T<string> + !| T<string>
-                    "hoverBorderCapStyle", T<string>
-                    "hoverBorderColor", T<string> + !| T<string>
-                    "hoverBorderDash", T<int []>
-                    "hoverBorderDashOffset", T<int>
-                    "hoverBorderJoinStyle", T<string>
-                    "hoverBorderWidth", T<int>
-                    "clip", T<int> + T<obj>
-                    "data", T<float []>
-                    "fill", T<bool> + Fill.Type
-                    "label", T<string>
-                    "order", T<int>
-                    "tension", T<int>
-                    "pointBackgroundColor", T<string> + !| T<string>
-                    "pointBorderColor", T<string> + !| T<string>
-                    "pointBorderWidth", T<int> + T<int []>
-                    "pointHitRadius", T<int> + T<int []>
-                    "pointHoverBackgroundColor", T<string> + !| T<string>
-                    "pointHoverBorderColor", T<string> + !| T<string>
-                    "pointHoverBorderWidth", T<int> + T<int []>
-                    "pointHoverRadius", T<int>
-                    "pointRadius", T<int> + T<int []>
-                    "pointRotation", T<int>
-                    "pointStyle", PointStyle.Type // + Image
-                    "spanGaps", T<bool>
-                ]
-        }
+        Class "RadarChartDataSet"
         |=> Inherits ADataSet
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{type:'radar'}"
+        ]
+        |+> Pattern.OptionalFields [
+            "backgroundColor", T<string> + !| T<string>
+            "borderCapStyle", T<string>
+            "borderColor", T<string> + !| T<string>
+            "borderDash", T<float []>
+            "borderDashOffset", T<float>
+            "borderJoinStyle", T<string>
+            "borderWidth", T<int>
+            "hoverBackgroundColor", T<string> + !| T<string>
+            "hoverBorderCapStyle", T<string>
+            "hoverBorderColor", T<string> + !| T<string>
+            "hoverBorderDash", T<int []>
+            "hoverBorderDashOffset", T<int>
+            "hoverBorderJoinStyle", T<string>
+            "hoverBorderWidth", T<int>
+            "clip", T<int> + T<obj>
+            "data", T<int []> + T<float []>
+            "fill", T<bool> + Fill.Type
+            "label", T<string>
+            "order", T<int>
+            "tension", T<int>
+            "pointBackgroundColor", T<string> + !| T<string>
+            "pointBorderColor", T<string> + !| T<string>
+            "pointBorderWidth", T<int>
+            "pointHitRadius", T<int> + T<int []>
+            "pointHoverBackgroundColor", T<string> + !| T<string>
+            "pointHoverBorderColor", T<string> + !| T<string>
+            "pointHoverBorderWidth", T<int>
+            "pointHoverRadius", T<int>
+            "pointRadius", T<int> + T<int []>
+            "pointRotation", T<int>
+            "pointStyle", PointStyle.Type // + Image
+            "spanGaps", T<bool>
+        ]
 
     let RadarChartOptions =
         Pattern.Config "RadarChartOptions" {
@@ -1214,23 +1202,24 @@ module Definition =
         }
         |=> Inherits Options
 
-    (*let PolarAreaChartDataSet =
-        Pattern.Config "PolarAreaChartDataSet" {
-            Required = []
-            Optional =
-                [
-                    "backgroundColor", T<string> + !| T<string>
-                    "borderAlign", T<string>
-                    "borderColor", T<string> + !| T<string>
-                    "borderWidth", T<int []>
-                    "clip", T<int> + T<obj>
-                    "data", T<float []>
-                    "hoverBackgroundColor", T<string> + !| T<string>
-                    "hoverBorderColor", T<string> + !| T<string>
-                    "hoverBorderWidth", T<int>
-                ]
-        }
-        |=> Inherits ADataSet*)
+    let PolarAreaChartDataSet =
+        Class "PolarAreaChartDataSet"
+        |=> Inherits ADataSet
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{type:'polarArea'}"
+        ]
+        |+> Pattern.OptionalFields [
+            "backgroundColor", T<string> + !| T<string>
+            "borderAlign", T<string>
+            "borderColor", T<string> + !| T<string>
+            "borderWidth", T<int>
+            "clip", T<int> + T<obj>
+            "data", T<int []> + T<float []>
+            "hoverBackgroundColor", T<string> + !| T<string>
+            "hoverBorderColor", T<string> + !| T<string>
+            "hoverBorderWidth", T<int>
+        ]
 
     let EnhancedAnimation =
         Pattern.Config "EnhancedAnimation" {
@@ -1254,72 +1243,57 @@ module Definition =
         }
         |=> Inherits Options
 
-    (*let PieDoughnutDataset =
-        Pattern.Config "PieDoughnutDataset" {
-            Required = []
-            Optional = [
-                "data", T<int []> + T<float []>
-            ]
-        }
-
-    let PieDoughnutData =
-        Pattern.Config "PieDoughnutData" {
-            Required = []
-            Optional = [
-                "datasets", PieDoughnutDataset.Type
-                "labels", T<string>
-            ]
-        }*)
-
     let PieChartDataSet =
-        Pattern.Config "PieChartDataSet" {
-            Required = []
-            Optional =
-                [
-                    "backgroundColor", T<string> + !| T<string>
-                    "borderAlign", T<string>
-                    "borderColor", T<string []>
-                    "borderRadius", T<int> + T<obj>
-                    "borderWidth", T<int []>
-                    "circumference", T<int>
-                    "clip", T<int> + T<obj>
-                    "data", T<float []>
-                    "hoverBackgroundColor", T<string> + !| T<string>
-                    "hoverBorderColor", T<string> + !| T<string>
-                    "hoverBorderWidth", T<int []>
-                    "hoverOffset", T<int>
-                    "offset", T<int>
-                    "rotation", T<int>
-                    "spacing", T<int>
-                    "weight", T<int>
-                ]
-        }
+        Class "PieChartDataSet"
         |=> Inherits ADataSet
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{type:'pie'}"
+        ]
+        |+> Pattern.OptionalFields [
+            "backgroundColor", T<string> + !| T<string>
+            "borderAlign", T<string>
+            "borderColor", T<string> + !| T<string>
+            "borderRadius", T<int> + T<obj>
+            "borderWidth", T<int>
+            "circumference", T<int>
+            "clip", T<int> + T<obj>
+            "data", T<int []> + T<float []>
+            "hoverBackgroundColor", T<string> + !| T<string>
+            "hoverBorderColor", T<string> + !| T<string>
+            "hoverBorderWidth", T<int>
+            "hoverOffset", T<int>
+            "offset", T<int>
+            "rotation", T<int>
+            "spacing", T<int>
+            "weight", T<int>
+        ]
 
     let DoughnutChartDataSet =
-        Pattern.Config "DoughnutChartDataSet" {
-            Required = []
-            Optional =
-                [
-                    "backgroundColor", T<string> + !| T<string>
-                    "borderAlign", T<string>
-                    "borderColor", T<string> + !| T<string>
-                    "borderRadius", T<int> + T<obj>
-                    "borderWidth", T<int []>
-                    "circumference", T<int>
-                    "clip", T<int> + T<obj>
-                    "data", T<float []>
-                    "hoverBackgroundColor", T<string> + !| T<string>
-                    "hoverBorderColor", T<string> + !| T<string>
-                    "hoverBorderWidth", T<int []>
-                    "hoverOffset", T<int>
-                    "offset", T<int>
-                    "rotation", T<int>
-                    "spacing", T<int>
-                    "weight", T<int>
-                ]
-        }
+        Class "DoughnutChartDataSet"
         |=> Inherits ADataSet
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{type:'doughnut'}"
+        ]
+        |+> Pattern.OptionalFields [
+            "backgroundColor", T<string> + !| T<string>
+            "borderAlign", T<string>
+            "borderColor", T<string> + !| T<string>
+            "borderRadius", T<int> + T<obj>
+            "borderWidth", T<int>
+            "circumference", T<int>
+            "clip", T<int> + T<obj>
+            "data", T<int []> + T<float []>
+            "hoverBackgroundColor", T<string> + !| T<string>
+            "hoverBorderColor", T<string> + !| T<string>
+            "hoverBorderWidth", T<int>
+            "hoverOffset", T<int>
+            "offset", T<int>
+            "rotation", T<int>
+            "spacing", T<int>
+            "weight", T<int>
+        ]
 
     let PieDoughnutChartOptions =
         Pattern.Config "PieDoughnutChartOptions" {
@@ -1345,28 +1319,29 @@ module Definition =
         }
 
     let BubbleChartDataSet =
-        Pattern.Config "BubbleChartDataSet" {
-            Required = []
-            Optional =
-                [
-                    "backgroundColor", T<string> + !| T<string>
-                    "borderColor", T<string> + !| T<string>
-                    "borderWidth", T<int> + T<int []>
-                    "clip", T<int> + T<obj>
-                    "data", !| BubbleDataObject.Type
-                    "hoverBackgroundColor", T<string> + !| T<string>
-                    "hoverBorderColor", T<string> + !| T<string>
-                    "hoverBorderWidth", T<int> + T<int []>
-                    "hoverRadius", T<int>
-                    "hitRadius",T<int>
-                    "label", T<string>
-                    "order", T<int>
-                    "pointStyle", PointStyle.Type // + Image
-                    "rotation", T<int>
-                    "radius", T<int>
-                ]
-        }
+        Class "BubbleChartDataSet"
         |=> Inherits ADataSet
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{type:'bubble'}"
+        ]
+        |+> Pattern.OptionalFields [
+            "backgroundColor", T<string> + !| T<string>
+            "borderColor", T<string> + !| T<string>
+            "borderWidth", T<int>
+            "clip", T<int> + T<obj>
+            "data", !| BubbleDataObject.Type
+            "hoverBackgroundColor", T<string> + !| T<string>
+            "hoverBorderColor", T<string> + !| T<string>
+            "hoverBorderWidth", T<int>
+            "hoverRadius", T<int>
+            "hitRadius",T<int>
+            "label", T<string>
+            "order", T<int>
+            "pointStyle", PointStyle.Type // + Image
+            "rotation", T<int>
+            "radius", T<int>
+        ]
 
     let ScatterDataObject =
         Pattern.Config "ScatterDataObject" {
@@ -1378,59 +1353,61 @@ module Definition =
         }
 
     let ScatterChartDataSet =
-        Pattern.Config "ScatterChartDataSet" {
-            Required = []
-            Optional =
-                [
-                    "backgroundColor", T<string> + !| T<string>
-                    "borderCapStyle", T<string>
-                    "borderColor", T<string> + !| T<string>
-                    "borderDash", T<float []>
-                    "borderDashOffset", T<float>
-                    "borderJoinStyle", T<string>
-                    "borderWidth", T<int>
-                    "clip", T<int> + T<obj>
-                    "cubicInterpolationMode", T<string>
-                    "data", !| ScatterDataObject.Type
-                    "fill", T<bool> + Fill.Type
-                    "hoverBackgroundColor", T<string> + !| T<string>
-                    "hoverBorderCapStyle", T<string>
-                    "hoverBorderColor", T<string> + !| T<string>
-                    "hoverBorderDash", T<int []>
-                    "hoverBorderDashOffset", T<int>
-                    "hoverBorderJoinStyle", T<string>
-                    "hoverBorderWidth", T<int>
-                    "indexAxis", T<string>
-                    "label", T<string>
-                    "order", T<int>
-                    "pointBackgroundColor", T<string> + !| T<string>
-                    "pointBorderColor", T<string> + !| T<string>
-                    "pointBorderWidth", T<int>
-                    "pointHitRadius", T<int>
-                    "pointHoverBackgroundColor", T<string> + !| T<string>
-                    "pointHoverBorderColor", T<string> + !| T<string>
-                    "pointHoverBorderWidth", T<int>
-                    "pointHoverRadius", T<int>
-                    "pointRadius", T<int>
-                    "pointRotation", T<int>
-                    "pointStyle", PointStyle.Type // + Image
-                    "segment", T<obj>
-                    "showLine", T<bool>
-                    "spanGaps", T<bool>
-                    "stack", T<string>
-                    "stepped", T<bool> + T<string>
-                    "tension", T<int>
-                    "xAxisID", T<string>
-                    "yAxisID", T<string>
-                ]
-        }
+        Class "ScatterChartDataSet"
         |=> Inherits ADataSet
+        |+> Static [
+            Constructor T<unit>
+            |> WithInline "{type:'scatter'}"
+        ]
+        |+> Pattern.OptionalFields [
+            "backgroundColor", T<string> + !| T<string>
+            "borderCapStyle", T<string>
+            "borderColor", T<string> + !| T<string>
+            "borderDash", T<float []>
+            "borderDashOffset", T<float>
+            "borderJoinStyle", T<string>
+            "borderWidth", T<int>
+            "clip", T<int> + T<obj>
+            "cubicInterpolationMode", T<string>
+            "data", !| ScatterDataObject.Type
+            "fill", T<bool> + Fill.Type
+            "hoverBackgroundColor", T<string> + !| T<string>
+            "hoverBorderCapStyle", T<string>
+            "hoverBorderColor", T<string> + !| T<string>
+            "hoverBorderDash", T<int []>
+            "hoverBorderDashOffset", T<int>
+            "hoverBorderJoinStyle", T<string>
+            "hoverBorderWidth", T<int>
+            "indexAxis", T<string>
+            "label", T<string>
+            "order", T<int>
+            "pointBackgroundColor", T<string> + !| T<string>
+            "pointBorderColor", T<string> + !| T<string>
+            "pointBorderWidth", T<int>
+            "pointHitRadius", T<int>
+            "pointHoverBackgroundColor", T<string> + !| T<string>
+            "pointHoverBorderColor", T<string> + !| T<string>
+            "pointHoverBorderWidth", T<int>
+            "pointHoverRadius", T<int>
+            "pointRadius", T<int>
+            "pointRotation", T<int>
+            "pointStyle", PointStyle.Type // + Image
+            "segment", T<obj>
+            "showLine", T<bool>
+            "spanGaps", T<bool>
+            "stack", T<string>
+            "stepped", T<bool> + T<string>
+            "tension", T<int>
+            "xAxisID", T<string>
+            "yAxisID", T<string>
+        ]
 
     let Chart =
         let Context = (T<Dom.Element> + T<JQuery.JQuery> + T<string>)?elementId // + T<JavaScript.CanvasElement>
         ChartClass
         |+> Static [
             Constructor (Context * ChartCreate)
+            Constructor (Context * !| ChartCreate)
             "Line" => Context * ChartCreate ^-> TSelf
             "default" =? Options
         ]
@@ -1472,8 +1449,6 @@ module Definition =
                 TooltipItem
                 TooltipCallbacks
                 TooltipConfig
-                //HoverConfig
-                //AnimationObject
                 AnimationCallbackObj
                 Animation
                 ArcConfig
@@ -1487,7 +1462,7 @@ module Definition =
                 PieChartDataSet
                 DoughnutChartDataSet
                 RadarChartDataSet
-                //PolarAreaChartDataSet
+                PolarAreaChartDataSet
                 BubbleDataObject
                 BubbleChartDataSet
                 ChartCreate
@@ -1500,8 +1475,6 @@ module Definition =
                 EnhancedAnimation
                 Scale
                 TickConfig
-                //ScaleTitleConfig
-                //GridLineConfig
                 ScaleType
                 ADataSet
                 LabelColor
@@ -1543,6 +1516,14 @@ module Definition =
                 Animations
                 FontStyle
                 ScatterDataObject
+                CartesianAxis
+                CategoryAxis
+                LinearAxis
+                LogarithmicAxis
+                TimeAxis
+                TimeSeriesAxis
+                AxisPosition
+                Context
             ]
             Namespace "WebSharper.ChartJs.Resources" [
                 Resource "Chart.js" "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"

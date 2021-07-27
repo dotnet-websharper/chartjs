@@ -349,7 +349,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
 (function(Global)
 {
  "use strict";
- var WebSharper,ChartJs,Testing,Client,Operators,Obj,UI,Doc,HtmlModule,attr,Array,AttrProxy,AttrModule,Client$1,Templates,JavaScript,Pervasives,View,Arrays,List,T,Unchecked,Object,DomUtility,Attrs,SC$1,EventTarget,Node,JS,Collections,Dictionary,DocElemNode,CharacterData,Enumerator,Snap,ADataSet,SC$2,HashSet,Seq,WindowOrWorkerGlobalScope,Docs,T$1,Attrs$1,Dyn,Numeric,Elt,DictionaryUtil,Prepare,Slice,KeyCollection,An,Settings,Abbrev,Mailbox,Updates,Strings,Docs$1,RunState,NodeSet,Concurrency,Anims,SC$3,Fresh,SC$4,SC$5,SC$6,AppendList,HashSetUtil,Queue,Var,BindVar,String,CheckedInput,Scheduler,Easing,AsyncBody,SC$7,CT,HashSet$1,SC$8,Char,CancellationTokenSource,DomNodes,Error,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,IntelliFactory,Runtime,console,Date;
+ var WebSharper,ChartJs,Testing,Client,Operators,Obj,UI,Doc,HtmlModule,attr,Array,AttrProxy,AttrModule,Client$1,Templates,JavaScript,Pervasives,View,Arrays,List,T,Unchecked,Object,DomUtility,Attrs,SC$1,EventTarget,Node,JS,Collections,Dictionary,DocElemNode,CharacterData,Enumerator,Snap,ADataSet,Scale,CartesianAxis,SC$2,HashSet,Seq,WindowOrWorkerGlobalScope,Docs,T$1,Attrs$1,Dyn,Numeric,Elt,DictionaryUtil,Prepare,Slice,KeyCollection,An,Settings,Abbrev,Mailbox,Updates,Strings,Docs$1,RunState,NodeSet,Concurrency,Anims,SC$3,Fresh,SC$4,SC$5,SC$6,AppendList,HashSetUtil,Queue,Var,BindVar,String,CheckedInput,Scheduler,Easing,AsyncBody,SC$7,CT,HashSet$1,SC$8,Char,CancellationTokenSource,DomNodes,Error,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,IntelliFactory,Runtime,console,Date;
  WebSharper=Global.WebSharper=Global.WebSharper||{};
  ChartJs=WebSharper.ChartJs=WebSharper.ChartJs||{};
  Testing=ChartJs.Testing=ChartJs.Testing||{};
@@ -386,6 +386,8 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Enumerator=WebSharper.Enumerator=WebSharper.Enumerator||{};
  Snap=UI.Snap=UI.Snap||{};
  ADataSet=Global.ADataSet;
+ Scale=Global.Scale;
+ CartesianAxis=Global.CartesianAxis;
  SC$2=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
  HashSet=Collections.HashSet=Collections.HashSet||{};
  Seq=WebSharper.Seq=WebSharper.Seq||{};
@@ -458,6 +460,9 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   })],[]),Doc.Element("canvas",[AttrProxy.Create("id","doughnut"),AttrModule.OnAfterRender(function()
   {
    Client.doughnut();
+  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","polarArea"),AttrModule.OnAfterRender(function()
+  {
+   Client.polarArea();
   })],[]),Doc.Element("canvas",[AttrProxy.Create("id","bubble"),AttrModule.OnAfterRender(function()
   {
    Client.bubble();
@@ -489,6 +494,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Client.doughnut=function()
  {
   return new Global.Chart("doughnut",Client.doughnutChart());
+ };
+ Client.polarArea=function()
+ {
+  return new Global.Chart("polarArea",Client.polarAreaChart());
  };
  Client.bubble=function()
  {
@@ -526,6 +535,11 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.$cctor();
   return SC$1.doughnutChart;
  };
+ Client.polarAreaChart=function()
+ {
+  SC$1.$cctor();
+  return SC$1.polarAreaChart;
+ };
  Client.bubbleChart=function()
  {
   SC$1.$cctor();
@@ -546,55 +560,70 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.$cctor();
   return SC$1.mixedChart;
  };
- Client.linearDataSet=function()
+ Client.lineDataSet=function()
  {
   SC$1.$cctor();
-  return SC$1.linearDataSet;
+  return SC$1.lineDataSet;
  };
- Client.linearData=function()
+ Client.bdColor=function()
  {
   SC$1.$cctor();
-  return SC$1.linearData;
+  return SC$1.bdColor;
  };
- Client.linearOptions=function()
+ Client.lineData=function()
  {
   SC$1.$cctor();
-  return SC$1.linearOptions;
+  return SC$1.lineData;
  };
- Client.barOptions=function()
+ Client.barDataSet=function()
  {
   SC$1.$cctor();
-  return SC$1.barOptions;
+  return SC$1.barDataSet;
  };
- Client.pieOptions=function()
+ Client.bgColor=function()
  {
   SC$1.$cctor();
-  return SC$1.pieOptions;
+  return SC$1.bgColor;
  };
- Client.doughnutOptions=function()
+ Client.barData=function()
  {
   SC$1.$cctor();
-  return SC$1.doughnutOptions;
+  return SC$1.barData;
  };
- Client.bubbleOptions=function()
+ Client.pieDataSet=function()
  {
   SC$1.$cctor();
-  return SC$1.bubbleOptions;
+  return SC$1.pieDataSet;
  };
- Client.scatterOptions=function()
+ Client.pieData=function()
  {
   SC$1.$cctor();
-  return SC$1.scatterOptions;
+  return SC$1.pieData;
  };
- Client.radarOptions=function()
+ Client.doughnutDataSet=function()
  {
   SC$1.$cctor();
-  return SC$1.radarOptions;
+  return SC$1.doughnutDataSet;
  };
- Client.mixedOptions=function()
+ Client.doughnutData=function()
  {
   SC$1.$cctor();
-  return SC$1.mixedOptions;
+  return SC$1.doughnutData;
+ };
+ Client.radarDataSet1=function()
+ {
+  SC$1.$cctor();
+  return SC$1.radarDataSet1;
+ };
+ Client.radarDataSet2=function()
+ {
+  SC$1.$cctor();
+  return SC$1.radarDataSet2;
+ };
+ Client.radarData=function()
+ {
+  SC$1.$cctor();
+  return SC$1.radarData;
  };
  Client.bubbleDataSet=function()
  {
@@ -616,6 +645,16 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$1.$cctor();
   return SC$1.scatterData;
  };
+ Client.polarAreaDataSet=function()
+ {
+  SC$1.$cctor();
+  return SC$1.polarAreaDataSet;
+ };
+ Client.polarAreaData=function()
+ {
+  SC$1.$cctor();
+  return SC$1.polarAreaData;
+ };
  Client.ds1=function()
  {
   SC$1.$cctor();
@@ -630,6 +669,56 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  {
   SC$1.$cctor();
   return SC$1.mixedData;
+ };
+ Client.linearOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.linearOptions;
+ };
+ Client.scale=function()
+ {
+  SC$1.$cctor();
+  return SC$1.scale;
+ };
+ Client.barOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.barOptions;
+ };
+ Client.pieOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.pieOptions;
+ };
+ Client.doughnutOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.doughnutOptions;
+ };
+ Client.polarAreaOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.polarAreaOptions;
+ };
+ Client.bubbleOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.bubbleOptions;
+ };
+ Client.scatterOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.scatterOptions;
+ };
+ Client.radarOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.radarOptions;
+ };
+ Client.mixedOptions=function()
+ {
+  SC$1.$cctor();
+  return SC$1.mixedOptions;
  };
  Operators.FailWith=function(msg)
  {
@@ -1793,42 +1882,83 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  };
  SC$1.$cctor=function()
  {
-  var r,r$1,r$2,r$3,r$4,r$5,r$6,r$7,r$8,r$9,r$10,r$11,r$12,r$13,r$14,r$15,r$16,r$17,r$18,r$19,r$20,r$21,r$22,r$23,r$24,r$25,r$26,r$27,r$28,r$29,r$30,r$31,r$32,r$33,r$34,r$35,r$36,r$37,r$38,r$39,r$40,r$41,r$42,r$43,r$44,r$45,r$46,r$47,r$48,r$49,r$50,r$51,r$52,r$53,r$54,r$55,r$56,r$57,r$58,r$59,r$60,r$61,r$62,r$63;
+  var r,r$1,r$2,r$3,r$4,r$5,r$6,r$7,r$8,r$9,r$10,r$11,r$12,r$13,r$14,r$15,r$16,r$17,r$18,r$19,r$20,r$21,r$22,r$23,r$24,r$25,r$26,r$27,r$28,r$29,r$30,r$31,r$32,r$33,r$34,r$35,r$36,r$37,r$38,r$39,r$40,r$41,r$42,r$43,r$44,r$45,r$46,r$47;
   SC$1.$cctor=Global.ignore;
-  SC$1.linearDataSet={};
-  Client.linearDataSet().label="# of Votes";
-  Client.linearDataSet().data=[12,19,3,5,2,3];
-  Client.linearDataSet().backgroundColor=["rgba(255, 99, 132, 0.2)","rgba(54, 162, 235, 0.2)","rgba(255, 206, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(153, 102, 255, 0.2)","rgba(255, 159, 64, 0.2)"];
-  Client.linearDataSet().borderColor=["rgba(255, 99, 132, 1)","rgba(54, 162, 235, 1)","rgba(255, 206, 86, 1)","rgba(75, 192, 192, 1)","rgba(153, 102, 255, 1)","rgba(255, 159, 64, 1)"];
-  Client.linearDataSet().borderWidth=3;
-  SC$1.linearData={};
-  Client.linearData().datasets=[Client.linearDataSet()];
-  Client.linearData().labels=["red","blue","yellow","green","purple","orange"];
-  SC$1.linearOptions={};
-  Client.linearOptions().transitions=(r={},r.active=(r$1={},r$1.animation=(r$2={},r$2.duration=0,r$2),r$1),r);
-  Client.linearOptions().plugins=(r$3={},r$3.title=(r$4={},r$4.display=true,r$4.text="Linear Chart",r$4.font=(r$5={},r$5.size=30,r$5.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$5.style="italic",r$5),r$4),r$3.subtitle=(r$6={},r$6.display=true,r$6.text="subtitle for line chart",r$6.font=(r$7={},r$7.size=18,r$7.family="'Lucida Console', 'Courier New', 'monospace'",r$7),r$6),r$3);
-  SC$1.barOptions={};
-  Client.barOptions().transitions=(r$8={},r$8.active=(r$9={},r$9.animation=(r$10={},r$10.duration=0,r$10),r$9),r$8);
-  Client.barOptions().plugins=(r$11={},r$11.title=(r$12={},r$12.display=true,r$12.text="Bar Chart",r$12.font=(r$13={},r$13.size=30,r$13.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$13.style="italic",r$13),r$12),r$11.subtitle=(r$14={},r$14.display=true,r$14.text="subtitle for bar chart",r$14.font=(r$15={},r$15.size=18,r$15.family="'Lucida Console', 'Courier New', 'monospace'",r$15),r$14),r$11);
-  SC$1.pieOptions={};
-  Client.pieOptions().transitions=(r$16={},r$16.active=(r$17={},r$17.animation=(r$18={},r$18.duration=0,r$18),r$17),r$16);
-  Client.pieOptions().plugins=(r$19={},r$19.title=(r$20={},r$20.display=true,r$20.text="Pie Chart",r$20.font=(r$21={},r$21.size=30,r$21.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$21.style="italic",r$21),r$20),r$19.subtitle=(r$22={},r$22.display=true,r$22.text="subtitle for pie chart",r$22.font=(r$23={},r$23.size=18,r$23.family="'Lucida Console', 'Courier New', 'monospace'",r$23),r$22),r$19);
-  SC$1.doughnutOptions={};
-  Client.doughnutOptions().transitions=(r$24={},r$24.active=(r$25={},r$25.animation=(r$26={},r$26.duration=0,r$26),r$25),r$24);
-  Client.doughnutOptions().plugins=(r$27={},r$27.title=(r$28={},r$28.display=true,r$28.text="Doughnut Chart",r$28.font=(r$29={},r$29.size=30,r$29.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$29.style="italic",r$29),r$28),r$27.subtitle=(r$30={},r$30.display=true,r$30.text="subtitle for doughnut chart",r$30.font=(r$31={},r$31.size=18,r$31.family="'Lucida Console', 'Courier New', 'monospace'",r$31),r$30),r$27);
-  SC$1.bubbleOptions={};
-  Client.bubbleOptions().transitions=(r$32={},r$32.active=(r$33={},r$33.animation=(r$34={},r$34.duration=0,r$34),r$33),r$32);
-  Client.bubbleOptions().plugins=(r$35={},r$35.title=(r$36={},r$36.display=true,r$36.text="Bubble Chart",r$36.font=(r$37={},r$37.size=30,r$37.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$37.style="italic",r$37),r$36),r$35.subtitle=(r$38={},r$38.display=true,r$38.text="subtitle for bubble chart",r$38.font=(r$39={},r$39.size=18,r$39.family="'Lucida Console', 'Courier New', 'monospace'",r$39),r$38),r$35);
-  SC$1.scatterOptions={};
-  Client.scatterOptions().transitions=(r$40={},r$40.active=(r$41={},r$41.animation=(r$42={},r$42.duration=0,r$42),r$41),r$40);
-  Client.scatterOptions().plugins=(r$43={},r$43.title=(r$44={},r$44.display=true,r$44.text="Scatter Chart",r$44.font=(r$45={},r$45.size=30,r$45.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$45.style="italic",r$45),r$44),r$43.subtitle=(r$46={},r$46.display=true,r$46.text="subtitle for scatter chart",r$46.font=(r$47={},r$47.size=18,r$47.family="'Lucida Console', 'Courier New', 'monospace'",r$47),r$46),r$43);
-  SC$1.radarOptions={};
-  Client.radarOptions().transitions=(r$48={},r$48.active=(r$49={},r$49.animation=(r$50={},r$50.duration=0,r$50),r$49),r$48);
-  Client.radarOptions().plugins=(r$51={},r$51.title=(r$52={},r$52.display=true,r$52.text="Radar Chart",r$52.font=(r$53={},r$53.size=30,r$53.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$53.style="italic",r$53),r$52),r$51.subtitle=(r$54={},r$54.display=true,r$54.text="subtitle for radar chart",r$54.font=(r$55={},r$55.size=18,r$55.family="'Lucida Console', 'Courier New', 'monospace'",r$55),r$54),r$51);
-  SC$1.mixedOptions={};
-  Client.mixedOptions().transitions=(r$56={},r$56.active=(r$57={},r$57.animation=(r$58={},r$58.duration=0,r$58),r$57),r$56);
-  Client.mixedOptions().plugins=(r$59={},r$59.title=(r$60={},r$60.display=true,r$60.text="Mixed Chart",r$60.font=(r$61={},r$61.size=30,r$61.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$61.style="italic",r$61),r$60),r$59.subtitle=(r$62={},r$62.display=true,r$62.text="subtitle for mixed chart",r$62.font=(r$63={},r$63.size=18,r$63.family="'Lucida Console', 'Courier New', 'monospace'",r$63),r$62),r$59);
-  SC$1.bubbleDataSet={};
+  SC$1.bgColor=["rgba(255, 99, 132, 0.2)","rgba(54, 162, 235, 0.2)","rgba(255, 206, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(153, 102, 255, 0.2)","rgba(255, 159, 64, 0.2)"];
+  SC$1.bdColor=["rgba(255, 99, 132, 1)","rgba(54, 162, 235, 1)","rgba(255, 206, 86, 1)","rgba(75, 192, 192, 1)","rgba(153, 102, 255, 1)","rgba(255, 159, 64, 1)"];
+  SC$1.lineDataSet={
+   type:"line"
+  };
+  Client.lineDataSet().label="# of Votes";
+  Client.lineDataSet().data=[12,19,3,5,2,3];
+  Client.lineDataSet().borderColor=Client.bdColor();
+  Client.lineDataSet().borderWidth=6;
+  SC$1.lineData={};
+  Client.lineData().datasets=[Client.lineDataSet()];
+  Client.lineData().labels=["red","blue","yellow","green","purple","orange"];
+  SC$1.barDataSet={
+   type:"bar"
+  };
+  Client.barDataSet().label="# of Votes";
+  Client.barDataSet().data=[12,19,3,5,2,3];
+  Client.barDataSet().backgroundColor=Client.bgColor();
+  Client.barDataSet().borderColor=Client.bdColor();
+  Client.barDataSet().borderWidth=6;
+  SC$1.barData={};
+  Client.barData().datasets=[Client.barDataSet()];
+  Client.barData().labels=["red","blue","yellow","green","purple","orange"];
+  SC$1.pieDataSet={
+   type:"pie"
+  };
+  Client.pieDataSet().label="# of Votes";
+  Client.pieDataSet().data=[12,19,3,5,2,3];
+  Client.pieDataSet().backgroundColor=Client.bgColor();
+  Client.pieDataSet().borderColor=Client.bdColor();
+  Client.pieDataSet().borderWidth=3;
+  SC$1.pieData={};
+  Client.pieData().datasets=[Client.pieDataSet()];
+  Client.pieData().labels=["red","blue","yellow","green","purple","orange"];
+  SC$1.doughnutDataSet={
+   type:"doughnut"
+  };
+  Client.doughnutDataSet().label="# of Votes";
+  Client.doughnutDataSet().data=[12,19,3,5,2,3];
+  Client.doughnutDataSet().backgroundColor=Client.bgColor();
+  Client.doughnutDataSet().borderColor=Client.bdColor();
+  Client.doughnutDataSet().borderWidth=3;
+  SC$1.doughnutData={};
+  Client.doughnutData().datasets=[Client.doughnutDataSet()];
+  Client.doughnutData().labels=["red","blue","yellow","green","purple","orange"];
+  SC$1.radarDataSet1={
+   type:"radar"
+  };
+  Client.radarDataSet1().label="First Dataset";
+  Client.radarDataSet1().data=[65,59,90,81,56,55,40];
+  Client.radarDataSet1().fill=true;
+  Client.radarDataSet1().backgroundColor="rgba(255, 99, 132, 0.2)";
+  Client.radarDataSet1().borderColor="rgba(255, 99, 132, 1)";
+  Client.radarDataSet1().pointBackgroundColor="rgb(255, 99, 132)";
+  Client.radarDataSet1().pointBorderColor="#fff";
+  Client.radarDataSet1().pointHoverBackgroundColor="#fff";
+  Client.radarDataSet1().pointHoverBorderColor="rgb(255, 99, 132)";
+  SC$1.radarDataSet2={
+   type:"radar"
+  };
+  Client.radarDataSet2().label="First Dataset";
+  Client.radarDataSet2().data=[28,48,40,19,96,27,100];
+  Client.radarDataSet2().fill=true;
+  Client.radarDataSet2().backgroundColor="rgba(54, 162, 235, 0.2)";
+  Client.radarDataSet2().borderColor="rgba(54, 162, 235, 1)";
+  Client.radarDataSet2().pointBackgroundColor="rgb(54, 162, 235)";
+  Client.radarDataSet2().pointBorderColor="#fff";
+  Client.radarDataSet2().pointHoverBackgroundColor="#fff";
+  Client.radarDataSet2().pointHoverBorderColor="rgb(54, 162, 235)";
+  SC$1.radarData={};
+  Client.radarData().datasets=[Client.radarDataSet1(),Client.radarDataSet2()];
+  Client.radarData().labels=["Eating","Drinking","Sleeping","Designing","Coding","Cooking","Training"];
+  SC$1.bubbleDataSet={
+   type:"bubble"
+  };
   Client.bubbleDataSet().label="First dataset";
   Client.bubbleDataSet().data=[{
    x:20,
@@ -1842,7 +1972,9 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   Client.bubbleDataSet().backgroundColor="rgb(255,99,132)";
   SC$1.bubbleData={};
   Client.bubbleData().datasets=[Client.bubbleDataSet()];
-  SC$1.scatterDataSet={};
+  SC$1.scatterDataSet={
+   type:"scatter"
+  };
   Client.scatterDataSet().label="Scatter Dataset";
   Client.scatterDataSet().data=[{
    x:-10,
@@ -1860,60 +1992,91 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   Client.scatterDataSet().backgroundColor="rgb(127,99,127)";
   SC$1.scatterData={};
   Client.scatterData().datasets=[Client.scatterDataSet()];
-  SC$1.ds1={};
-  Client.ds1().type="line";
+  SC$1.polarAreaDataSet={
+   type:"polarArea"
+  };
+  Client.polarAreaDataSet().label="Polar area dataset";
+  Client.polarAreaDataSet().data=[11,16,7,3,14];
+  Client.polarAreaDataSet().backgroundColor=["rgb(255, 99, 132)","rgb(75, 192, 192)","rgb(255, 205, 86)","rgb(201, 203, 207)","rgb(54, 162, 235)"];
+  SC$1.polarAreaData={};
+  Client.polarAreaData().datasets=[Client.polarAreaDataSet()];
+  Client.polarAreaData().labels=["Red","Green","Yellow","Grey","Blue"];
+  SC$1.ds1={
+   type:"line"
+  };
   Client.ds1().label="Line Dataset";
   Client.ds1().data=[10,20,30,40];
-  Client.ds1().backgroundColor=["rgba(255, 99, 132, 0.2)","rgba(54, 162, 235, 0.2)","rgba(255, 206, 86, 0.2)","rgba(75, 192, 192, 0.2)"];
-  Client.ds1().borderColor=["rgba(255, 99, 132, 1)","rgba(54, 162, 235, 1)","rgba(255, 206, 86, 1)","rgba(75, 192, 192, 1)"];
+  Client.ds1().borderColor="rgba(132, 99, 255, 1)";
   Client.ds1().borderWidth=3;
-  SC$1.ds2={};
-  Client.ds2().type="bar";
+  Client.ds1().order=2;
+  SC$1.ds2={
+   type:"bar"
+  };
   Client.ds2().label="Bar Dataset";
   Client.ds2().data=[40,30,20,10];
-  Client.ds2().backgroundColor=["rgba(255, 99, 132, 0.2)","rgba(54, 162, 235, 0.2)","rgba(255, 206, 86, 0.2)","rgba(75, 192, 192, 0.2)"];
-  Client.ds2().borderColor=["rgba(255, 99, 132, 1)","rgba(54, 162, 235, 1)","rgba(255, 206, 86, 1)","rgba(75, 192, 192, 1)"];
+  Client.ds2().backgroundColor="rgba(255, 99, 132, 1)";
+  Client.ds2().borderColor="rgba(255, 99, 132, 1)";
   Client.ds2().borderWidth=3;
+  Client.ds2().order=1;
   SC$1.mixedData={};
   Client.mixedData().datasets=[Client.ds1(),Client.ds2()];
   Client.mixedData().labels=["January","February","March","April"];
+  SC$1.scale=(r={},r.beginAtZero=true,r);
+  SC$1.linearOptions={};
+  Client.linearOptions().plugins=(r$1={},r$1.title=(r$2={},r$2.display=true,r$2.text="Linear Chart",r$2.font=(r$3={},r$3.size=30,r$3.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$3.style="italic",r$3),r$2),r$1.subtitle=(r$4={},r$4.display=true,r$4.text="subtitle for line chart",r$4.font=(r$5={},r$5.size=18,r$5.family="'Lucida Console', 'Courier New', 'monospace'",r$5),r$4),r$1);
+  SC$1.barOptions={};
+  Client.barOptions().scales={
+   y:Client.scale()
+  };
+  Client.barOptions().plugins=(r$6={},r$6.title=(r$7={},r$7.display=true,r$7.text="Bar Chart",r$7.font=(r$8={},r$8.size=30,r$8.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$8.style="italic",r$8),r$7),r$6.subtitle=(r$9={},r$9.display=true,r$9.text="subtitle for bar chart",r$9.font=(r$10={},r$10.size=18,r$10.family="'Lucida Console', 'Courier New', 'monospace'",r$10),r$9),r$6);
+  SC$1.pieOptions={};
+  Client.pieOptions().plugins=(r$11={},r$11.title=(r$12={},r$12.display=true,r$12.text="Pie Chart",r$12.font=(r$13={},r$13.size=30,r$13.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$13.style="italic",r$13),r$12),r$11.subtitle=(r$14={},r$14.display=true,r$14.text="subtitle for pie chart",r$14.font=(r$15={},r$15.size=18,r$15.family="'Lucida Console', 'Courier New', 'monospace'",r$15),r$14),r$11);
+  SC$1.doughnutOptions={};
+  Client.doughnutOptions().plugins=(r$16={},r$16.title=(r$17={},r$17.display=true,r$17.text="Doughnut Chart",r$17.font=(r$18={},r$18.size=30,r$18.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$18.style="italic",r$18),r$17),r$16.subtitle=(r$19={},r$19.display=true,r$19.text="subtitle for doughnut chart",r$19.font=(r$20={},r$20.size=18,r$20.family="'Lucida Console', 'Courier New', 'monospace'",r$20),r$19),r$16);
+  SC$1.polarAreaOptions={};
+  Client.polarAreaOptions().plugins=(r$21={},r$21.title=(r$22={},r$22.display=true,r$22.text="PolarArea Chart",r$22.font=(r$23={},r$23.size=30,r$23.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$23.style="italic",r$23),r$22),r$21.subtitle=(r$24={},r$24.display=true,r$24.text="subtitle for polararea chart",r$24.font=(r$25={},r$25.size=18,r$25.family="'Lucida Console', 'Courier New', 'monospace'",r$25),r$24),r$21);
+  SC$1.bubbleOptions={};
+  Client.bubbleOptions().plugins=(r$26={},r$26.title=(r$27={},r$27.display=true,r$27.text="Bubble Chart",r$27.font=(r$28={},r$28.size=30,r$28.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$28.style="italic",r$28),r$27),r$26.subtitle=(r$29={},r$29.display=true,r$29.text="subtitle for bubble chart",r$29.font=(r$30={},r$30.size=18,r$30.family="'Lucida Console', 'Courier New', 'monospace'",r$30),r$29),r$26);
+  SC$1.scatterOptions={};
+  Client.scatterOptions().plugins=(r$31={},r$31.title=(r$32={},r$32.display=true,r$32.text="Scatter Chart",r$32.font=(r$33={},r$33.size=30,r$33.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$33.style="italic",r$33),r$32),r$31.subtitle=(r$34={},r$34.display=true,r$34.text="subtitle for scatter chart",r$34.font=(r$35={},r$35.size=18,r$35.family="'Lucida Console', 'Courier New', 'monospace'",r$35),r$34),r$31);
+  SC$1.radarOptions={};
+  Client.radarOptions().plugins=(r$36={},r$36.title=(r$37={},r$37.display=true,r$37.text="Radar Chart",r$37.font=(r$38={},r$38.size=30,r$38.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$38.style="italic",r$38),r$37),r$36.subtitle=(r$39={},r$39.display=true,r$39.text="subtitle for radar chart",r$39.font=(r$40={},r$40.size=18,r$40.family="'Lucida Console', 'Courier New', 'monospace'",r$40),r$39),r$36);
+  Client.radarOptions().elements=(r$41={},r$41.line=(r$42={},r$42.borderWidth=6,r$42),r$41);
+  SC$1.mixedOptions={};
+  Client.mixedOptions().plugins=(r$43={},r$43.title=(r$44={},r$44.display=true,r$44.text="Mixed Chart",r$44.font=(r$45={},r$45.size=30,r$45.family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",r$45.style="italic",r$45),r$44),r$43.subtitle=(r$46={},r$46.display=true,r$46.text="subtitle for mixed chart",r$46.font=(r$47={},r$47.size=18,r$47.family="'Lucida Console', 'Courier New', 'monospace'",r$47),r$46),r$43);
   SC$1.linearChart={
-   type:"line",
-   data:Client.linearData(),
+   data:Client.lineData(),
    options:Client.linearOptions()
   };
   SC$1.barChart={
-   type:"bar",
-   data:Client.linearData(),
+   data:Client.barData(),
    options:Client.barOptions()
   };
   SC$1.pieChart={
-   type:"pie",
-   data:Client.linearData(),
+   data:Client.pieData(),
    options:Client.pieOptions()
   };
   SC$1.doughnutChart={
-   type:"doughnut",
-   data:Client.linearData(),
+   data:Client.doughnutData(),
    options:Client.doughnutOptions()
   };
   SC$1.bubbleChart={
-   type:"bubble",
    data:Client.bubbleData(),
    options:Client.bubbleOptions()
   };
+  SC$1.polarAreaChart={
+   data:Client.polarAreaData(),
+   options:Client.polarAreaOptions()
+  };
   SC$1.scatterChart={
-   type:"scatter",
    data:Client.scatterData(),
    options:Client.scatterOptions()
   };
   SC$1.radarChart={
-   type:"radar",
-   data:Client.linearData(),
+   data:Client.radarData(),
    options:Client.radarOptions()
   };
   SC$1.mixedChart={
-   type:"line",
    data:Client.mixedData(),
    options:Client.mixedOptions()
   };
