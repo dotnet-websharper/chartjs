@@ -9,3 +9,4 @@ paket-files/
 /done.txt
 WebSharper.ChartJs.Testing/wwwroot/Content
 .vs/
+*.user
