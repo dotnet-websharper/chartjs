@@ -1,4 +1,4 @@
 # Chart.js for WebSharper
 
-This library binds Chart.js 2.5. (soon updated) for WebSharper.
+This library binds Chart.js 3.4.1 for WebSharper.
 
