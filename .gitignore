@@ -6,3 +6,7 @@ packages/
 .fake/
 paket-files/
 .vscode/
+/done.txt
+WebSharper.ChartJs.Testing/wwwroot/Content
+.vs/
+*.user
