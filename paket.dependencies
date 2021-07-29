@@ -1,5 +1,5 @@
 source https://api.nuget.org/v3/index.json
-//source https://daily.websharper.com/nuget
+source https://daily.websharper.com/nuget
 
 framework: net461, netstandard2.0
 strategy: min
@@ -14,7 +14,7 @@ group wsbuild
 
 group testing
     source https://api.nuget.org/v3/index.json
-    //source https://daily.websharper.com/nuget
+    source https://daily.websharper.com/nuget
     framework: netcoreapp3.1
     storage: none
 

@@ -15,9 +15,8 @@
       <HintPath>..\WebSharper.ChartJs\bin\Debug\netstandard2.0\WebSharper.ChartJs.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
-
   <Target Name="CopyIndex" AfterTargets="Build">
-    <Copy SourceFiles="wwwroot/index.html" DestinationFolder="../dist"/>
+    <Copy SourceFiles="wwwroot/index.html" DestinationFolder="../dist" />
   </Target>
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
