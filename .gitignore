@@ -11,3 +11,4 @@ WebSharper.ChartJs.Testing/wwwroot/Content
 .vs/
 *.user
 dist/
+.ionide

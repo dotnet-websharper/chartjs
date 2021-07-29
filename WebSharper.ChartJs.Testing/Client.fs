@@ -390,17 +390,18 @@ module Client =
 
     [<SPAEntryPoint>]
     let Main () =
-
+        let wrapCanvas x =
+            div [] [x]
         Doc.Concat [
             h1 [] [text "ChartJs sample site"]
-            canvas [attr.``id`` "linear";on.afterRender (fun _ -> linear () |> ignore)] []
-            canvas [attr.``id`` "bar";on.afterRender (fun _ -> bar () |> ignore)] []
-            canvas [attr.``id`` "pie";on.afterRender (fun _ -> pie () |> ignore)] []
-            canvas [attr.``id`` "doughnut";on.afterRender (fun _ -> doughnut () |> ignore)] []
-            canvas [attr.``id`` "polarArea";on.afterRender (fun _ -> polarArea () |> ignore)] []
-            canvas [attr.``id`` "bubble";on.afterRender (fun _ -> bubble () |> ignore)] []
-            canvas [attr.``id`` "scatter";on.afterRender (fun _ -> scatter () |> ignore)] []
-            canvas [attr.``id`` "radar";on.afterRender (fun _ -> radar () |> ignore)] []
-            canvas [attr.``id`` "mixed";on.afterRender (fun _ -> mixed () |> ignore)] []
+            canvas [attr.``id`` "linear";on.afterRender (fun _ -> linear () |> ignore)] [] |> wrapCanvas
+            canvas [attr.``id`` "bar";on.afterRender (fun _ -> bar () |> ignore)] [] |> wrapCanvas
+            canvas [attr.``id`` "pie";on.afterRender (fun _ -> pie () |> ignore)] [] |> wrapCanvas
+            canvas [attr.``id`` "doughnut";on.afterRender (fun _ -> doughnut () |> ignore)] [] |> wrapCanvas
+            canvas [attr.``id`` "polarArea";on.afterRender (fun _ -> polarArea () |> ignore)] [] |> wrapCanvas
+            canvas [attr.``id`` "bubble";on.afterRender (fun _ -> bubble () |> ignore)] [] |> wrapCanvas
+            canvas [attr.``id`` "scatter";on.afterRender (fun _ -> scatter () |> ignore)] [] |> wrapCanvas
+            canvas [attr.``id`` "radar";on.afterRender (fun _ -> radar () |> ignore)] [] |> wrapCanvas
+            canvas [attr.``id`` "mixed";on.afterRender (fun _ -> mixed () |> ignore)] [] |> wrapCanvas
         ]
         |> Doc.RunById "main"
