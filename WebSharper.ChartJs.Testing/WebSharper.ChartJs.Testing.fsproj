@@ -16,4 +16,8 @@
     </Reference>
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
+
+  <Target Name="CopyIndex" AfterTargets="Build">
+    <Copy SourceFiles="wwwroot/index.html" DestinationFolder="../dist"/>
+  </Target>
 </Project>

@@ -10,3 +10,4 @@ paket-files/
 WebSharper.ChartJs.Testing/wwwroot/Content
 .vs/
 *.user
+dist/
