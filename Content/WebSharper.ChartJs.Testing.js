@@ -349,7 +349,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
 (function(Global)
 {
  "use strict";
- var WebSharper,ChartJs,Testing,Client,Operators,Obj,UI,Doc,HtmlModule,attr,Array,AttrProxy,AttrModule,Client$1,Templates,JavaScript,Pervasives,View,Arrays,List,T,Unchecked,Object,DomUtility,Attrs,SC$1,EventTarget,Node,JS,Collections,Dictionary,DocElemNode,CharacterData,Enumerator,Snap,ADataSet,Scale,CartesianAxis,SC$2,HashSet,Seq,WindowOrWorkerGlobalScope,Docs,T$1,Attrs$1,Dyn,Numeric,Elt,DictionaryUtil,Prepare,Slice,KeyCollection,An,Settings,Abbrev,Mailbox,Updates,Strings,Docs$1,RunState,NodeSet,Concurrency,Anims,SC$3,Fresh,SC$4,SC$5,SC$6,AppendList,HashSetUtil,Queue,Var,BindVar,String,CheckedInput,Scheduler,Easing,AsyncBody,SC$7,CT,HashSet$1,SC$8,Char,CancellationTokenSource,DomNodes,Error,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,IntelliFactory,Runtime,console,Date;
+ var WebSharper,ChartJs,Testing,Client,Operators,Obj,UI,Doc,HtmlModule,attr,Array,AttrProxy,AttrModule,Client$1,Templates,JavaScript,Pervasives,View,Arrays,List,T,Unchecked,Object,DomUtility,Attrs,SC$1,EventTarget,Node,JS,Collections,Dictionary,DocElemNode,CharacterData,Enumerator,Snap,ADataSet,Scale,CartesianAxis,SC$2,HashSet,Seq,WindowOrWorkerGlobalScope,Docs,T$1,Elt,Attrs$1,Dyn,Numeric,DictionaryUtil,Prepare,Slice,KeyCollection,An,Settings,Abbrev,Mailbox,Updates,Strings,Docs$1,RunState,NodeSet,Concurrency,Anims,SC$3,Fresh,SC$4,SC$5,SC$6,AppendList,HashSetUtil,Var,BindVar,String,CheckedInput,Queue,Scheduler,Easing,AsyncBody,SC$7,CT,HashSet$1,SC$8,Char,CancellationTokenSource,DomNodes,Error,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,IntelliFactory,Runtime,console,Date;
  WebSharper=Global.WebSharper=Global.WebSharper||{};
  ChartJs=WebSharper.ChartJs=WebSharper.ChartJs||{};
  Testing=ChartJs.Testing=ChartJs.Testing||{};
@@ -394,10 +394,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  WindowOrWorkerGlobalScope=Global.WindowOrWorkerGlobalScope;
  Docs=UI.Docs=UI.Docs||{};
  T$1=Enumerator.T=Enumerator.T||{};
+ Elt=UI.Elt=UI.Elt||{};
  Attrs$1=Client$1.Attrs=Client$1.Attrs||{};
  Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
  Numeric=WebSharper.Numeric=WebSharper.Numeric||{};
- Elt=UI.Elt=UI.Elt||{};
  DictionaryUtil=Collections.DictionaryUtil=Collections.DictionaryUtil||{};
  Prepare=Templates.Prepare=Templates.Prepare||{};
  Slice=WebSharper.Slice=WebSharper.Slice||{};
@@ -420,11 +420,11 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  SC$6=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
  AppendList=UI.AppendList=UI.AppendList||{};
  HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
- Queue=WebSharper.Queue=WebSharper.Queue||{};
  Var=UI.Var=UI.Var||{};
  BindVar=UI.BindVar=UI.BindVar||{};
  String=UI.String=UI.String||{};
  CheckedInput=UI.CheckedInput=UI.CheckedInput||{};
+ Queue=WebSharper.Queue=WebSharper.Queue||{};
  Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
  Easing=UI.Easing=UI.Easing||{};
  AsyncBody=Concurrency.AsyncBody=Concurrency.AsyncBody||{};
@@ -448,34 +448,38 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Client.Main=function()
  {
   var a;
-  a=Doc.Concat([Doc.Element("h1",[],[Doc.TextNode("ChartJs sample site")]),Doc.Element("canvas",[AttrProxy.Create("id","linear"),AttrModule.OnAfterRender(function()
+  function wrapCanvas(x)
+  {
+   return Doc.Element("div",[],[x]);
+  }
+  a=Doc.Concat([Doc.Element("h1",[],[Doc.TextNode("ChartJs sample site")]),wrapCanvas(Doc.Element("canvas",[AttrProxy.Create("id","linear"),AttrModule.OnAfterRender(function()
   {
    Client.linear();
-  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","bar"),AttrModule.OnAfterRender(function()
+  })],[])),wrapCanvas(Doc.Element("canvas",[AttrProxy.Create("id","bar"),AttrModule.OnAfterRender(function()
   {
    Client.bar();
-  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","pie"),AttrModule.OnAfterRender(function()
+  })],[])),wrapCanvas(Doc.Element("canvas",[AttrProxy.Create("id","pie"),AttrModule.OnAfterRender(function()
   {
    Client.pie();
-  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","doughnut"),AttrModule.OnAfterRender(function()
+  })],[])),wrapCanvas(Doc.Element("canvas",[AttrProxy.Create("id","doughnut"),AttrModule.OnAfterRender(function()
   {
    Client.doughnut();
-  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","polarArea"),AttrModule.OnAfterRender(function()
+  })],[])),wrapCanvas(Doc.Element("canvas",[AttrProxy.Create("id","polarArea"),AttrModule.OnAfterRender(function()
   {
    Client.polarArea();
-  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","bubble"),AttrModule.OnAfterRender(function()
+  })],[])),wrapCanvas(Doc.Element("canvas",[AttrProxy.Create("id","bubble"),AttrModule.OnAfterRender(function()
   {
    Client.bubble();
-  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","scatter"),AttrModule.OnAfterRender(function()
+  })],[])),wrapCanvas(Doc.Element("canvas",[AttrProxy.Create("id","scatter"),AttrModule.OnAfterRender(function()
   {
    Client.scatter();
-  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","radar"),AttrModule.OnAfterRender(function()
+  })],[])),wrapCanvas(Doc.Element("canvas",[AttrProxy.Create("id","radar"),AttrModule.OnAfterRender(function()
   {
    Client.radar();
-  })],[]),Doc.Element("canvas",[AttrProxy.Create("id","mixed"),AttrModule.OnAfterRender(function()
+  })],[])),wrapCanvas(Doc.Element("canvas",[AttrProxy.Create("id","mixed"),AttrModule.OnAfterRender(function()
   {
    Client.mixed();
-  })],[])]);
+  })],[]))]);
   Templates.LoadLocalTemplates("");
   Doc.RunById("main",a);
  };
@@ -776,16 +780,16 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   else
    Doc.Run(m,tr);
  };
- Doc.Mk=function(node,updates)
- {
-  return new Doc.New(node,updates);
- };
  Doc.Element=function(name,attr$1,children)
  {
   var a,a$1;
   a=AttrProxy.Concat(attr$1);
   a$1=Doc.Concat(children);
   return Elt.New(self.document.createElement(name),a,a$1);
+ };
+ Doc.Mk=function(node,updates)
+ {
+  return new Doc.New(node,updates);
  };
  Doc.Run=function(parent,doc)
  {
@@ -3009,6 +3013,25 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   this.n=n;
   this.d=d;
  },T$1);
+ Elt=UI.Elt=Runtime.Class({},Doc,Elt);
+ Elt.New=function(el,attr$1,children)
+ {
+  var node,rvUpdates;
+  node=Docs.CreateElemNode(el,attr$1,children.docNode);
+  rvUpdates=Updates.Create(children.updates);
+  return new Elt.New$1({
+   $:1,
+   $0:node
+  },View.Map2Unit(Attrs.Updates(node.Attr),rvUpdates.v),el,rvUpdates);
+ };
+ Elt.New$1=Runtime.Ctor(function(docNode,updates,elt,rvUpdates)
+ {
+  Doc.New.call(this,docNode,updates);
+  this.docNode$1=docNode;
+  this.updates$1=updates;
+  this.elt=elt;
+  this.rvUpdates=rvUpdates;
+ },Elt);
  Dyn.New=function(DynElem,DynFlags,DynNodes,OnAfterRender)
  {
   var $1;
@@ -3051,25 +3074,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    s:State
   };
  };
- Elt=UI.Elt=Runtime.Class({},Doc,Elt);
- Elt.New=function(el,attr$1,children)
- {
-  var node,rvUpdates;
-  node=Docs.CreateElemNode(el,attr$1,children.docNode);
-  rvUpdates=Updates.Create(children.updates);
-  return new Elt.New$1({
-   $:1,
-   $0:node
-  },View.Map2Unit(Attrs.Updates(node.Attr),rvUpdates.v),el,rvUpdates);
- };
- Elt.New$1=Runtime.Ctor(function(docNode,updates,elt,rvUpdates)
- {
-  Doc.New.call(this,docNode,updates);
-  this.docNode$1=docNode;
-  this.updates$1=updates;
-  this.elt=elt;
-  this.rvUpdates=rvUpdates;
- },Elt);
  DictionaryUtil.notPresent=function()
  {
   return Operators.FailWith("The given key was not present in the dictionary.");
@@ -4087,10 +4091,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   for(var k$1 in o)r.push.apply(r,o[k$1]);
   return r;
  };
- Queue.Clear=function(a)
- {
-  a.splice(0,Arrays.length(a));
- };
  Var=UI.Var=Runtime.Class({},Obj,Var);
  BindVar.ApplyValue=function(get,set,_var,el,cb)
  {
@@ -4178,6 +4178,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    return this.$==1?this.$0:this.$==2?this.$0:this.$1;
   }
  },null,CheckedInput);
+ Queue.Clear=function(a)
+ {
+  a.splice(0,Arrays.length(a));
+ };
  Scheduler=Concurrency.Scheduler=Runtime.Class({
   Fork:function(action)
   {
