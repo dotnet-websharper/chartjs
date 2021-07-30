@@ -12,7 +12,7 @@
   <Import Project="..\paket-files\wsbuild\github.com\dotnet-websharper\build-script\WebSharper.Fake.targets" Condition="Exists('..\paket-files\wsbuild\github.com\dotnet-websharper\build-script\WebSharper.Fake.targets')" />
   <ItemGroup>
     <Reference Include="WebSharper.ChartJs">
-      <HintPath>..\WebSharper.ChartJs\bin\Debug\netstandard2.0\WebSharper.ChartJs.dll</HintPath>
+      <HintPath>..\WebSharper.ChartJs\bin\$(Configuration)\netstandard2.0\WebSharper.ChartJs.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Target Name="CopyIndex" AfterTargets="Build">
