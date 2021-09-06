@@ -3,4 +3,5 @@ group testing
     WebSharper.FSharp
     WebSharper.UI
     WebSharper.AspNetCore
+    WebSharper.JQuery
     fsharp.core

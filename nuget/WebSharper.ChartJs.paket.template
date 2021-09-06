@@ -1,19 +1,20 @@
 type file
 id WebSharper.ChartJs
-authors
-    IntelliFactory
-owners
-    IntelliFactory
-licenseUrl http://websharper.com/licensing
-projectUrl https://bitbucket.org/IntelliFactory/websharper.chartjs
+authors IntelliFactory
+owners IntelliFactory
+projectUrl https://websharper.com/
+repositoryType git
+repositoryUrl https://github.com/dotnet-websharper/chartjs/
+licenseUrl https://github.com/dotnet-websharper/chartjs/blob/master/LICENSE.md
+licenseExpression Apache-2.0
+iconUrl https://github.com/dotnet-websharper/core/raw/websharper50/tools/WebSharper.png
 description
-    WebSharper Extension for Chart.js
+    WebSharper bindings for moment.js 2.29.1
 tags
     Web JavaScript F# C#
 files
-    ../WebSharper.ChartJs/bin/Release/net461/WebSharper.ChartJs.dll ==> lib/net461
-    ../WebSharper.ChartJs/bin/Release/net461/WebSharper.ChartJs.xml ==> lib/net461
     ../WebSharper.ChartJs/bin/Release/netstandard2.0/WebSharper.ChartJs.dll ==> lib/netstandard2.0
     ../WebSharper.ChartJs/bin/Release/netstandard2.0/WebSharper.ChartJs.xml ==> lib/netstandard2.0
 dependencies
-        WebSharper ~> LOCKEDVERSION:[3]
+    framework: netstandard2.0
+            WebSharper ~> LOCKEDVERSION:[3]
