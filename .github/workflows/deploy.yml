@@ -17,7 +17,7 @@ jobs:
       - name: Install and Build 🔧
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: 6.0.101
       - run: ./build
 
       - name: Deploy 🚀
