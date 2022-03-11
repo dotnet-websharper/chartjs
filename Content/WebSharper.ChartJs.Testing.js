@@ -22,7 +22,7 @@
     }
   }
 
-  Global.IntelliFactory = {
+  Global.WebSharper = {
     Runtime: {
       Ctor: function (ctor, typeFunction) {
         ctor.prototype = typeFunction.prototype;
@@ -179,7 +179,7 @@
               invokes.push(del);
           }
         }
-        return IntelliFactory.Runtime.CreateDelegate(invokes);
+        return WebSharper.Runtime.CreateDelegate(invokes);
       },
 
       DelegateEqual: function (d1, d2) {
@@ -249,7 +249,7 @@
             return f.apply(null, allArgs);
           if (n == 2)
             return function (a) { return f.apply(null, allArgs.concat([a === void (0) ? null : a])); }
-          return IntelliFactory.Runtime.Curried(f, n - 1, allArgs);
+          return WebSharper.Runtime.Curried(f, n - 1, allArgs);
         }
       },
 
@@ -278,6 +278,16 @@
         if (!optional) {
           throw new Error("Type not expected for creating Choice value.");
         }
+      },
+
+      MarkResizable: function (arr) {
+        Object.defineProperty(arr, "resizable", { enumerable: false, writable: false, configurable: false, value: true });
+        return arr;
+      },
+
+      MarkReadOnly: function (arr) {
+        Object.defineProperty(arr, "readonly", { enumerable: false, writable: false, configurable: false, value: true });
+        return arr;
       },
 
       ScriptBasePath: "./",
@@ -309,7 +319,7 @@
     }
   }
 
-  Global.IntelliFactory.Runtime.OnLoad(function () {
+  Global.WebSharper.Runtime.OnLoad(function () {
     if (Global.WebSharper && WebSharper.Activator && WebSharper.Activator.Activate)
       WebSharper.Activator.Activate()
   });
@@ -371,7 +381,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
 (function(Global)
 {
  "use strict";
- var WebSharper,ChartJs,Testing,Client,Operators,Obj,UI,Doc,HtmlModule,attr,Array,AttrProxy,AttrModule,Client$1,Templates,JavaScript,Pervasives,View,Arrays,List,T,Unchecked,Object,DomUtility,Attrs,SC$1,EventTarget,Node,JS,Collections,Dictionary,DocElemNode,CharacterData,Enumerator,Snap,ADataSet,Scale,CartesianAxis,SC$2,HashSet,Seq,WindowOrWorkerGlobalScope,Docs,T$1,Elt,Attrs$1,Dyn,Numeric,DictionaryUtil,Prepare,Slice,KeyCollection,An,Settings,Abbrev,Mailbox,Updates,Strings,Docs$1,RunState,NodeSet,Concurrency,Anims,SC$3,Fresh,SC$4,SC$5,SC$6,AppendList,HashSetUtil,Var,BindVar,String,CheckedInput,Queue,Scheduler,Easing,AsyncBody,SC$7,CT,HashSet$1,SC$8,Char,CancellationTokenSource,DomNodes,Error,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,IntelliFactory,Runtime,console,Date;
+ var WebSharper,ChartJs,Testing,Client,Operators,Obj,UI,Doc,HtmlModule,attr,Array,AttrProxy,AttrModule,Client$1,Templates,JavaScript,Pervasives,View,Arrays,List,T,Unchecked,Object,DomUtility,Attrs,SC$1,EventTarget,Node,Collections,Dictionary,DocElemNode,CharacterData,Snap,ADataSet,Scale,CartesianAxis,SC$2,HashSet,Seq,WindowOrWorkerGlobalScope,Docs,Enumerator,T$1,Elt,Attrs$1,Dyn,Numeric,DictionaryUtil,Prepare,Slice,KeyCollection,An,Settings,Abbrev,Mailbox,Updates,Strings,Docs$1,RunState,NodeSet,Concurrency,Anims,SC$3,Fresh,SC$4,SC$5,SC$6,AppendList,Var,BindVar,String,CheckedInput,Queue,Scheduler,Easing,AsyncBody,SC$7,CT,HashSet$1,SC$8,Char,CancellationTokenSource,DomNodes,Error,OperationCanceledException,Lazy,HashSetUtil,SC$9,LazyExtensionsProxy,LazyRecord,Runtime,console,Date;
  WebSharper=Global.WebSharper=Global.WebSharper||{};
  ChartJs=WebSharper.ChartJs=WebSharper.ChartJs||{};
  Testing=ChartJs.Testing=ChartJs.Testing||{};
@@ -400,12 +410,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  SC$1=Global.StartupCode$WebSharper_ChartJs_Testing$Client=Global.StartupCode$WebSharper_ChartJs_Testing$Client||{};
  EventTarget=Global.EventTarget;
  Node=Global.Node;
- JS=JavaScript.JS=JavaScript.JS||{};
  Collections=WebSharper.Collections=WebSharper.Collections||{};
  Dictionary=Collections.Dictionary=Collections.Dictionary||{};
  DocElemNode=UI.DocElemNode=UI.DocElemNode||{};
  CharacterData=Global.CharacterData;
- Enumerator=WebSharper.Enumerator=WebSharper.Enumerator||{};
  Snap=UI.Snap=UI.Snap||{};
  ADataSet=Global.ADataSet;
  Scale=Global.Scale;
@@ -415,6 +423,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Seq=WebSharper.Seq=WebSharper.Seq||{};
  WindowOrWorkerGlobalScope=Global.WindowOrWorkerGlobalScope;
  Docs=UI.Docs=UI.Docs||{};
+ Enumerator=WebSharper.Enumerator=WebSharper.Enumerator||{};
  T$1=Enumerator.T=Enumerator.T||{};
  Elt=UI.Elt=UI.Elt||{};
  Attrs$1=Client$1.Attrs=Client$1.Attrs||{};
@@ -441,7 +450,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  SC$5=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
  SC$6=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
  AppendList=UI.AppendList=UI.AppendList||{};
- HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
  Var=UI.Var=UI.Var||{};
  BindVar=UI.BindVar=UI.BindVar||{};
  String=UI.String=UI.String||{};
@@ -460,11 +468,11 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Error=Global.Error;
  OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
  Lazy=WebSharper.Lazy=WebSharper.Lazy||{};
+ HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
  SC$9=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
  LazyExtensionsProxy=WebSharper.LazyExtensionsProxy=WebSharper.LazyExtensionsProxy||{};
  LazyRecord=LazyExtensionsProxy.LazyRecord=LazyExtensionsProxy.LazyRecord||{};
- IntelliFactory=Global.IntelliFactory;
- Runtime=IntelliFactory&&IntelliFactory.Runtime;
+ Runtime=WebSharper&&WebSharper.Runtime;
  console=Global.console;
  Date=Global.Date;
  Client.Main=function()
@@ -950,8 +958,8 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
      }),o]);
      if(m[0])
       {
-       instantiated.Add(name$2);
-       rawTpls.Remove(name$2);
+       instantiated.SAdd(name$2);
+       rawTpls.RemoveKey(name$2);
        Templates.PrepareTemplateStrict(baseName,{
         $:1,
         $0:name$2
@@ -982,7 +990,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   }
   instantiated=new HashSet.New$3();
   while(rawTpls.count>0)
-   prepareTemplate(Seq.head(rawTpls.get_Keys()));
+   prepareTemplate(Seq.head(rawTpls.Keys()));
  };
  Templates.LoadedTemplates=function()
  {
@@ -1075,12 +1083,12 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
        {
         if(instBaseName===""&&prepareLocalTemplate!=null)
          prepareLocalTemplate.$0(instName);
-        d=Templates.LoadedTemplates().get_Item(instBaseName);
+        d=Templates.LoadedTemplates().Item(instBaseName);
         if(!d.ContainsKey(instName))
          return Prepare.failNotLoaded(instName);
         else
          {
-          t=d.get_Item(instName);
+          t=d.Item(instName);
           instance=t.cloneNode(true);
           usedHoles=new HashSet.New$3();
           mappings=new Dictionary.New$5();
@@ -1088,13 +1096,13 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
           for(i=0,$3=attrs.length-1;i<=$3;i++){
            name$3=attrs.item(i).name.toLowerCase();
            mappings.set_Item(name$3,(m$1=attrs.item(i).nodeValue,m$1===""?name$3:m$1.toLowerCase()));
-           if(!usedHoles.Add(name$3))
+           if(!usedHoles.SAdd(name$3))
             console.warn("Hole mapped twice",name$3);
           }
           for(i$1=0,$4=$1.childNodes.length-1;i$1<=$4;i$1++){
            n=$1.childNodes[i$1];
            if(Unchecked.Equals(n.nodeType,Node.ELEMENT_NODE))
-            !usedHoles.Add(n.nodeName.toLowerCase())?console.warn("Hole filled twice",instName):void 0;
+            !usedHoles.SAdd(n.nodeName.toLowerCase())?console.warn("Hole filled twice",instName):void 0;
           }
           singleTextFill=$1.childNodes.length===1&&Unchecked.Equals($1.firstChild.nodeType,Node.TEXT_NODE);
           if(singleTextFill)
@@ -1111,7 +1119,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
             {
              return function(a)
              {
-              return usedHoles$1.Add(a);
+              return usedHoles$1.SAdd(a);
              };
             }(usedHoles),function(x$1)
             {
@@ -1309,10 +1317,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
     m=e.s;
     return m.$==0?false:(e.c=m.$0,e.s=m.$1,true);
    },void 0);
-  },
-  GetEnumerator0:function()
-  {
-   return Enumerator.Get(this);
   }
  },null,T);
  Arrays.ofList=function(xs)
@@ -1396,10 +1400,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   len=arr.length;
   for(i=1,$2=len;i<=$2;i++)acc=f(arr[len-i],acc);
   return acc;
- };
- Arrays.concat=function(xs)
- {
-  return Global.Array.prototype.concat.apply([],Arrays.ofSeq(xs));
  };
  Arrays.pick=function(f,arr)
  {
@@ -2117,13 +2117,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    options:Client.mixedOptions()
   };
  };
- JS.GetFieldValues=function(o)
- {
-  var r,k;
-  r=[];
-  for(var k$1 in o)r.push(o[k$1]);
-  return r;
- };
  Dictionary=Collections.Dictionary=Runtime.Class({
   set_Item:function(k,v)
   {
@@ -2154,11 +2147,11 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
     }:null;
    },d),v!=null&&v.$==1&&(res.set(v.$0),true));
   },
-  Remove:function(k)
+  RemoveKey:function(k)
   {
    return this.remove(k);
   },
-  get_Keys:function()
+  Keys:function()
   {
    return new KeyCollection.New(this);
   },
@@ -2202,7 +2195,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
     return!$this.equals.apply(null,[(Operators.KeyValue(a))[0],k]);
    },d),Arrays.length(r)<d.length&&(this.count=this.count-1,this.data[h]=r,true));
   },
-  get_Item:function(k)
+  Item:function(k)
   {
    return this.get(k);
   },
@@ -2220,14 +2213,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
      $0:a$1[1]
     }:null;
    },d);
-  },
-  GetEnumerator:function()
-  {
-   return Enumerator.Get0(this);
-  },
-  GetEnumerator0:function()
-  {
-   return Enumerator.Get0(Arrays.concat(JS.GetFieldValues(this.data)));
   }
  },Obj,Dictionary);
  Dictionary.New$5=Runtime.Ctor(function()
@@ -2288,32 +2273,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  List.listEmpty=function()
  {
   return Operators.FailWith("The input list was empty.");
- };
- Enumerator.Get=function(x)
- {
-  return x instanceof Global.Array?Enumerator.ArrayEnumerator(x):Unchecked.Equals(typeof x,"string")?Enumerator.StringEnumerator(x):x.GetEnumerator();
- };
- Enumerator.ArrayEnumerator=function(s)
- {
-  return new T$1.New(0,null,function(e)
-  {
-   var i;
-   i=e.s;
-   return i<Arrays.length(s)&&(e.c=Arrays.get(s,i),e.s=i+1,true);
-  },void 0);
- };
- Enumerator.StringEnumerator=function(s)
- {
-  return new T$1.New(0,null,function(e)
-  {
-   var i;
-   i=e.s;
-   return i<s.length&&(e.c=s[i],e.s=i+1,true);
-  },void 0);
- };
- Enumerator.Get0=function(x)
- {
-  return x instanceof Global.Array?Enumerator.ArrayEnumerator(x):Unchecked.Equals(typeof x,"string")?Enumerator.StringEnumerator(x):"GetEnumerator0"in x?x.GetEnumerator0():x.GetEnumerator();
  };
  Snap.Map2Unit=function(sn1,sn2)
  {
@@ -2498,7 +2457,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$2.RenderedFullDocTemplate=null;
  };
  HashSet=Collections.HashSet=Runtime.Class({
-  Add:function(item)
+  SAdd:function(item)
   {
    return this.add(item);
   },
@@ -2543,7 +2502,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
      e.Dispose();
    }
   },
-  get_Count:function()
+  Count:function()
   {
    return this.count;
   },
@@ -2586,14 +2545,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
     else
      i=i+1;
    return!c;
-  },
-  GetEnumerator:function()
-  {
-   return Enumerator.Get(HashSetUtil.concat(this.data));
-  },
-  GetEnumerator0:function()
-  {
-   return Enumerator.Get(HashSetUtil.concat(this.data));
   }
  },Obj,HashSet);
  HashSet.New$3=Runtime.Ctor(function()
@@ -2949,13 +2900,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
          if(doc!=null&&doc.$==6)
           {
            t=doc.$0;
-           Arrays.iter(function(c)
+           Arrays.iter(function(h)
            {
-            return function(e)
-            {
-             Docs.SyncElemNode(c,e);
-            };
-           }(false),t.Holes);
+            Docs.SyncElemNode(false,h);
+           },t.Holes);
            Arrays.iter(function(t$1)
            {
             Attrs.Sync(t$1[0],t$1[1]);
@@ -3038,14 +2986,39 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   }),DomNodes.Except(DomNodes.DocChildren(el),DomNodes.Children(el.El,Runtime.GetOptional(el.Delimiters))));
   ins(el.Children,(m=Runtime.GetOptional(el.Delimiters),m!=null&&m.$==1?m.$0[1]:null));
  };
+ Enumerator.Get=function(x)
+ {
+  return x instanceof Global.Array?Enumerator.ArrayEnumerator(x):Unchecked.Equals(typeof x,"string")?Enumerator.StringEnumerator(x):x.GetEnumerator();
+ };
+ Enumerator.ArrayEnumerator=function(s)
+ {
+  return new T$1.New(0,null,function(e)
+  {
+   var i;
+   i=e.s;
+   return i<Arrays.length(s)&&(e.c=Arrays.get(s,i),e.s=i+1,true);
+  },void 0);
+ };
+ Enumerator.StringEnumerator=function(s)
+ {
+  return new T$1.New(0,null,function(e)
+  {
+   var i;
+   i=e.s;
+   return i<s.length&&(e.c=s[i],e.s=i+1,true);
+  },void 0);
+ };
  T$1=Enumerator.T=Runtime.Class({
   MoveNext:function()
   {
-   return this.n(this);
+   var m;
+   m=this.n(this);
+   this.e=m?1:2;
+   return m;
   },
   Current:function()
   {
-   return this.c;
+   return this.e===1?this.c:this.e===0?Operators.FailWith("Enumeration has not started. Call MoveNext."):Operators.FailWith("Enumeration already finished.");
   },
   Dispose:function()
   {
@@ -3060,6 +3033,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   this.c=c;
   this.n=n;
   this.d=d;
+  this.e=0;
  },T$1);
  Elt=UI.Elt=Runtime.Class({},Doc,Elt);
  Elt.New=function(el,attr$1,children)
@@ -3094,27 +3068,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Numeric.TryParseInt32=function(s,r)
  {
   return Numeric.TryParse(s,-2147483648,2147483647,r);
- };
- Snap.Obsolete=function(sn)
- {
-  var $1,m,i,$2,o;
-  m=sn.s;
-  if(m==null||(m!=null&&m.$==2?($1=m.$1,false):m!=null&&m.$==3?($1=m.$1,false):true))
-   void 0;
-  else
-   {
-    sn.s=null;
-    for(i=0,$2=Arrays.length($1)-1;i<=$2;i++){
-     o=Arrays.get($1,i);
-     if(typeof o=="object")
-      (function(sn$1)
-      {
-       Snap.Obsolete(sn$1);
-      }(o));
-     else
-      o();
-    }
-   }
  };
  Snap.New=function(State)
  {
@@ -3359,23 +3312,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  {
   return Operators.FailWith("The input sequence has an insufficient number of elements.");
  };
- KeyCollection=Collections.KeyCollection=Runtime.Class({
-  GetEnumerator$1:function()
-  {
-   return Enumerator.Get(Seq.map(function(kvp)
-   {
-    return kvp.K;
-   },this.d));
-  },
-  GetEnumerator:function()
-  {
-   return this.GetEnumerator$1();
-  },
-  GetEnumerator0:function()
-  {
-   return this.GetEnumerator$1();
-  }
- },Obj,KeyCollection);
+ KeyCollection=Collections.KeyCollection=Runtime.Class({},Obj,KeyCollection);
  KeyCollection.New=Runtime.Ctor(function(d)
  {
   Obj.New.call(this);
@@ -3824,9 +3761,9 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   return m===0?Anims.Const():m===1?Arrays.get(xs$1,0):(dur=Seq.max(Seq.map(function(anim)
   {
    return anim.Duration;
-  },xs$1)),(xs$2=Arrays.map(function(a)
+  },xs$1)),(xs$2=Arrays.map(function(x)
   {
-   return Anims.Prolong(dur,a);
+   return Anims.Prolong(dur,x);
   },xs$1),Anims.Def(dur,function(t)
   {
    Arrays.iter(function(anim)
@@ -4143,13 +4080,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$9.$cctor();
   return SC$9.Empty;
  };
- HashSetUtil.concat=function(o)
- {
-  var r,k;
-  r=[];
-  for(var k$1 in o)r.push.apply(r,o[k$1]);
-  return r;
- };
  Var=UI.Var=Runtime.Class({},Obj,Var);
  BindVar.ApplyValue=function(get,set,_var)
  {
@@ -4350,7 +4280,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  HashSet$1.ToArray=function(set)
  {
   var arr;
-  arr=Arrays.create(set.get_Count(),void 0);
+  arr=Arrays.create(set.Count(),void 0);
   set.CopyTo(arr);
   return arr;
  };
@@ -4521,6 +4451,13 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  {
   return this.v;
  };
+ HashSetUtil.concat=function(o)
+ {
+  var r,k;
+  r=[];
+  for(var k$1 in o)r.push.apply(r,o[k$1]);
+  return r;
+ };
  SC$9.$cctor=function()
  {
   SC$9.$cctor=Global.ignore;
@@ -4543,7 +4480,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
 }(self));
 
 
-if (typeof IntelliFactory !=='undefined') {
-  IntelliFactory.Runtime.ScriptBasePath = '/Content/';
-  IntelliFactory.Runtime.Start();
+if (typeof WebSharper !=='undefined') {
+  WebSharper.Runtime.ScriptBasePath = '/Content/';
+  WebSharper.Runtime.Start();
 }
