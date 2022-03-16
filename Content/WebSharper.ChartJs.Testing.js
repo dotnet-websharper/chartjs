@@ -3092,6 +3092,27 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  {
   return Numeric.TryParse(s,-2147483648,2147483647,r);
  };
+ Snap.Obsolete=function(sn)
+ {
+  var $1,m,i,$2,o;
+  m=sn.s;
+  if(m==null||(m!=null&&m.$==2?($1=m.$1,false):m!=null&&m.$==3?($1=m.$1,false):true))
+   void 0;
+  else
+   {
+    sn.s=null;
+    for(i=0,$2=Arrays.length($1)-1;i<=$2;i++){
+     o=Arrays.get($1,i);
+     if(typeof o=="object")
+      (function(sn$1)
+      {
+       Snap.Obsolete(sn$1);
+      }(o));
+     else
+      o();
+    }
+   }
+ };
  Snap.New=function(State)
  {
   return{
