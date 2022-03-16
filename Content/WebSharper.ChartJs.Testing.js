@@ -381,7 +381,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
 (function(Global)
 {
  "use strict";
- var WebSharper,ChartJs,Testing,Client,Operators,Obj,UI,Doc,HtmlModule,attr,Array,AttrProxy,AttrModule,Client$1,Templates,JavaScript,Pervasives,View,Arrays,List,T,Unchecked,Object,DomUtility,Attrs,SC$1,EventTarget,Node,Collections,Dictionary,DocElemNode,CharacterData,Snap,ADataSet,Scale,CartesianAxis,SC$2,HashSet,Seq,WindowOrWorkerGlobalScope,Docs,Enumerator,T$1,Elt,Attrs$1,Dyn,Numeric,DictionaryUtil,Prepare,Slice,KeyCollection,An,Settings,Abbrev,Mailbox,Updates,Strings,Docs$1,RunState,NodeSet,Concurrency,Anims,SC$3,Fresh,SC$4,SC$5,SC$6,AppendList,Var,BindVar,String,CheckedInput,Queue,Scheduler,Easing,AsyncBody,SC$7,CT,HashSet$1,SC$8,Char,CancellationTokenSource,DomNodes,Error,OperationCanceledException,Lazy,HashSetUtil,SC$9,LazyExtensionsProxy,LazyRecord,Runtime,console,Date;
+ var WebSharper,ChartJs,Testing,Client,Operators,Obj,UI,Doc,HtmlModule,attr,Array,AttrProxy,AttrModule,Client$1,Templates,JavaScript,Pervasives,View,Arrays,List,T,Unchecked,Object,DomUtility,Attrs,SC$1,EventTarget,Node,JS,Collections,Dictionary,DocElemNode,CharacterData,Snap,ADataSet,Scale,CartesianAxis,SC$2,HashSet,Seq,WindowOrWorkerGlobalScope,Docs,Enumerator,T$1,Elt,Attrs$1,Dyn,Numeric,DictionaryUtil,Prepare,Slice,KeyCollection,An,Settings,Abbrev,Mailbox,Updates,Strings,Docs$1,RunState,NodeSet,Concurrency,Anims,SC$3,Fresh,SC$4,SC$5,SC$6,AppendList,HashSetUtil,Var,BindVar,String,CheckedInput,Queue,Scheduler,Easing,AsyncBody,SC$7,CT,HashSet$1,SC$8,Char,CancellationTokenSource,DomNodes,Error,OperationCanceledException,Lazy,SC$9,LazyExtensionsProxy,LazyRecord,Runtime,console,Date;
  WebSharper=Global.WebSharper=Global.WebSharper||{};
  ChartJs=WebSharper.ChartJs=WebSharper.ChartJs||{};
  Testing=ChartJs.Testing=ChartJs.Testing||{};
@@ -410,6 +410,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  SC$1=Global.StartupCode$WebSharper_ChartJs_Testing$Client=Global.StartupCode$WebSharper_ChartJs_Testing$Client||{};
  EventTarget=Global.EventTarget;
  Node=Global.Node;
+ JS=JavaScript.JS=JavaScript.JS||{};
  Collections=WebSharper.Collections=WebSharper.Collections||{};
  Dictionary=Collections.Dictionary=Collections.Dictionary||{};
  DocElemNode=UI.DocElemNode=UI.DocElemNode||{};
@@ -450,6 +451,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  SC$5=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
  SC$6=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
  AppendList=UI.AppendList=UI.AppendList||{};
+ HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
  Var=UI.Var=UI.Var||{};
  BindVar=UI.BindVar=UI.BindVar||{};
  String=UI.String=UI.String||{};
@@ -468,7 +470,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Error=Global.Error;
  OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
  Lazy=WebSharper.Lazy=WebSharper.Lazy||{};
- HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
  SC$9=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
  LazyExtensionsProxy=WebSharper.LazyExtensionsProxy=WebSharper.LazyExtensionsProxy||{};
  LazyRecord=LazyExtensionsProxy.LazyRecord=LazyExtensionsProxy.LazyRecord||{};
@@ -1401,6 +1402,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   for(i=1,$2=len;i<=$2;i++)acc=f(arr[len-i],acc);
   return acc;
  };
+ Arrays.concat=function(xs)
+ {
+  return Global.Array.prototype.concat.apply([],Arrays.ofSeq(xs));
+ };
  Arrays.pick=function(f,arr)
  {
   var m;
@@ -2117,6 +2122,13 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    options:Client.mixedOptions()
   };
  };
+ JS.GetFieldValues=function(o)
+ {
+  var r,k;
+  r=[];
+  for(var k$1 in o)r.push(o[k$1]);
+  return r;
+ };
  Dictionary=Collections.Dictionary=Runtime.Class({
   set_Item:function(k,v)
   {
@@ -2198,6 +2210,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   Item:function(k)
   {
    return this.get(k);
+  },
+  GetEnumerator:function()
+  {
+   return Enumerator.Get0(Arrays.concat(JS.GetFieldValues(this.data)));
   },
   get:function(k)
   {
@@ -2487,6 +2503,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
      i=i+1;
    return!c;
   },
+  GetEnumerator:function()
+  {
+   return Enumerator.Get(HashSetUtil.concat(this.data));
+  },
   ExceptWith:function(xs)
   {
    var e;
@@ -2506,13 +2526,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   {
    return this.count;
   },
-  CopyTo:function(arr)
-  {
-   var i,all,i$1,$1;
-   i=0;
-   all=HashSetUtil.concat(this.data);
-   for(i$1=0,$1=all.length-1;i$1<=$1;i$1++)Arrays.set(arr,i$1,all[i$1]);
-  },
   IntersectWith:function(xs)
   {
    var other,all,i,$1,item;
@@ -2529,6 +2542,12 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    var arr;
    arr=this.data[this.hash(item)];
    return arr==null?false:this.arrRemove(item,arr)&&(this.count=this.count-1,true);
+  },
+  CopyTo:function(arr,index)
+  {
+   var all,i,$1;
+   all=HashSetUtil.concat(this.data);
+   for(i=0,$1=all.length-1;i<=$1;i++)Arrays.set(arr,i+index,all[i]);
   },
   arrRemove:function(item,arr)
   {
@@ -3008,6 +3027,10 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    return i<s.length&&(e.c=s[i],e.s=i+1,true);
   },void 0);
  };
+ Enumerator.Get0=function(x)
+ {
+  return x instanceof Global.Array?Enumerator.ArrayEnumerator(x):Unchecked.Equals(typeof x,"string")?Enumerator.StringEnumerator(x):"GetEnumerator0"in x?x.GetEnumerator0():x.GetEnumerator();
+ };
  T$1=Enumerator.T=Runtime.Class({
   MoveNext:function()
   {
@@ -3312,7 +3335,15 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  {
   return Operators.FailWith("The input sequence has an insufficient number of elements.");
  };
- KeyCollection=Collections.KeyCollection=Runtime.Class({},Obj,KeyCollection);
+ KeyCollection=Collections.KeyCollection=Runtime.Class({
+  GetEnumerator:function()
+  {
+   return Enumerator.Get(Seq.map(function(kvp)
+   {
+    return kvp.K;
+   },this.d));
+  }
+ },Obj,KeyCollection);
  KeyCollection.New=Runtime.Ctor(function(d)
  {
   Obj.New.call(this);
@@ -4080,6 +4111,13 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   SC$9.$cctor();
   return SC$9.Empty;
  };
+ HashSetUtil.concat=function(o)
+ {
+  var r,k;
+  r=[];
+  for(var k$1 in o)r.push.apply(r,o[k$1]);
+  return r;
+ };
  Var=UI.Var=Runtime.Class({},Obj,Var);
  BindVar.ApplyValue=function(get,set,_var)
  {
@@ -4281,7 +4319,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  {
   var arr;
   arr=Arrays.create(set.Count(),void 0);
-  set.CopyTo(arr);
+  set.CopyTo(arr,0);
   return arr;
  };
  HashSet$1.Intersect=function(a,b)
@@ -4450,13 +4488,6 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  Lazy.cachedLazy=function()
  {
   return this.v;
- };
- HashSetUtil.concat=function(o)
- {
-  var r,k;
-  r=[];
-  for(var k$1 in o)r.push.apply(r,o[k$1]);
-  return r;
  };
  SC$9.$cctor=function()
  {
