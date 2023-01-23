@@ -1058,7 +1058,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   var m,m$1,n,fakeroot;
   el.removeAttribute("ws-template");
   m=el.getAttribute("ws-replace");
-  if(m===null)
+  if(m==null)
    ;
   else
    {
@@ -1126,11 +1126,11 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
       },null)]);
       instName=p[1];
       instBaseName=p[0];
-      if(instBaseName!==""&&!Templates.LoadedTemplates().ContainsKey(instBaseName))
+      if(instBaseName!=""&&!Templates.LoadedTemplates().ContainsKey(instBaseName))
        return Prepare.failNotLoaded(instName);
       else
        {
-        if(instBaseName===""&&prepareLocalTemplate!=null)
+        if(instBaseName==""&&prepareLocalTemplate!=null)
          prepareLocalTemplate.$0(instName);
         d=Templates.LoadedTemplates().Item(instBaseName);
         if(!d.ContainsKey(instName))
@@ -1144,7 +1144,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
           attrs=$1.attributes;
           for(i=0,$3=attrs.length-1;i<=$3;i++){
            name$3=attrs.item(i).name.toLowerCase();
-           mappings.set_Item(name$3,(m$1=attrs.item(i).nodeValue,m$1===""?name$3:m$1.toLowerCase()));
+           mappings.set_Item(name$3,(m$1=attrs.item(i).nodeValue,m$1==""?name$3:m$1.toLowerCase()));
            if(!usedHoles.SAdd(name$3))
             console.warn("Hole mapped twice",name$3);
           }
@@ -1199,7 +1199,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    function fillHole(p,n)
    {
     var parsed;
-    if(name$2==="title"&&fillWith.hasChildNodes())
+    if(name$2=="title"&&fillWith.hasChildNodes())
      {
       parsed=DomUtility.ParseHTMLIntoFakeRoot(fillWith.textContent);
       fillWith.removeChild(fillWith.firstChild);
@@ -1225,7 +1225,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    if(Unchecked.Equals(m$2,null))
     {
      m=instance.querySelector("[ws-replace="+name$2+"]");
-     return Unchecked.Equals(m,null)?(m$1=instance.querySelector("slot[name="+name$2+"]"),instance.tagName.toLowerCase()==="template"?(fillHole(m$1.parentNode,m$1),void m$1.parentNode.removeChild(m$1)):null):(fillHole(m.parentNode,m),void m.parentNode.removeChild(m));
+     return Unchecked.Equals(m,null)?(m$1=instance.querySelector("slot[name="+name$2+"]"),instance.tagName.toLowerCase()=="template"?(fillHole(m$1.parentNode,m$1),void m$1.parentNode.removeChild(m$1)):null):(fillHole(m.parentNode,m),void m.parentNode.removeChild(m));
     }
    else
     {
@@ -3352,7 +3352,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
     m.removeAttribute("ws-attr");
     for(i=0,$1=fillWith.attributes.length-1;i<=$1;i++){
      a=fillWith.attributes.item(i);
-     if(a.name==="class"&&m.hasAttribute("class"))
+     if(a.name=="class"&&m.hasAttribute("class"))
       m.setAttribute("class",m.getAttribute("class")+" "+a.nodeValue);
      else
       m.setAttribute(a.name,a.nodeValue);
@@ -3437,7 +3437,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   {
    var m;
    m=el.getAttribute(name);
-   if(m===null)
+   if(m==null)
     ;
    else
     el.setAttribute(name,m.toLowerCase());
@@ -3448,7 +3448,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
   holedAttrs=[];
   for(i=0,$1=attrs.length-1;i<=$1;i++){
    a=attrs.item(i);
-   if(Strings.StartsWith(a.nodeName,"ws-on")&&a.nodeName!=="ws-onafterrender"&&a.nodeName!=="ws-on")
+   if(Strings.StartsWith(a.nodeName,"ws-on")&&a.nodeName!="ws-onafterrender"&&a.nodeName!="ws-on")
     {
      toRemove.push(a.nodeName);
      events.push(Slice.string(a.nodeName,{
@@ -3657,7 +3657,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
  };
  Strings.protect=function(s)
  {
-  return s===null?"":s;
+  return s==null?"":s;
  };
  RunState.New=function(PreviousNodes,Top)
  {
@@ -4027,7 +4027,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    {
     el.addEventListener("change",function()
     {
-     return!Unchecked.Equals(_var.Get(),el.checked)?_var.Set(el.checked):null;
+     return _var.Get()!=el.checked?_var.Set(el.checked):null;
     });
    },function($1)
    {
@@ -4139,7 +4139,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    {
     var i$1;
     i$1=i.get_Input();
-    return el.value!==i$1?void(el.value=i$1):null;
+    return el.value!=i$1?void(el.value=i$1):null;
    };
   };
   SC$4.IntGetChecked=function(el)
@@ -4206,7 +4206,7 @@ if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.mat
    {
     var i$1;
     i$1=i.get_Input();
-    return el.value!==i$1?void(el.value=i$1):null;
+    return el.value!=i$1?void(el.value=i$1):null;
    };
   };
   SC$4.FloatGetChecked=function(el)
