@@ -8,7 +8,7 @@ repositoryUrl https://github.com/dotnet-websharper/chartjs/
 licenseUrl https://github.com/dotnet-websharper/chartjs/blob/master/LICENSE.md
 iconUrl https://github.com/dotnet-websharper/core/raw/websharper50/tools/WebSharper.png
 description
-    WebSharper bindings for moment.js 2.29.1
+    WebSharper bindings for chartjs 4.4+
 tags
     Web JavaScript F# C#
 files
