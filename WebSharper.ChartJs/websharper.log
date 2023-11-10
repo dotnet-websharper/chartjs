@@ -1,11 +1,11 @@
-2023-10-27 09:44:06.9448|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\7.0.3.355-beta2\tools\net6.0\win-x64 (server side)
-2023-10-27 09:44:06.9719|DEBUG|Program|pipename is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\7.0.3.355-beta2\tools\net6.0\win-x64 (server side)
-2023-10-27 09:44:06.9719|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs\WebSharper.ChartJs.fsproj
-2023-10-27 09:44:06.9837|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "binding" instead of "Extension" for your project type
-2023-10-27 09:44:12.3913|TRACE|Program|Server sends: n: F# compilation: 00:00:05.5112128
-2023-10-27 09:44:12.4927|TRACE|Program|Server sends: n: Loading IExtension implementation: 00:00:00.1047205
-2023-10-27 09:44:12.5958|TRACE|Program|Server sends: n: Getting Assembly definition: 00:00:00.1030596
-2023-10-27 09:44:13.0958|TRACE|Program|Server sends: n: Built assembly: 00:00:00.4999694
-2023-10-27 09:44:13.7360|TRACE|Program|Server sends: n: Creating WebSharper metadata: 00:00:00.6402431
-2023-10-27 09:44:13.9191|TRACE|Program|Server sends: n: Writing final dll: 00:00:00.1830765
-2023-10-27 09:44:13.9249|TRACE|Program|Server sends: x: 0
+2023-11-10 16:18:56.1929|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\7.0.3.364-beta3\tools\net6.0\win-x64 (server side)
+2023-11-10 16:18:56.2118|DEBUG|Program|pipename is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\7.0.3.364-beta3\tools\net6.0\win-x64 (server side)
+2023-11-10 16:18:56.2118|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs\WebSharper.ChartJs.fsproj
+2023-11-10 16:18:56.2118|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "binding" instead of "Extension" for your project type
+2023-11-10 16:18:59.8686|TRACE|Program|Server sends: n: F# compilation: 00:00:03.7208441
+2023-11-10 16:18:59.9357|TRACE|Program|Server sends: n: Loading IExtension implementation: 00:00:00.0692752
+2023-11-10 16:18:59.9961|TRACE|Program|Server sends: n: Getting Assembly definition: 00:00:00.0603518
+2023-11-10 16:19:00.3266|TRACE|Program|Server sends: n: Built assembly: 00:00:00.3305524
+2023-11-10 16:19:00.7380|TRACE|Program|Server sends: n: Creating WebSharper metadata: 00:00:00.4113655
+2023-11-10 16:19:00.8658|TRACE|Program|Server sends: n: Writing final dll: 00:00:00.1278442
+2023-11-10 16:19:00.8699|TRACE|Program|Server sends: x: 0
