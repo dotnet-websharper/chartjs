@@ -1,0 +1,22 @@
+2023-11-16 18:50:27.2091|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\7.0.4.376-beta3\tools\net6.0\win-x64 (server side)
+2023-11-16 18:50:27.2091|DEBUG|Program|pipename is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\7.0.4.376-beta3\tools\net6.0\win-x64 (server side)
+2023-11-16 18:50:27.2091|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs.Testing\WebSharper.ChartJs.Testing.fsproj
+2023-11-16 18:50:27.2091|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "spa" instead of "bundle" for your project type
+2023-11-16 18:50:29.0417|TRACE|Program|Server sends: n: F# compilation: 00:00:01.8713202
+2023-11-16 18:50:30.5146|TRACE|Program|Server sends: n: Checking project: 00:00:01.4729252
+2023-11-16 18:50:30.5146|TRACE|Program|Server sends: n: Waiting on merged metadata: 00:00:00.0007767
+2023-11-16 18:50:30.8554|TRACE|Program|Server sends: n: Parsing with FCS: 00:00:00.3400088
+2023-11-16 18:50:30.8554|TRACE|Program|Server sends: n: Analyzing function arguments: 00:00:00.0030473
+2023-11-16 18:50:30.9152|TRACE|Program|Server sends: n: Resolving names: 00:00:00.0566762
+2023-11-16 18:50:31.1064|TRACE|Program|Server sends: n: WebSharper translation: 00:00:00.1912215
+2023-11-16 18:50:31.1288|TRACE|Program|Server sends: n: Source position transformations: 00:00:00.0224444
+2023-11-16 18:50:31.1803|TRACE|Program|Server sends: n: Packaging assembly: 00:00:00.0514868
+2023-11-16 18:50:31.2930|TRACE|Program|Server sends: n: Writing WebSharper.ChartJs.Testing.Client.js: 00:00:00.1126856
+2023-11-16 18:50:31.2930|TRACE|Program|Server sends: n: Writing $StartupCode_Client.js: 00:00:00.0008313
+2023-11-16 18:50:31.2930|TRACE|Program|Server sends: n: Writing $EntryPoint.js: 00:00:00.0006881
+2023-11-16 18:50:31.4199|TRACE|Program|Server sends: n: Writing .d.ts files: 00:00:00.1253900
+2023-11-16 18:50:31.4199|TRACE|Program|Server sends: n: Hashing resources: 00:00:00.0039065
+2023-11-16 18:50:31.5857|TRACE|Program|Server sends: n: Serializing metadata: 00:00:00.1619020
+2023-11-16 18:50:31.6434|TRACE|Program|Server sends: n: Writing resources into assembly: 00:00:00.0577118
+2023-11-16 18:50:31.8105|TRACE|Program|Server sends: n: Bundling: 00:00:00.1670448
+2023-11-16 18:50:31.8105|TRACE|Program|Server sends: x: 0

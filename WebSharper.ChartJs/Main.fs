@@ -26,6 +26,10 @@ open WebSharper.JQuery
 
 module Definition =
 
+    let Class name = 
+        Class name
+        |> Import name "chart.js/auto"
+
     let ChartClass =
         Class "Chart"
 
@@ -1524,11 +1528,6 @@ module Definition =
                 TimeSeriesAxis
                 AxisPosition
                 Context
-            ]
-            Namespace "WebSharper.ChartJs.Resources" [
-                Resource "Chart.js" "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"
-                |> fun resource ->
-                    resource.AssemblyWide()
             ]
         ]
 
