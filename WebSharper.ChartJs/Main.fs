@@ -701,7 +701,7 @@ module Definition =
                     "onHover", (T<Dom.Event> * LegendItem ^-> T<unit>)
                     "onLeave", (T<Dom.Event> * LegendItem ^-> T<unit>)
                     "reverse", T<bool>
-                    "labels", !| LegendLabelConfig.Type
+                    "labels", LegendLabelConfig.Type
                     "rtl", T<bool>
                     "textDirection", T<string>
                     "title", LegendTitleConfig.Type
