@@ -225,7 +225,7 @@ let _c_1=Lazy((_i) => class Doc extends _c {
   static Element(name, attr, children){
     const a=_c_3.Concat(attr);
     const a_1=_c_1.Concat(children);
-    return _c_12.New(globalThis.document.createElement(name), a, a_1);
+    return _c_13.New(globalThis.document.createElement(name), a, a_1);
   }
   static Mk(node, updates){
     return new Doc(node, updates);
@@ -675,7 +675,7 @@ let _c_5=Lazy((_i) => class FSharpList {
     _c_5=_i(this);
   }
   GetEnumerator(){
-    return new _c_11(this, null, (e) => {
+    return new _c_12(this, null, (e) => {
       const m=e.s;
       return m.$==0?false:(e.c=m.$0,e.s=m.$1,true);
     }, void 0);
@@ -985,19 +985,19 @@ function ParseHTMLIntoFakeRoot(elem){
   }
 }
 function rhtml(){
-  return _c_18.rhtml;
+  return _c_19.rhtml;
 }
 function wrapMap(){
-  return _c_18.wrapMap;
+  return _c_19.wrapMap;
 }
 function defaultWrap(){
-  return _c_18.defaultWrap;
+  return _c_19.defaultWrap;
 }
 function rxhtmlTag(){
-  return _c_18.rxhtmlTag;
+  return _c_19.rxhtmlTag;
 }
 function rtagName(){
-  return _c_18.rtagName;
+  return _c_19.rtagName;
 }
 function IterSelector(el, selector, f){
   const l=el.querySelectorAll(selector);
@@ -1032,7 +1032,7 @@ function AppendTree(a, b){
   }
 }
 function EmptyAttr(){
-  return _c_17.EmptyAttr;
+  return _c_18.EmptyAttr;
 }
 function Insert(elem, tree){
   const nodes=[];
@@ -1362,7 +1362,7 @@ let _c_7=Lazy((_i) => class Dictionary extends _c {
     return this.remove(k);
   }
   get Keys(){
-    return new _c_14(this);
+    return new _c_15(this);
   }
   set(k, v){
     const h=this.hash(k);
@@ -1478,13 +1478,13 @@ function Get(x){
   return x instanceof Array?ArrayEnumerator(x):Equals(typeof x, "string")?StringEnumerator(x):x.GetEnumerator();
 }
 function ArrayEnumerator(s){
-  return new _c_11(0, null, (e) => {
+  return new _c_12(0, null, (e) => {
     const i=e.s;
     return i<length(s)&&(e.c=get(s, i),e.s=i+1,true);
   }, void 0);
 }
 function StringEnumerator(s){
-  return new _c_11(0, null, (e) => {
+  return new _c_12(0, null, (e) => {
     const i=e.s;
     return i<s.length&&(e.c=s[i],e.s=i+1,true);
   }, void 0);
@@ -1782,7 +1782,7 @@ function collect(f, s){
 function map_1(f, s){
   return{GetEnumerator:() => {
     const en=Get(s);
-    return new _c_11(null, null, (e) => en.MoveNext()&&(e.c=f(en.Current),true), () => {
+    return new _c_12(null, null, (e) => en.MoveNext()&&(e.c=f(en.Current),true), () => {
       en.Dispose();
     });
   }};
@@ -1815,7 +1815,7 @@ function concat_1(ss){
           }
         }
     }
-    return new _c_11(null, null, next, (st) => {
+    return new _c_12(null, null, next, (st) => {
       const x=st.s;
       if(!Equals(x, null))x.Dispose();
       if(!Equals(outerE, null))outerE.Dispose();
@@ -1845,7 +1845,7 @@ function take(n, s){
   n<0?nonNegative():void 0;
   return{GetEnumerator:() => {
     const e=[Get(s)];
-    return new _c_11(0, null, (o) => {
+    return new _c_12(0, null, (o) => {
       o.s=o.s+1;
       if(o.s>n)return false;
       else {
@@ -1859,7 +1859,7 @@ function take(n, s){
   }};
 }
 function initInfinite(f){
-  return{GetEnumerator:() => new _c_11(0, null, (e) => {
+  return{GetEnumerator:() => new _c_12(0, null, (e) => {
     e.c=f(e.s);
     e.s=e.s+1;
     return true;
@@ -1883,6 +1883,11 @@ function exists_1(p, s){
     if(typeof e=="object"&&isIDisposable(e))e.Dispose();
   }
 }
+let _c_11=Lazy((_i) => class Exception extends _c {
+  static {
+    _c_11=_i(this);
+  }
+});
 function LinkElement(el, children){
   InsertDoc(el, children, null);
 }
@@ -2075,9 +2080,9 @@ function DoSyncElement(el){
   const m=GetOptional(el.Delimiters);
   ins(_1, m!=null&&m.$==1?m.$0[1]:null);
 }
-let _c_11=Lazy((_i) => class T extends _c {
+let _c_12=Lazy((_i) => class T extends _c {
   static {
-    _c_11=_i(this);
+    _c_12=_i(this);
   }
   s;
   c;
@@ -2104,11 +2109,11 @@ let _c_11=Lazy((_i) => class T extends _c {
     this.e=0;
   }
 });
-let _c_12=Lazy((_i) => {
+let _c_13=Lazy((_i) => {
   Force(_c_1);
   return class Elt extends _c_1 {
     static {
-      _c_12=_i(this);
+      _c_13=_i(this);
     }
     docNode_1;
     updates_1;
@@ -2116,7 +2121,7 @@ let _c_12=Lazy((_i) => {
     rvUpdates;
     static New(el, attr, children){
       const node=CreateElemNode(el, attr, children.docNode);
-      const rvUpdates=_c_15.Create(children.updates);
+      const rvUpdates=_c_16.Create(children.updates);
       return new Elt(ElemDoc(node), Map2Unit(Updates(node.Attr), rvUpdates.v), el, rvUpdates);
     }
     constructor(docNode, updates, elt, rvUpdates){
@@ -2172,13 +2177,13 @@ function Ready(Item1, Item2){
     $1:Item2
   };
 }
-let _c_13=Lazy((_i) => class TemplateHole extends _c {
+let _c_14=Lazy((_i) => class TemplateHole extends _c {
   static {
-    _c_13=_i(this);
+    _c_14=_i(this);
   }
 });
 function notPresent(){
-  throw new _c_22("New");
+  throw new _c_23("New");
 }
 function convertTextNode(n){
   let m=null;
@@ -2355,9 +2360,9 @@ function arrContains(item, arr){
 function nonNegative(){
   return FailWith("The input must be non-negative.");
 }
-let _c_14=Lazy((_i) => class KeyCollection extends _c {
+let _c_15=Lazy((_i) => class KeyCollection extends _c {
   static {
-    _c_14=_i(this);
+    _c_15=_i(this);
   }
   d;
   GetEnumerator(){
@@ -2410,7 +2415,7 @@ function Concat(xs){
   return Anim(Concat_1(map_1(List, xs)));
 }
 function BatchUpdatesEnabled(){
-  return _c_16.BatchUpdatesEnabled;
+  return _c_17.BatchUpdatesEnabled;
 }
 function StartProcessor(procAsync){
   const st=[0];
@@ -2430,9 +2435,9 @@ function StartProcessor(procAsync){
     else Equals(m, 1)?st[0]=2:void 0;
   };
 }
-let _c_15=Lazy((_i) => class Updates_1 {
+let _c_16=Lazy((_i) => class Updates_1 {
   static {
-    _c_15=_i(this);
+    _c_16=_i(this);
   }
   c;
   s;
@@ -2440,7 +2445,7 @@ let _c_15=Lazy((_i) => class Updates_1 {
   static Create(v){
     let var_1;
     var_1=null;
-    var_1=_c_15.New(v, null, () => {
+    var_1=_c_16.New(v, null, () => {
       let c;
       c=var_1.s;
       return c===null?(c=Copy(var_1.c()),var_1.s=c,WhenObsoleteRun(c, () => {
@@ -2450,7 +2455,7 @@ let _c_15=Lazy((_i) => class Updates_1 {
     return var_1;
   }
   static New(Current, Snap, VarView){
-    return Create_1(_c_15, {
+    return Create_1(_c_16, {
       c:Current, 
       s:Snap, 
       v:VarView
@@ -2578,7 +2583,7 @@ function Bind(r, f){
   });
 }
 function Zero(){
-  return _c_25.Zero;
+  return _c_26.Zero;
 }
 function Start(c, ctOpt){
   const d=(defCTS())[0];
@@ -2595,7 +2600,7 @@ function Return(x){
   };
 }
 function scheduler(){
-  return _c_25.scheduler;
+  return _c_26.scheduler;
 }
 function checkCancel(r){
   return(c) => {
@@ -2604,7 +2609,7 @@ function checkCancel(r){
   };
 }
 function defCTS(){
-  return _c_25.defCTS;
+  return _c_26.defCTS;
 }
 function UncaughtAsyncError(e){
   console.log("WebSharper: Uncaught asynchronous exception", e);
@@ -2635,10 +2640,10 @@ function FromContinuations(subscribe){
   };
 }
 function cancel(c){
-  c.k(Cc(new _c_28("New", c.ct)));
+  c.k(Cc(new _c_29("New", c.ct)));
 }
 function UseAnimations(){
-  return _c_19.UseAnimations;
+  return _c_20.UseAnimations;
 }
 function Actions(a){
   return ConcatActions(choose((a_1) => a_1.$==1?Some(a_1.$0):null, ToArray_1(a.$0)));
@@ -2678,9 +2683,9 @@ function Prolong(nextDuration, anim){
   const last=Create(() => anim.Compute(anim.Duration));
   return{Compute:(t) => t>=dur?last.f():comp(t), Duration:nextDuration};
 }
-let _c_16=Lazy((_i) => class Proxy {
+let _c_17=Lazy((_i) => class Proxy {
   static {
-    _c_16=_i(this);
+    _c_17=_i(this);
   }
   static BatchUpdatesEnabled;
   static {
@@ -2692,14 +2697,14 @@ function Int(){
   return counter();
 }
 function set_counter(_1){
-  _c_26.counter=_1;
+  _c_27.counter=_1;
 }
 function counter(){
-  return _c_26.counter;
+  return _c_27.counter;
 }
-let _c_17=Lazy((_i) => class Client {
+let _c_18=Lazy((_i) => class Client {
   static {
-    _c_17=_i(this);
+    _c_18=_i(this);
   }
   static FloatApplyChecked;
   static FloatGetChecked;
@@ -2802,12 +2807,12 @@ let _c_17=Lazy((_i) => class Client {
       let _1;
       let o;
       const s_8=el.value;
-      if(isBlank(s_8))_1=(el.checkValidity?el.checkValidity():true)?_c_21.Blank(s_8):_c_21.Invalid(s_8);
+      if(isBlank(s_8))_1=(el.checkValidity?el.checkValidity():true)?_c_22.Blank(s_8):_c_22.Invalid(s_8);
       else {
         const m=(o=0,[TryParse(s_8, {get:() => o, set:(v) => {
           o=v;
         }}), o]);
-        _1=m[0]?_c_21.Valid(m[1], s_8):_c_21.Invalid(s_8);
+        _1=m[0]?_c_22.Valid(m[1], s_8):_c_22.Invalid(s_8);
       }
       return Some(_1);
     };
@@ -2835,10 +2840,10 @@ let _c_17=Lazy((_i) => class Client {
     this.FloatGetChecked=(el) => {
       let _1;
       const s_8=el.value;
-      if(isBlank(s_8))_1=(el.checkValidity?el.checkValidity():true)?_c_21.Blank(s_8):_c_21.Invalid(s_8);
+      if(isBlank(s_8))_1=(el.checkValidity?el.checkValidity():true)?_c_22.Blank(s_8):_c_22.Invalid(s_8);
       else {
         const i=+s_8;
-        _1=isNaN(i)?_c_21.Invalid(s_8):_c_21.Valid(i, s_8);
+        _1=isNaN(i)?_c_22.Invalid(s_8):_c_22.Valid(i, s_8);
       }
       return Some(_1);
     };
@@ -2847,9 +2852,9 @@ let _c_17=Lazy((_i) => class Client {
     this.FloatApplyChecked=(v) => ApplyValue(g_7, s_7, v);
   }
 });
-let _c_18=Lazy((_i) => class $StartupCode_DomUtility {
+let _c_19=Lazy((_i) => class $StartupCode_DomUtility {
   static {
-    _c_18=_i(this);
+    _c_19=_i(this);
   }
   static defaultWrap;
   static wrapMap;
@@ -2866,14 +2871,14 @@ let _c_18=Lazy((_i) => class $StartupCode_DomUtility {
     this.defaultWrap=[0, "", ""];
   }
 });
-let _c_19=Lazy((_i) => class $StartupCode_Animation {
+let _c_20=Lazy((_i) => class $StartupCode_Animation {
   static {
-    _c_19=_i(this);
+    _c_20=_i(this);
   }
   static UseAnimations;
   static CubicInOut;
   static {
-    this.CubicInOut=_c_24.Custom((t) => {
+    this.CubicInOut=_c_25.Custom((t) => {
       const t2=t*t;
       return 3*t2-2*(t2*t);
     });
@@ -2912,7 +2917,7 @@ function Concat_1(xs){
   return TreeReduce(Empty(), Append_1, x);
 }
 function Empty(){
-  return _c_29.Empty;
+  return _c_30.Empty;
 }
 function concat_3(o){
   let r=[];
@@ -2920,9 +2925,9 @@ function concat_3(o){
   for(var k_1 in o)r.push.apply(r, o[k_1]);
   return r;
 }
-let _c_20=Lazy((_i) => class Var extends _c {
+let _c_21=Lazy((_i) => class Var extends _c {
   static {
-    _c_20=_i(this);
+    _c_21=_i(this);
   }
 });
 function ApplyValue(get_1, set_1, var_1){
@@ -2948,22 +2953,22 @@ function ApplyValue(get_1, set_1, var_1){
   }, var_1.View)];
 }
 function StringSet(){
-  return _c_17.StringSet;
+  return _c_18.StringSet;
 }
 function StringGet(){
-  return _c_17.StringGet;
+  return _c_18.StringGet;
 }
 function StringListSet(){
-  return _c_17.StringListSet;
+  return _c_18.StringListSet;
 }
 function StringListGet(){
-  return _c_17.StringListGet;
+  return _c_18.StringListGet;
 }
 function DateTimeSetUnchecked(){
-  return _c_17.DateTimeSetUnchecked;
+  return _c_18.DateTimeSetUnchecked;
 }
 function DateTimeGetUnchecked(){
-  return _c_17.DateTimeGetUnchecked;
+  return _c_18.DateTimeGetUnchecked;
 }
 function FileApplyValue(get_1, set_1, var_1){
   let expectedValue;
@@ -2985,41 +2990,41 @@ function FileApplyValue(get_1, set_1, var_1){
   }, var_1.View)];
 }
 function FileSetUnchecked(){
-  return _c_17.FileSetUnchecked;
+  return _c_18.FileSetUnchecked;
 }
 function FileGetUnchecked(){
-  return _c_17.FileGetUnchecked;
+  return _c_18.FileGetUnchecked;
 }
 function IntSetUnchecked(){
-  return _c_17.IntSetUnchecked;
+  return _c_18.IntSetUnchecked;
 }
 function IntGetUnchecked(){
-  return _c_17.IntGetUnchecked;
+  return _c_18.IntGetUnchecked;
 }
 function IntSetChecked(){
-  return _c_17.IntSetChecked;
+  return _c_18.IntSetChecked;
 }
 function IntGetChecked(){
-  return _c_17.IntGetChecked;
+  return _c_18.IntGetChecked;
 }
 function FloatSetUnchecked(){
-  return _c_17.FloatSetUnchecked;
+  return _c_18.FloatSetUnchecked;
 }
 function FloatGetUnchecked(){
-  return _c_17.FloatGetUnchecked;
+  return _c_18.FloatGetUnchecked;
 }
 function FloatSetChecked(){
-  return _c_17.FloatSetChecked;
+  return _c_18.FloatSetChecked;
 }
 function FloatGetChecked(){
-  return _c_17.FloatGetChecked;
+  return _c_18.FloatGetChecked;
 }
 function isBlank(s){
   return forall_2(IsWhiteSpace, s);
 }
-let _c_21=Lazy((_i) => class CheckedInput {
+let _c_22=Lazy((_i) => class CheckedInput {
   static {
-    _c_21=_i(this);
+    _c_22=_i(this);
   }
   get Input(){
     return this.$==1?this.$0:this.$==2?this.$0:this.$1;
@@ -3041,11 +3046,11 @@ let _c_21=Lazy((_i) => class CheckedInput {
 function Clear(a){
   a.splice(0, length(a));
 }
-let _c_22=Lazy((_i) => {
+let _c_23=Lazy((_i) => {
   Force(Error);
   return class KeyNotFoundException extends Error {
     static {
-      _c_22=_i(this);
+      _c_23=_i(this);
     }
     static New(){
       return new this("New");
@@ -3065,9 +3070,9 @@ let _c_22=Lazy((_i) => {
     }
   };
 });
-let _c_23=Lazy((_i) => class Scheduler extends _c {
+let _c_24=Lazy((_i) => class Scheduler extends _c {
   static {
-    _c_23=_i(this);
+    _c_24=_i(this);
   }
   idle;
   robin;
@@ -3098,9 +3103,9 @@ let _c_23=Lazy((_i) => class Scheduler extends _c {
     this.robin=[];
   }
 });
-let _c_24=Lazy((_i) => class Easing extends _c {
+let _c_25=Lazy((_i) => class Easing extends _c {
   static {
-    _c_24=_i(this);
+    _c_25=_i(this);
   }
   transformTime;
   static Custom(f){
@@ -3123,9 +3128,9 @@ function Ok(Item){
 function Cc(Item){
   return{$:2, $0:Item};
 }
-let _c_25=Lazy((_i) => class $StartupCode_Concurrency {
+let _c_26=Lazy((_i) => class $StartupCode_Concurrency {
   static {
-    _c_25=_i(this);
+    _c_26=_i(this);
   }
   static GetCT;
   static Zero;
@@ -3134,8 +3139,8 @@ let _c_25=Lazy((_i) => class $StartupCode_Concurrency {
   static noneCT;
   static {
     this.noneCT=New_3(false, []);
-    this.scheduler=new _c_23();
-    this.defCTS=[new _c_27()];
+    this.scheduler=new _c_24();
+    this.defCTS=[new _c_28()];
     this.Zero=Return();
     this.GetCT=(c) => {
       c.k(Ok(c.ct));
@@ -3163,9 +3168,9 @@ function Intersect_1(a, b){
   set_1.IntersectWith(ToArray_2(b));
   return set_1;
 }
-let _c_26=Lazy((_i) => class $StartupCode_Abbrev {
+let _c_27=Lazy((_i) => class $StartupCode_Abbrev {
   static {
-    _c_26=_i(this);
+    _c_27=_i(this);
   }
   static counter;
   static {
@@ -3185,9 +3190,9 @@ function TryParse_2(s, min, max_1, r){
   if(ok)r.set(x);
   return ok;
 }
-let _c_27=Lazy((_i) => class CancellationTokenSource extends _c {
+let _c_28=Lazy((_i) => class CancellationTokenSource extends _c {
   static {
-    _c_27=_i(this);
+    _c_28=_i(this);
   }
   init;
   c;
@@ -3263,11 +3268,11 @@ function DocChildren(node){
 function DomNodes(Item){
   return{$:0, $0:Item};
 }
-let _c_28=Lazy((_i) => {
+let _c_29=Lazy((_i) => {
   Force(Error);
   return class OperationCanceledException extends Error {
     static {
-      _c_28=_i(this);
+      _c_29=_i(this);
     }
     ct;
     static New(ct){
@@ -3309,9 +3314,9 @@ function forceLazy(){
 function cachedLazy(){
   return this.v;
 }
-let _c_29=Lazy((_i) => class $StartupCode_AppendList {
+let _c_30=Lazy((_i) => class $StartupCode_AppendList {
   static {
-    _c_29=_i(this);
+    _c_30=_i(this);
   }
   static Empty;
   static {
