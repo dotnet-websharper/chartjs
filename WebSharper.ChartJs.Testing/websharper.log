@@ -1,24 +1,24 @@
-2024-08-09 16:02:56.2377|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\8.0.0.471-beta1\tools\net8.0\win-x64 (server side)
-2024-08-09 16:02:56.2377|DEBUG|Program|pipename is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\8.0.0.471-beta1\tools\net8.0\win-x64 (server side)
-2024-08-09 16:02:56.2377|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs.Testing\WebSharper.ChartJs.Testing.fsproj
-2024-08-09 16:02:56.2377|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "spa" instead of "bundle" for your project type
-2024-08-09 16:02:58.4252|TRACE|Program|Server sends: n: F# compilation: 00:00:02.2126105
-2024-08-09 16:02:59.7794|TRACE|Program|Server sends: n: Checking project: 00:00:01.3546503
-2024-08-09 16:02:59.7794|TRACE|Program|Server sends: n: Waiting on merged metadata: 00:00:00.0013299
-2024-08-09 16:03:00.0839|TRACE|Program|Server sends: n: Parsing with FCS: 00:00:00.3030778
-2024-08-09 16:03:00.0870|TRACE|Program|Server sends: n: Analyzing function arguments: 00:00:00.0031163
-2024-08-09 16:03:00.1353|TRACE|Program|Server sends: n: Resolving names: 00:00:00.0482762
-2024-08-09 16:03:00.3040|TRACE|Program|Server sends: n: WebSharper translation: 00:00:00.1687054
-2024-08-09 16:03:00.3163|TRACE|Program|Server sends: n: Source position transformations: 00:00:00.0123274
-2024-08-09 16:03:00.3607|TRACE|Program|Server sends: n: Packaging assembly: 00:00:00.0443884
-2024-08-09 16:03:00.4299|TRACE|Program|Server sends: n: Computing metadata: 00:00:00.0692015
-2024-08-09 16:03:00.4727|TRACE|Program|Server sends: n: Writing reexports root.js: 00:00:00.0427841
-2024-08-09 16:03:00.5129|TRACE|Program|Server sends: n: Writing WebSharper.ChartJs.Testing.Client.js: 00:00:00.0402666
-2024-08-09 16:03:00.5129|TRACE|Program|Server sends: n: Writing $StartupCode_Client.js: 00:00:00.0009134
-2024-08-09 16:03:00.5129|TRACE|Program|Server sends: n: Writing $EntryPoint.js: 00:00:00.0009071
-2024-08-09 16:03:00.5333|TRACE|Program|Server sends: n: Writing .d.ts files: 00:00:00.0185718
-2024-08-09 16:03:00.5333|TRACE|Program|Server sends: n: Hashing resources: 00:00:00.0029913
-2024-08-09 16:03:00.7252|TRACE|Program|Server sends: n: Serializing metadata: 00:00:00.1888782
-2024-08-09 16:03:00.7598|TRACE|Program|Server sends: n: Writing resources into assembly: 00:00:00.0346641
-2024-08-09 16:03:00.9461|TRACE|Program|Server sends: n: Bundling: 00:00:00.1862518
-2024-08-09 16:03:00.9461|TRACE|Program|Server sends: x: 0
+2024-08-16 10:39:21.9045|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\8.0.0.473-beta1\tools\net8.0\win-x64 (server side)
+2024-08-16 10:39:21.9050|DEBUG|Program|pipename is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\8.0.0.473-beta1\tools\net8.0\win-x64 (server side)
+2024-08-16 10:39:21.9050|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs.Testing\WebSharper.ChartJs.Testing.fsproj
+2024-08-16 10:39:21.9050|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "spa" instead of "bundle" for your project type
+2024-08-16 10:39:23.9665|TRACE|Program|Server sends: n: F# compilation: 00:00:02.0782650
+2024-08-16 10:39:25.4143|TRACE|Program|Server sends: n: Checking project: 00:00:01.4477859
+2024-08-16 10:39:25.4143|TRACE|Program|Server sends: n: Waiting on merged metadata: 00:00:00.0012568
+2024-08-16 10:39:25.7063|TRACE|Program|Server sends: n: Parsing with FCS: 00:00:00.2907702
+2024-08-16 10:39:25.7063|TRACE|Program|Server sends: n: Analyzing function arguments: 00:00:00.0026875
+2024-08-16 10:39:25.7548|TRACE|Program|Server sends: n: Resolving names: 00:00:00.0457343
+2024-08-16 10:39:25.9260|TRACE|Program|Server sends: n: WebSharper translation: 00:00:00.1712455
+2024-08-16 10:39:25.9260|TRACE|Program|Server sends: n: Source position transformations: 00:00:00.0116411
+2024-08-16 10:39:25.9820|TRACE|Program|Server sends: n: Packaging assembly: 00:00:00.0443731
+2024-08-16 10:39:26.0533|TRACE|Program|Server sends: n: Computing metadata: 00:00:00.0712282
+2024-08-16 10:39:26.0887|TRACE|Program|Server sends: n: Writing reexports root.js: 00:00:00.0354748
+2024-08-16 10:39:26.1277|TRACE|Program|Server sends: n: Writing WebSharper.ChartJs.Testing.Client.js: 00:00:00.0389850
+2024-08-16 10:39:26.1277|TRACE|Program|Server sends: n: Writing $StartupCode_Client.js: 00:00:00.0009546
+2024-08-16 10:39:26.1277|TRACE|Program|Server sends: n: Writing $EntryPoint.js: 00:00:00.0004368
+2024-08-16 10:39:26.1504|TRACE|Program|Server sends: n: Writing .d.ts files: 00:00:00.0212703
+2024-08-16 10:39:26.1504|TRACE|Program|Server sends: n: Hashing resources: 00:00:00.0024601
+2024-08-16 10:39:26.3312|TRACE|Program|Server sends: n: Serializing metadata: 00:00:00.1783636
+2024-08-16 10:39:26.3647|TRACE|Program|Server sends: n: Writing resources into assembly: 00:00:00.0335561
+2024-08-16 10:39:26.5195|TRACE|Program|Server sends: n: Bundling: 00:00:00.1546996
+2024-08-16 10:39:26.5195|TRACE|Program|Server sends: x: 0
