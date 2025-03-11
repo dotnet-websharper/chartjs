@@ -1,11 +1,11 @@
-2025-02-25 14:42:32.9349|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\8.0.0.512-beta2\tools\net8.0\win-x64 (server side)
-2025-02-25 14:42:32.9488|DEBUG|Program|pipename is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\8.0.0.512-beta2\tools\net8.0\win-x64 (server side)
-2025-02-25 14:42:32.9488|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs\WebSharper.ChartJs.fsproj
-2025-02-25 14:42:32.9552|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "binding" instead of "Extension" for your project type
-2025-02-25 14:42:36.9401|TRACE|Program|Server sends: n: F# compilation: 00:00:04.0355126
-2025-02-25 14:42:37.0208|TRACE|Program|Server sends: n: Loading IExtension implementation: 00:00:00.0831318
-2025-02-25 14:42:37.0758|TRACE|Program|Server sends: n: Getting Assembly definition: 00:00:00.0550066
-2025-02-25 14:42:37.4012|TRACE|Program|Server sends: n: Built assembly: 00:00:00.3254043
-2025-02-25 14:42:37.8069|TRACE|Program|Server sends: n: Creating WebSharper metadata: 00:00:00.4057473
-2025-02-25 14:42:37.9370|TRACE|Program|Server sends: n: Writing final dll: 00:00:00.1300821
-2025-02-25 14:42:37.9423|TRACE|Program|Server sends: x: 0
+2025-03-11 17:28:30.7119|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\8.0.0.521-rc\tools\net8.0\win-x64 (server side)
+2025-03-11 17:28:30.7327|DEBUG|Program|pipename is: 9cfde38e1b493b0d22fe4a97fdc846a7 (server side)
+2025-03-11 17:28:30.7327|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs\WebSharper.ChartJs.fsproj
+2025-03-11 17:28:30.7392|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "binding" instead of "Extension" for your project type
+2025-03-11 17:28:34.4187|TRACE|Program|Server sends: n: F# compilation: 00:00:03.7393186
+2025-03-11 17:28:34.4962|TRACE|Program|Server sends: n: Loading IExtension implementation: 00:00:00.0798330
+2025-03-11 17:28:34.5483|TRACE|Program|Server sends: n: Getting Assembly definition: 00:00:00.0520889
+2025-03-11 17:28:34.8630|TRACE|Program|Server sends: n: Built assembly: 00:00:00.3147629
+2025-03-11 17:28:35.2372|TRACE|Program|Server sends: n: Creating WebSharper metadata: 00:00:00.3741611
+2025-03-11 17:28:35.3605|TRACE|Program|Server sends: n: Writing final dll: 00:00:00.1233095
+2025-03-11 17:28:35.3605|TRACE|Program|Server sends: x: 0
