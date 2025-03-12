@@ -12,3 +12,4 @@ WebSharper.ChartJs.Testing/wwwroot/Content
 *.user
 dist/
 .ionidewebsharper.log
+/WebSharper.ChartJs.Testing/node_modules
