@@ -6,7 +6,7 @@ var options =
   bundle: true,
   minify: true,
   format: 'iife',
-  outfile: '../dist/Content/WebSharper.ChartJs.Testing.min.js',
+  outfile: '../dist/Scripts/WebSharper.ChartJs.Testing.min.js',
   globalName: 'wsbundle'
 };
 
