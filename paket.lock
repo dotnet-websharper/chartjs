@@ -7,12 +7,13 @@ NUGET
     System.Reflection.Emit.ILGeneration (4.7)
     System.Reflection.Emit.Lightweight (4.7)
       System.Reflection.Emit.ILGeneration (>= 4.7)
-    WebSharper (8.0.0.521-rc)
+  remote: https://nuget.pkg.github.com/dotnet-websharper/index.json
+    WebSharper (8.0.0.525-rc2)
       FSharp.Core (>= 6.0)
       System.Reflection.Emit.Lightweight (>= 4.7)
-    WebSharper.FSharp (8.0.0.521-rc)
-      WebSharper (8.0.0.521-rc)
-    WebSharper.JQuery (8.0.0.521-rc)
+    WebSharper.FSharp (8.0.0.525-rc2)
+      WebSharper (8.0.0.525-rc2)
+    WebSharper.JQuery (8.0.0.525-rc2)
       WebSharper (>= 8.0 < 8.1)
 
 GROUP testing
@@ -21,7 +22,7 @@ STRATEGY: MIN
 RESTRICTION: == net8.0
 NUGET
   remote: https://api.nuget.org/v3/index.json
-    FSharp.Core (9.0.201)
+    FSharp.Core (6.0)
     HtmlAgilityPack (1.11)
       System.Net.Http (>= 4.3.2)
       System.Xml.XmlDocument (>= 4.3)
@@ -432,20 +433,21 @@ NUGET
       System.Xml.ReaderWriter (>= 4.3)
       System.Xml.XmlDocument (>= 4.3)
       System.Xml.XPath (>= 4.3)
-    WebSharper (8.0.0.521-rc)
+  remote: https://nuget.pkg.github.com/dotnet-websharper/index.json
+    WebSharper (8.0.0.525-rc2)
       FSharp.Core (>= 6.0)
       System.Reflection.Emit.Lightweight (>= 4.7)
-    WebSharper.AspNetCore (8.0.0.521-rc)
+    WebSharper.AspNetCore (8.0.0.525-rc2)
       Microsoft.AspNetCore.Authentication.Abstractions (>= 2.0)
       Microsoft.AspNetCore.Hosting.Abstractions (>= 2.0)
       Microsoft.AspNetCore.Mvc.Abstractions (>= 2.0)
       System.Configuration.ConfigurationManager (>= 4.7)
-      WebSharper (8.0.0.521-rc)
-    WebSharper.FSharp (8.0.0.521-rc)
-      WebSharper (8.0.0.521-rc)
-    WebSharper.JQuery (8.0.0.521-rc)
+      WebSharper (8.0.0.525-rc2)
+    WebSharper.FSharp (8.0.0.525-rc2)
+      WebSharper (8.0.0.525-rc2)
+    WebSharper.JQuery (8.0.0.525-rc2)
       WebSharper (>= 8.0 < 8.1)
-    WebSharper.UI (8.0.0.521-rc)
+    WebSharper.UI (8.0.0.525-rc2)
       HtmlAgilityPack (>= 1.11)
       WebSharper (>= 8.0 < 8.1)
 

@@ -1,0 +1,11 @@
+2025-03-13 17:47:15.1548|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\8.0.0.525-rc2\tools\net8.0\win-x64 (server side)
+2025-03-13 17:47:15.1705|DEBUG|Program|pipename is: f846d0225429247ce58cd41945be4a93 (server side)
+2025-03-13 17:47:15.1705|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs\WebSharper.ChartJs.fsproj
+2025-03-13 17:47:15.1705|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "binding" instead of "Extension" for your project type
+2025-03-13 17:47:18.9705|TRACE|Program|Server sends: n: F# compilation: 00:00:03.8463841
+2025-03-13 17:47:19.0481|TRACE|Program|Server sends: n: Loading IExtension implementation: 00:00:00.0800143
+2025-03-13 17:47:19.1109|TRACE|Program|Server sends: n: Getting Assembly definition: 00:00:00.0628439
+2025-03-13 17:47:19.4444|TRACE|Program|Server sends: n: Built assembly: 00:00:00.3334638
+2025-03-13 17:47:19.8327|TRACE|Program|Server sends: n: Creating WebSharper metadata: 00:00:00.3883224
+2025-03-13 17:47:19.9546|TRACE|Program|Server sends: n: Writing final dll: 00:00:00.1218505
+2025-03-13 17:47:19.9546|TRACE|Program|Server sends: x: 0
