@@ -1070,8 +1070,6 @@ module Definition =
             "hoverBorderJoinStyle", T<string>
             "hoverBorderWidth", T<int>
             "indexAxis", T<string>
-            "label", T<string>
-            "order", T<int>
             "pointBackgroundColor", T<string> + !| T<string>
             "pointBorderColor", T<string> + !| T<string>
             "pointBorderWidth", T<int>
@@ -1145,8 +1143,6 @@ module Definition =
             "indexAxis", T<string>
             "maxBarThickness", T<int>
             "minBarLength", T<int>
-            "label", T<string>
-            "order", T<int>
             "pointStyle", PointStyle.Type // + Image
             "skippNull", T<bool>
             "stack", T<string>
@@ -1179,8 +1175,6 @@ module Definition =
             "clip", T<int> + T<obj>
             "data", T<int []> + T<float []>
             "fill", T<bool> + Fill.Type
-            "label", T<string>
-            "order", T<int>
             "tension", T<int>
             "pointBackgroundColor", T<string> + !| T<string>
             "pointBorderColor", T<string> + !| T<string>
@@ -1340,8 +1334,6 @@ module Definition =
             "hoverBorderWidth", T<int>
             "hoverRadius", T<int>
             "hitRadius",T<int>
-            "label", T<string>
-            "order", T<int>
             "pointStyle", PointStyle.Type // + Image
             "rotation", T<int>
             "radius", T<int>
@@ -1383,8 +1375,6 @@ module Definition =
             "hoverBorderJoinStyle", T<string>
             "hoverBorderWidth", T<int>
             "indexAxis", T<string>
-            "label", T<string>
-            "order", T<int>
             "pointBackgroundColor", T<string> + !| T<string>
             "pointBorderColor", T<string> + !| T<string>
             "pointBorderWidth", T<int>
