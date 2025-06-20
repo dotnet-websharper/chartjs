@@ -1,11 +1,11 @@
-2025-05-14 15:33:16.7933|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\9.1.0.554\tools\net8.0\win-x64 (server side)
-2025-05-14 15:33:16.7933|DEBUG|Program|pipename is: cb4bd5b57a4e10601f8a3cbaf66f89d5 (server side)
-2025-05-14 15:33:16.8076|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs\WebSharper.ChartJs.fsproj
-2025-05-14 15:33:16.8076|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "binding" instead of "Extension" for your project type
-2025-05-14 15:33:20.5009|TRACE|Program|Server sends: n: F# compilation: 00:00:03.7380551
-2025-05-14 15:33:20.5781|TRACE|Program|Server sends: n: Loading IExtension implementation: 00:00:00.0795813
-2025-05-14 15:33:20.6650|TRACE|Program|Server sends: n: Getting Assembly definition: 00:00:00.0868795
-2025-05-14 15:33:20.9739|TRACE|Program|Server sends: n: Built assembly: 00:00:00.3089129
-2025-05-14 15:33:21.3684|TRACE|Program|Server sends: n: Creating WebSharper metadata: 00:00:00.3945041
-2025-05-14 15:33:21.4830|TRACE|Program|Server sends: n: Writing final dll: 00:00:00.1146002
-2025-05-14 15:33:21.4830|TRACE|Program|Server sends: x: 0
+2025-06-20 14:48:53.1232|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\10.0.0.580-beta1\tools\net8.0\win-x64 (server side)
+2025-06-20 14:48:53.1375|DEBUG|Program|pipename is: 19f65bc7af00436c1f6c8248bfe8f4a1 (server side)
+2025-06-20 14:48:53.1375|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs\WebSharper.ChartJs.fsproj
+2025-06-20 14:48:53.1375|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "binding" instead of "Extension" for your project type
+2025-06-20 14:48:56.7916|TRACE|Program|Server sends: n: F# compilation: 00:00:03.7010468
+2025-06-20 14:48:56.8705|TRACE|Program|Server sends: n: Loading IExtension implementation: 00:00:00.0812491
+2025-06-20 14:48:56.9665|TRACE|Program|Server sends: n: Getting Assembly definition: 00:00:00.0959820
+2025-06-20 14:48:57.2811|TRACE|Program|Server sends: n: Built assembly: 00:00:00.3146846
+2025-06-20 14:48:57.6843|TRACE|Program|Server sends: n: Creating WebSharper metadata: 00:00:00.4031932
+2025-06-20 14:48:57.7952|TRACE|Program|Server sends: n: Writing final dll: 00:00:00.1108591
+2025-06-20 14:48:57.7952|TRACE|Program|Server sends: x: 0
