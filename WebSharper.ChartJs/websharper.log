@@ -1,11 +1,11 @@
-2025-06-20 14:48:53.1232|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\10.0.0.580-beta1\tools\net8.0\win-x64 (server side)
-2025-06-20 14:48:53.1375|DEBUG|Program|pipename is: 19f65bc7af00436c1f6c8248bfe8f4a1 (server side)
-2025-06-20 14:48:53.1375|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs\WebSharper.ChartJs.fsproj
-2025-06-20 14:48:53.1375|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "binding" instead of "Extension" for your project type
-2025-06-20 14:48:56.7916|TRACE|Program|Server sends: n: F# compilation: 00:00:03.7010468
-2025-06-20 14:48:56.8705|TRACE|Program|Server sends: n: Loading IExtension implementation: 00:00:00.0812491
-2025-06-20 14:48:56.9665|TRACE|Program|Server sends: n: Getting Assembly definition: 00:00:00.0959820
-2025-06-20 14:48:57.2811|TRACE|Program|Server sends: n: Built assembly: 00:00:00.3146846
-2025-06-20 14:48:57.6843|TRACE|Program|Server sends: n: Creating WebSharper metadata: 00:00:00.4031932
-2025-06-20 14:48:57.7952|TRACE|Program|Server sends: n: Writing final dll: 00:00:00.1108591
-2025-06-20 14:48:57.7952|TRACE|Program|Server sends: x: 0
+2025-08-22 11:51:25.0534|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\10.0.0.604-beta1\tools\net8.0\win-x64 (server side)
+2025-08-22 11:51:25.0534|DEBUG|Program|pipename is: f5f907a5936376cc55ddb6416ea08860 (server side)
+2025-08-22 11:51:25.0534|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs\WebSharper.ChartJs.fsproj
+2025-08-22 11:51:25.0534|TRACE|Program|Server sends: e: WebSharper warning WS9002: Please use "binding" instead of "Extension" for your project type
+2025-08-22 11:51:25.6812|TRACE|Program|Server sends: n: F# compilation: 00:00:00.6283521
+2025-08-22 11:51:25.6970|TRACE|Program|Server sends: n: Loading IExtension implementation: 00:00:00.0157322
+2025-08-22 11:51:25.8030|TRACE|Program|Server sends: n: Getting Assembly definition: 00:00:00.1060260
+2025-08-22 11:51:25.8776|TRACE|Program|Server sends: n: Built assembly: 00:00:00.0746331
+2025-08-22 11:51:25.9101|TRACE|Program|Server sends: n: Creating WebSharper metadata: 00:00:00.0325310
+2025-08-22 11:51:25.9328|TRACE|Program|Server sends: n: Writing final dll: 00:00:00.0226194
+2025-08-22 11:51:25.9350|TRACE|Program|Server sends: x: 0
