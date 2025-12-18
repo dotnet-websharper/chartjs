@@ -1,23 +1,22 @@
-2025-08-22 11:51:26.6778|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\10.0.0.604-beta1\tools\net8.0\win-x64 (server side)
-2025-08-22 11:51:26.6778|DEBUG|Program|pipename is: f5f907a5936376cc55ddb6416ea08860 (server side)
-2025-08-22 11:51:26.6778|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs.Testing\WebSharper.ChartJs.Testing.fsproj
-2025-08-22 11:51:27.3620|TRACE|Program|Server sends: n: F# compilation: 00:00:00.6850698
-2025-08-22 11:51:28.4359|TRACE|Program|Server sends: n: Checking project: 00:00:01.0739055
-2025-08-22 11:51:28.4365|TRACE|Program|Server sends: n: Waiting on merged metadata: 00:00:00.0006076
-2025-08-22 11:51:28.4633|TRACE|Program|Server sends: n: Parsing with FCS: 00:00:00.0267623
-2025-08-22 11:51:28.4633|TRACE|Program|Server sends: n: Analyzing function arguments: 00:00:00.0008014
-2025-08-22 11:51:28.4633|TRACE|Program|Server sends: n: Resolving names: 00:00:00.0007279
-2025-08-22 11:51:28.4707|TRACE|Program|Server sends: n: WebSharper translation: 00:00:00.0058949
-2025-08-22 11:51:28.4707|TRACE|Program|Server sends: n: Source position transformations: 00:00:00.0029940
-2025-08-22 11:51:28.4707|TRACE|Program|Server sends: n: Packaging assembly: 00:00:00.0012140
-2025-08-22 11:51:28.5157|TRACE|Program|Server sends: n: Computing metadata: 00:00:00.0408283
-2025-08-22 11:51:28.5157|TRACE|Program|Server sends: n: Writing reexports root.js: 00:00:00.0006150
-2025-08-22 11:51:28.5157|TRACE|Program|Server sends: n: Writing WebSharper.ChartJs.Testing.Client.js: 00:00:00.0026110
-2025-08-22 11:51:28.5157|TRACE|Program|Server sends: n: Writing $StartupCode_Client.js: 00:00:00.0002534
-2025-08-22 11:51:28.5157|TRACE|Program|Server sends: n: Writing $EntryPoint.js: 00:00:00.0002056
-2025-08-22 11:51:28.5157|TRACE|Program|Server sends: n: Writing .d.ts files: 00:00:00.0008545
-2025-08-22 11:51:28.5157|TRACE|Program|Server sends: n: Hashing resources: 00:00:00.0002551
-2025-08-22 11:51:28.5826|TRACE|Program|Server sends: n: Serializing metadata: 00:00:00.0621213
-2025-08-22 11:51:28.5826|TRACE|Program|Server sends: n: Writing resources into assembly: 00:00:00.0039432
-2025-08-22 11:51:28.6621|TRACE|Program|Server sends: n: Bundling: 00:00:00.0755077
-2025-08-22 11:51:28.6621|TRACE|Program|Server sends: x: 0
+2025-12-18 14:26:14.3801|DEBUG|Program|location of wsfscservice is: C:\Users\runneradmin\.nuget\packages\websharper.fsharp\10.0.0.647\tools\net8.0\win-x64 (server side)
+2025-12-18 14:26:14.3801|DEBUG|Program|pipename is: c828c75ddbc0d8d0916bb198dab7dfdd (server side)
+2025-12-18 14:26:14.3801|DEBUG|Program|Compiling D:\a\build-script\build-script\chartjs\WebSharper.ChartJs.Testing\WebSharper.ChartJs.Testing.fsproj
+2025-12-18 14:26:15.2175|TRACE|Program|Server sends: n: F# compilation: 00:00:00.8383684
+2025-12-18 14:26:15.8410|TRACE|Program|Server sends: n: Checking project: 00:00:00.6234976
+2025-12-18 14:26:15.8410|TRACE|Program|Server sends: n: Waiting on merged metadata: 00:00:00.0006619
+2025-12-18 14:26:15.8872|TRACE|Program|Server sends: n: Parsing with FCS: 00:00:00.0455545
+2025-12-18 14:26:15.8872|TRACE|Program|Server sends: n: Analyzing function arguments: 00:00:00.0011571
+2025-12-18 14:26:15.8872|TRACE|Program|Server sends: n: Resolving names: 00:00:00.0007184
+2025-12-18 14:26:15.8872|TRACE|Program|Server sends: n: WebSharper translation: 00:00:00.0038957
+2025-12-18 14:26:15.8872|TRACE|Program|Server sends: n: Source position transformations: 00:00:00.0025873
+2025-12-18 14:26:15.8967|TRACE|Program|Server sends: n: Packaging assembly: 00:00:00.0011185
+2025-12-18 14:26:15.9487|TRACE|Program|Server sends: n: Computing metadata: 00:00:00.0519809
+2025-12-18 14:26:15.9487|TRACE|Program|Server sends: n: Writing reexports root.js: 00:00:00.0008384
+2025-12-18 14:26:15.9487|TRACE|Program|Server sends: n: Writing WebSharper.ChartJs.Testing.Client.js: 00:00:00.0018140
+2025-12-18 14:26:15.9487|TRACE|Program|Server sends: n: Writing $StartupCode_Client.js: 00:00:00.0003761
+2025-12-18 14:26:15.9487|TRACE|Program|Server sends: n: Writing $EntryPoint.js: 00:00:00.0003182
+2025-12-18 14:26:15.9487|TRACE|Program|Server sends: n: Writing .d.ts files: 00:00:00.0008396
+2025-12-18 14:26:16.0071|TRACE|Program|Server sends: n: Serializing metadata: 00:00:00.0542618
+2025-12-18 14:26:16.0071|TRACE|Program|Server sends: n: Writing resources into assembly: 00:00:00.0047932
+2025-12-18 14:26:16.1089|TRACE|Program|Server sends: n: Bundling: 00:00:00.0969608
+2025-12-18 14:26:16.1153|TRACE|Program|Server sends: x: 0
