@@ -13,6 +13,7 @@ tags
     Web JavaScript F# C#
 files
     ../WebSharper.ChartJs/bin/Release/netstandard2.0/WebSharper.ChartJs.dll ==> lib/netstandard2.0
+    ../WebSharper.ChartJs/bin/Release/netstandard2.0/WebSharper.ChartJs.websharper ==> lib/netstandard2.0
     ../WebSharper.ChartJs/bin/Release/netstandard2.0/WebSharper.ChartJs.xml ==> lib/netstandard2.0
     ../WebSharper.ChartJs/WebSharper.ChartJs.fsproj ==> src/
 dependencies
