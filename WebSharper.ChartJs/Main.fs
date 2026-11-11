@@ -2,7 +2,7 @@
 //
 // This file is part of WebSharper
 //
-// Copyright (c) 2008-2018 IntelliFactory
+// Copyright (c) 2008-2026 IntelliFactory
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License.  You may
@@ -22,7 +22,6 @@ namespace WebSharper.ChartJs
 open WebSharper
 open WebSharper.JavaScript
 open WebSharper.InterfaceGenerator
-open WebSharper.JQuery
 
 module Definition =
 
@@ -74,7 +73,7 @@ module Definition =
         Pattern.EnumStrings "FontStyle" [
             "normal"
             "italic"
-            "obliquie"
+            "oblique"
             "initial"
             "inherit"
         ]
@@ -146,6 +145,16 @@ module Definition =
                     "datasets", !| ADataSet.Type
                     "labels", T<string []>
                 ]
+        }
+
+    let ActiveElement =
+        Pattern.Config "ActiveElement" {
+            Required = []
+            Optional = [
+                "element", T<Dom.Element>
+                "datasetIndex", T<int>
+                "index", T<int>
+            ]
         }
 
     let ScaleType =
@@ -270,7 +279,7 @@ module Definition =
         Pattern.Config "TickMajor" {
             Required = []
             Optional = [
-                "enabled", T<bool>
+                ("enabled", T<bool>)
             ]
         }
 
@@ -303,7 +312,7 @@ module Definition =
                 "sampleSize", T<int>
                 "autoSkip", T<bool>
                 "autoSkipPadding", T<int>
-                "inclueBounds", T<bool>
+                "includeBounds", T<bool>
                 "labelOffset", T<int>
                 "maxRotation", T<int>
                 "minRotation", T<int>
@@ -329,7 +338,7 @@ module Definition =
         Pattern.Config "TimeTick" {
             Required = []
             Optional = [
-                "source", TickSource.Type
+                ("source", TickSource.Type)
             ]
         }
         |=> Inherits CartesianTick
@@ -365,7 +374,7 @@ module Definition =
                 "offset", T<bool>
                 "tickBorderDash", T<int []> + T<float []>
                 "tickBorderDashOffset", T<int> + T<float>
-                "tickcolor", T<string> + !| T<string>
+                "tickColor", T<string> + !| T<string>
                 "tickLength", T<int>
                 "tickWidth", T<int>
                 "z", T<int>
@@ -432,7 +441,7 @@ module Definition =
         Pattern.Config "ScaleAdapter" {
             Required = []
             Optional = [
-                "date", T<obj>
+                ("date", T<obj>)
             ]
         }
 
@@ -561,7 +570,7 @@ module Definition =
         Pattern.Config "LogarithmicAxis" {
             Required = []
             Optional = [
-                "format", T<obj>
+                ("format", T<obj>)
             ]
         }
 
@@ -606,7 +615,7 @@ module Definition =
         Pattern.Config "LayoutConfig" {
             Required =
                 [
-                    "padding", Padding
+                    ("padding", Padding)
                 ]
             Optional = []
         }
@@ -958,7 +967,7 @@ module Definition =
             Required = []
             Optional = [
                 "enabled", T<bool>
-                "alogithm", DecimationAlgorithm.Type
+                "algorithm", DecimationAlgorithm.Type
                 "samples", T<int> + T<float>
             ]
         }
@@ -1021,9 +1030,9 @@ module Definition =
                     "devicePixelRatio", T<int>
                     "locale", T<string>
                     "interaction", Interaction.Type
-                    "events", Event.Type
-                    "onHover", (T<Dom.Event> * T<Dom.Element []> ^-> T<unit>)
-                    "onClick", (T<Dom.Event> * T<Dom.Element []> ^-> T<unit>)
+                    "events", !| Event.Type
+                    "onHover", (T<Dom.Event> * !| ActiveElement ^-> T<unit>)
+                    "onClick", (T<Dom.Event> * !| ActiveElement ^-> T<unit>)
                     "animation", Animation.Type
                     "transitions", Transition.Type
                     "layout", LayoutConfig.Type
@@ -1086,7 +1095,7 @@ module Definition =
             "spanGaps", T<bool>
             "stack", T<string>
             "stepped", T<bool> + T<string>
-            "tension", T<int>
+            "tension", T<float>
             "xAxisID", T<string>
             "yAxisID", T<string>
             "radius", T<int>
@@ -1126,13 +1135,13 @@ module Definition =
         |+> Pattern.OptionalFields [
             "backgroundColor", T<string> + !| T<string>
             "base", T<int>
-            "barPercentage", T<int>
+            "barPercentage", T<float>
             "barThickness", T<int> + T<string>
             "borderColor", T<string> + !| T<string>
             "borderSkipped", T<string>
             "borderWidth", T<int>
             "borderRadius", T<int>
-            "categoryPercentage", T<int>
+            "categoryPercentage", T<float>
             "clip", T<int> + T<obj>
             "data", T<int []> + T<float []>
             "grouped", T<bool>
@@ -1144,10 +1153,10 @@ module Definition =
             "maxBarThickness", T<int>
             "minBarLength", T<int>
             "pointStyle", PointStyle.Type // + Image
-            "skippNull", T<bool>
+            "skipNull", T<bool>
             "stack", T<string>
-            "XAxisID", T<string>
-            "YAxisID", T<string>
+            "xAxisID", T<string>
+            "yAxisID", T<string>
         ]
 
     let RadarChartDataSet =
@@ -1175,7 +1184,7 @@ module Definition =
             "clip", T<int> + T<obj>
             "data", T<int []> + T<float []>
             "fill", T<bool> + Fill.Type
-            "tension", T<int>
+            "tension", T<float>
             "pointBackgroundColor", T<string> + !| T<string>
             "pointBorderColor", T<string> + !| T<string>
             "pointBorderWidth", T<int>
@@ -1195,7 +1204,7 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "startAngle", T<int>
+                    ("startAngle", T<int>)
                 ]
         }
         |=> Inherits Options
@@ -1235,7 +1244,7 @@ module Definition =
             Required = []
             Optional =
                 [
-                    "startAngle", T<int>
+                    ("startAngle", T<int>)
                     
                 ]
         }
@@ -1391,19 +1400,20 @@ module Definition =
             "spanGaps", T<bool>
             "stack", T<string>
             "stepped", T<bool> + T<string>
-            "tension", T<int>
+            "tension", T<float>
             "xAxisID", T<string>
             "yAxisID", T<string>
         ]
 
     let Chart =
-        let Context = (T<Dom.Element> + T<JQuery.JQuery> + T<string>)?elementId // + T<JavaScript.CanvasElement>
+        let Context = (T<Dom.Element> + T<string>)?elementId
         ChartClass
         |+> Static [
             Constructor (Context * ChartCreate)
             Constructor (Context * !| ChartCreate)
-            "Line" => Context * ChartCreate ^-> TSelf
-            "default" =? Options
+            "defaults" =? Options
+            "version" =? T<string>
+            "getChart" => T<string> ^-> TSelf
         ]
         |+> Instance [
             "destroy" => T<unit> ^-> T<unit>
@@ -1419,9 +1429,8 @@ module Definition =
             "resize" => T<unit> ^-> TSelf
             "toBase64Image" => T<unit> ^-> T<string>
             "generateLegend" => T<unit> ^-> T<string>
-            "getElementAtEvent" => T<Dom.Event> + T<JQuery.Event> ^-> T<Dom.Element>
-            "getsElementAtEvent" => T<Dom.Event> + T<JQuery.Event> ^-> T<Dom.Element []>
-            "getDatasetAtEvent" => T<Dom.Event> + T<JQuery.Event> ^-> T<Dom.Element>
+            "getElementsAtEventForMode" =>
+                T<Dom.Event> * InteractionMode.Type * Interaction.Type * T<bool> ^-> !| ActiveElement
             "getDatasetMeta" => T<int> ^-> ADataSet
         ]
 
@@ -1431,6 +1440,7 @@ module Definition =
                 Font
                 PositionString
                 ChartData
+                ActiveElement
                 PaddingDirections
                 PaddingXY
                 LayoutConfig

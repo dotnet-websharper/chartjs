@@ -8,9 +8,9 @@ repositoryUrl https://github.com/dotnet-websharper/chartjs/
 licenseUrl https://github.com/dotnet-websharper/chartjs/blob/master/LICENSE.md
 iconUrl https://github.com/dotnet-websharper/core/raw/websharper50/tools/WebSharper.png
 description
-    WebSharper bindings for chartjs 4.4+
+    WebSharper bindings for Chart.js 4.6+
 tags
-    Web JavaScript F# C#
+    Web JavaScript F# C# chart
 files
     ../WebSharper.ChartJs/bin/Release/netstandard2.0/WebSharper.ChartJs.dll ==> lib/netstandard2.0
     ../WebSharper.ChartJs/bin/Release/netstandard2.0/WebSharper.ChartJs.xml ==> lib/netstandard2.0

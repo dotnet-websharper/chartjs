@@ -1,0 +1,206 @@
+/* Light is the default theme; `data-theme="dark"` on <html> switches to dark. */
+:root {
+    color-scheme: light;
+
+    --bg: #f6f7fb;
+    --panel: #ffffff;
+    --panel-2: #f1f5f9;
+    --line: #e4e7ee;
+    --text: #0f172a;
+    --muted: #64748b;
+    --accent: #6366f1;
+    --accent-strong: #4f46e5;
+    --accent-2: #0e7490;
+    --header-gradient: linear-gradient(180deg, rgba(99, 102, 241, .10), transparent);
+    --radius: 14px;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --bg: #0f172a;
+    --panel: #111c34;
+    --panel-2: #16233f;
+    --line: #24324f;
+    --text: #e2e8f0;
+    --muted: #93a1bd;
+    --accent: #6366f1;
+    --accent-strong: #4f46e5;
+    --accent-2: #22d3ee;
+    --header-gradient: linear-gradient(180deg, rgba(99, 102, 241, .16), transparent);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    transition: background-color .2s ease, color .2s ease;
+}
+
+a { color: var(--accent-2); }
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--header-gradient);
+}
+
+.app-titles h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    letter-spacing: -.01em;
+}
+
+.app-titles p {
+    margin: .15rem 0 0;
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+.pill {
+    display: inline-block;
+    padding: .05rem .45rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--panel-2);
+    font-size: .8rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.app-actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.app-source {
+    font-size: .9rem;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    padding: .4rem .8rem;
+    border-radius: 999px;
+    color: var(--text);
+}
+
+.app-source:hover { border-color: var(--accent); }
+
+.theme-toggle {
+    border-radius: 999px;
+    padding: .4rem .8rem;
+}
+
+.page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: grid;
+    gap: 1.25rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+}
+
+.card-header h2 {
+    margin: 0 0 .25rem;
+    font-size: 1.1rem;
+}
+
+.card-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .88rem;
+}
+
+code {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: .05rem .3rem;
+    font-size: .85em;
+}
+
+/* Chart.js needs a positioned, sized container to size the canvas. */
+.chart-box {
+    position: relative;
+    height: 260px;
+    margin: 1rem 0;
+    padding: 0;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+.chart-box.tall { height: 320px; }
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+}
+
+.btn {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text);
+    border-radius: 9px;
+    padding: .45rem .8rem;
+    font-size: .85rem;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+}
+
+.btn:hover { border-color: var(--accent); }
+
+.btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+}
+
+.btn-primary:hover { background: var(--accent-strong); }
+
+.status {
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: .85rem;
+    min-height: 1.2em;
+}
+
+.readout {
+    margin: .35rem 0 0;
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+.readout span { color: var(--text); }
+
+.snapshot-link {
+    display: none;
+    margin-top: 1rem;
+    font-size: .85rem;
+    color: var(--accent-2);
+}
+
+/* Only show the download link once toBase64Image() has produced a data URL. */
+.snapshot-link[href^="data:"] { display: inline-block; }

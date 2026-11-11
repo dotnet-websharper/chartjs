@@ -1,0 +1,11 @@
+{
+  "name": "WebSharper.ChartJs.Sample",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  },
+  "dependencies": {
+    "chart.js": "^4.6.1"
+  }
+}

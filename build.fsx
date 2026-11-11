@@ -5,7 +5,7 @@
 #r "nuget: Fake.DotNet.Cli"
 #r "nuget: Fake.DotNet.AssemblyInfoFile"
 #r "nuget: Fake.DotNet.Paket"
-#r "nuget: Paket.Core, 8.1.0-alpha004"
+#r "nuget: Paket.Core, 12.0.0-alpha001"
 #r "nuget: MSBuild.StructuredLogger"
 
 open Fake.Core
@@ -17,10 +17,12 @@ System.Environment.GetCommandLineArgs()
 |> Fake.Core.Context.setExecutionContext
 
 #load "paket-files/wsbuild/github.com/dotnet-websharper/build-script/WebSharper.Fake.fsx"
-#r "System.Xml.Linq"
-
-open WebSharper.Fake
+open Fake.Core
+open Fake.Core.TargetOperators
 open Fake.DotNet
+open Fake.IO
+open Fake.IO.FileSystemOperators
+open WebSharper.Fake
 
 LazyVersionFrom "WebSharper" |> WSTargets.Default
 |> fun args ->
@@ -28,9 +30,9 @@ LazyVersionFrom "WebSharper" |> WSTargets.Default
         Attributes =
                 [
                     AssemblyInfo.Company "IntelliFactory"
-                    AssemblyInfo.Copyright "(c) IntelliFactory 2023"
+                    AssemblyInfo.Copyright "(c) IntelliFactory 2026"
                     AssemblyInfo.Title "https://github.com/dotnet-websharper/chartjs"
-                    AssemblyInfo.Product "WebSharper ChartJS 4.4+"
+                    AssemblyInfo.Product "WebSharper ChartJS 4.6+"
                 ]
     }
 |> MakeTargets
