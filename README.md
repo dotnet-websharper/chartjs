@@ -220,7 +220,7 @@ dotnet paket pack ./out
 
 ## Deployment
 
-Pushing to the default branch (`master`) triggers
+Pushing to the default branch (`main`) triggers
 `.github/workflows/ghpages.yml`, which builds the sample in Release and publishes
 `dist/` to the `gh-pages` branch via GitHub Pages.
 
