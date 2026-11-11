@@ -1,18 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <WebSharperProject>Extension</WebSharperProject>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <WebSharperProject>binding</WebSharperProject>
     <WebSharperSourceMap>false</WebSharperSourceMap>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Product>WebSharper.ChartJs 4.6.0+</Product>
+    <Title>https://github.com/dotnet-websharper/chartjs/</Title>
+    <Company>IntelliFactory</Company>
+    <Copyright>(c) 2026 IntelliFactory</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.fs" />
+    <None Include="wsconfig.json" />
     <None Include="paket.references" />
   </ItemGroup>
   <PropertyGroup>
-	<NpmDependencies>
-	  <NpmPackage Name="chart.js" Version="gt= 4.4.0 lt 5.0.0" ResolutionStrategy="Max" />
-	</NpmDependencies>
+    <NpmDependencies>
+      <NpmPackage Name="chart.js" Version="&gt;= 4.6.1 &lt; 5.0.0" ResolutionStrategy="Max" />
+    </NpmDependencies>
   </PropertyGroup>
+  <Import Project="..\paket-files\wsbuild\github.com\dotnet-websharper\build-script\WebSharper.Fake.targets" Condition="Exists('..\paket-files\wsbuild\github.com\dotnet-websharper\build-script\WebSharper.Fake.targets')" />
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
