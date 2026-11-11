@@ -5,7 +5,7 @@ owners IntelliFactory
 projectUrl https://websharper.com/
 repositoryType git
 repositoryUrl https://github.com/dotnet-websharper/chartjs/
-licenseUrl https://github.com/dotnet-websharper/chartjs/blob/master/LICENSE.md
+licenseUrl https://github.com/dotnet-websharper/chartjs/blob/main/LICENSE.md
 iconUrl https://github.com/dotnet-websharper/core/raw/websharper50/tools/WebSharper.png
 description
     WebSharper bindings for Chart.js 4.6+
