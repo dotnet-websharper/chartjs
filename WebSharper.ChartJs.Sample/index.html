@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSharper.ChartJs — sample</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23818cf8'/%3E%3Crect x='3' y='8' width='2.4' height='5' fill='white'/%3E%3Crect x='6.8' y='5' width='2.4' height='8' fill='white'/%3E%3Crect x='10.6' y='3' width='2.4' height='10' fill='white'/%3E%3C/svg%3E" />
+    <script>
+        // Apply a previously chosen theme before first paint. Light is the
+        // default; the key is shared with Client.fs (themeStorageKey).
+        try {
+            var t = localStorage.getItem('websharper-chartjs-theme');
+            if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) { }
+    </script>
+    <link rel="stylesheet" href="site.css" />
+    <!-- chart.js is bundled from the npm package; the WebSharper head is folded in here. -->
+    <!-- ws-head -->
+</head>
+<body>
+    <header class="app-header">
+        <div class="app-titles">
+            <h1>WebSharper.ChartJs</h1>
+            <p>Chart.js <span class="pill">${version}</span> bindings for F# — with <a href="https://websharper.com">WebSharper</a></p>
+        </div>
+        <div class="app-actions">
+            <button class="btn theme-toggle" ws-onclick="ToggleTheme" title="Switch between the light and dark theme">
+                <span>${themeLabel}</span>
+            </button>
+            <a class="app-source" href="https://github.com/dotnet-websharper/chartjs">Source</a>
+        </div>
+    </header>
+
+    <main class="page">
+        <section class="card controls">
+            <header class="card-header">
+                <h2>Controls</h2>
+                <p>
+                    Every chart below is a live <code>Chart</code> instance. Hover or
+                    click a chart to inspect the active elements, or use these buttons
+                    to update, reset, destroy and rebuild the whole set.
+                </p>
+            </header>
+            <div class="toolbar">
+                <button class="btn btn-primary" ws-onclick="RandomizeAll">Randomize all</button>
+                <button class="btn" ws-onclick="ResetAll">Reset all</button>
+                <button class="btn" ws-onclick="DestroyAll">Destroy all</button>
+                <button class="btn" ws-onclick="RecreateAll">Recreate all</button>
+            </div>
+            <p class="status">${status}</p>
+            <p class="readout">Active elements: <span>${hovered}</span></p>
+            <p class="readout">Event inspection: <span>${inspection}</span></p>
+        </section>
+
+        <section class="card">
+            <header class="card-header">
+                <h2>Line</h2>
+                <p>
+                    <code>LineChartDataSet</code> with fill and tension, a
+                    <code>LinearAxis</code> scale, and a <code>TooltipCallbacks.label</code> callback.
+                </p>
+            </header>
+            <div class="chart-box tall"><canvas id="line"></canvas></div>
+            <div class="toolbar">
+                <button class="btn" ws-onclick="RandomizeLine">Randomize</button>
+                <button class="btn" ws-onclick="ToggleLineFill">Toggle fill</button>
+                <button class="btn" ws-onclick="CaptureSnapshot">Snapshot → base64</button>
+                <button class="btn" ws-onclick="ReportMeta">getDatasetMeta</button>
+            </div>
+            <a class="snapshot-link" href="${snapshotUrl}" download="line-chart.png">Download the line-chart PNG</a>
+        </section>
+
+        <section class="card">
+            <header class="card-header">
+                <h2>Bar</h2>
+                <p><code>BarChartDataSet</code> with rounded corners and a zero-based y-axis.</p>
+            </header>
+            <div class="chart-box tall"><canvas id="bar"></canvas></div>
+            <div class="toolbar">
+                <button class="btn" ws-onclick="RandomizeBar">Randomize</button>
+            </div>
+        </section>
+
+        <div class="grid">
+            <section class="card">
+                <header class="card-header">
+                    <h2>Pie</h2>
+                    <p><code>PieChartDataSet</code> — per-slice colours.</p>
+                </header>
+                <div class="chart-box"><canvas id="pie"></canvas></div>
+                <div class="toolbar">
+                    <button class="btn" ws-onclick="RandomizePie">Randomize</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <header class="card-header">
+                    <h2>Doughnut</h2>
+                    <p><code>DoughnutChartDataSet</code> — same data, cut-out centre.</p>
+                </header>
+                <div class="chart-box"><canvas id="doughnut"></canvas></div>
+                <div class="toolbar">
+                    <button class="btn" ws-onclick="RandomizeDoughnut">Randomize</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <header class="card-header">
+                    <h2>Polar area</h2>
+                    <p><code>PolarAreaChartDataSet</code> — radial bars.</p>
+                </header>
+                <div class="chart-box"><canvas id="polarArea"></canvas></div>
+                <div class="toolbar">
+                    <button class="btn" ws-onclick="RandomizePolar">Randomize</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <header class="card-header">
+                    <h2>Radar</h2>
+                    <p>Two radar datasets sharing a radial scale, with an <code>ElementConfig.line</code>.</p>
+                </header>
+                <div class="chart-box"><canvas id="radar"></canvas></div>
+                <div class="toolbar">
+                    <button class="btn" ws-onclick="RandomizeRadar">Randomize</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <header class="card-header">
+                    <h2>Bubble</h2>
+                    <p><code>BubbleChartDataSet</code> with <code>BubbleDataObject</code> x/y/r points.</p>
+                </header>
+                <div class="chart-box"><canvas id="bubble"></canvas></div>
+                <div class="toolbar">
+                    <button class="btn" ws-onclick="RandomizeBubble">Randomize</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <header class="card-header">
+                    <h2>Scatter</h2>
+                    <p><code>ScatterChartDataSet</code> with <code>ScatterDataObject</code> points.</p>
+                </header>
+                <div class="chart-box"><canvas id="scatter"></canvas></div>
+                <div class="toolbar">
+                    <button class="btn" ws-onclick="RandomizeScatter">Randomize</button>
+                </div>
+            </section>
+        </div>
+
+        <section class="card">
+            <header class="card-header">
+                <h2>Mixed</h2>
+                <p>A line and a bar dataset sharing one <code>ChartData</code>, ordered with <code>order</code>.</p>
+            </header>
+            <div class="chart-box tall"><canvas id="mixed"></canvas></div>
+            <div class="toolbar">
+                <button class="btn" ws-onclick="RandomizeMixed">Randomize</button>
+            </div>
+        </section>
+    </main>
+
+    <script type="text/javascript" src="Scripts/WebSharper.ChartJs.Sample.min.js"></script>
+</body>
+</html>
